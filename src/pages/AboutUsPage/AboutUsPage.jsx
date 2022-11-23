@@ -1,3 +1,7 @@
 export const AboutUsPage = () => {
-  return <div></div>;
+  return (
+    <main>
+      <p>Hello About us page!</p>
+    </main>
+  );
 };
