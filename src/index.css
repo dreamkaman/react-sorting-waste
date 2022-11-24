@@ -84,10 +84,6 @@ nav {
 
 /* ================================Containers =========================================*/
 @media screen and (min-width: 320px) {
-  body {
-    background-color: rgb(252, 252, 240);
-  }
-
   .container {
     max-width: 480px;
     margin-left: auto;
@@ -98,20 +94,12 @@ nav {
 }
 
 @media screen and (min-width: 768px) {
-  body {
-    background-color: rgb(244, 250, 255);
-  }
-
   .container {
     max-width: 624px; /* ????? */
   }
 }
 
 @media screen and (min-width: 1280px) {
-  body {
-    background-color: rgb(244, 255, 243);
-  }
-
   .container {
     max-width: 1110px;
   }
