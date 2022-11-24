@@ -1,3 +1,5 @@
-export const HelpPlanetForm = () => {
+const HelpPlanetForm = () => {
   return <form></form>;
 };
+
+export default HelpPlanetForm;
