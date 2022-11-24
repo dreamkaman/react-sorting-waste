@@ -1,5 +1,5 @@
 const FindServicePage = () => {
-  return <div>FindServicePage</div>;
+  return <div>Hello FindServicePage!</div>;
 };
 
 export default FindServicePage;
