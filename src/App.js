@@ -1,13 +1,15 @@
-import './App.css';
 import Header from '../src/modules/Header';
 import Footer from '../src/modules/Footer';
+import MyRoutes from 'Routes';
+
+import './App.css';
 
 function App() {
   return (
     <div className="App">
-      {/* <Header /> */}
-      {/* <MyRoutes /> */}
-      {/* <Footer /> */}
+      <Header />
+      <MyRoutes />
+      <Footer />
     </div>
   );
 }
