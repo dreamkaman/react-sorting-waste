@@ -1,11 +1,18 @@
 .contacts {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   width: 100%;
   min-height: 70px;
-  padding: 0 100px;
+  padding: 0 10px;
+
+  font-size: 14px;
   background-color: var(--font-header-line-color);
+}
+
+.contactLinks {
+  display: flex;
+  align-items: center;
 }
 
 .text {
@@ -50,12 +57,22 @@
   background-position: center;
 }
 
+.avatarWrapper {
+  position: relative; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  width: 400px;
+}
+
 .navigation {
   display: flex;
   width: 100%;
   min-height: 120px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .logoLink {
   display: flex;
@@ -85,9 +102,9 @@
   width: 40%;
 }
 
-.menuItem:not(:last-child) {
-  margin-right: 60px;
-}
+// .menuItem:not(:last-child) {
+//   margin-right: 60px;
+// }
 
 .menuItem a {
   display: inline-block;
@@ -148,4 +165,165 @@
 
 .navLink {
   border-bottom: 2px solid transparent;
+}
+
+@media screen and (min-width: 320px) {
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1025px) {
+  .contacts {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    min-height: 70px;
+    font-size: 18px;
+    padding: 0 30px;
+    background-color: var(--font-header-line-color);
+  }
+
+  .text {
+    margin-right: 20px;
+
+    color: var(--font-light-color);
+  }
+
+  .tel,
+  .mail {
+    color: var(--font-light-color);
+  }
+
+  .tel:hover,
+  .mail:hover {
+    color: var(--font-third-color);
+  }
+
+  .tel {
+    margin-right: 20px;
+  }
+
+  .tel::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    padding: 0 15px;
+
+    background-image: url('../../images/png/tel.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .mail::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    padding: 0 15px;
+
+    background-image: url('../../images/png/mail.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .navigation {
+    display: flex;
+    width: 100%;
+    min-height: 120px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .logoLink {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    width: 50px;
+  }
+
+  .txtGo {
+    color: var(--font-secondary-color);
+    margin-left: 5px;
+  }
+
+  .txtEco {
+    font-size: 40px;
+    font-weight: 900;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    width: 40%;
+  }
+
+  .menuItem:not(:last-child) {
+    margin-right: 60px;
+  }
+
+  .menuItem a {
+    display: inline-block;
+    min-width: max-content;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+
+  .menuItem a:hover {
+    color: var(--font-light-color);
+    background-color: var(--font-main-color);
+  }
+
+  .authList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 500;
+  }
+
+  .authListItem:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .loginLink,
+  .signupLink {
+    display: inline-block;
+
+    padding: 8px 25px;
+    border-radius: 3px;
+    min-width: max-content;
+  }
+
+  .loginLink {
+    border: 2px solid var(--font-secondary-color);
+  }
+
+  .loginLink:hover {
+    background-color: var(--font-third-color);
+    border-color: transparent;
+  }
+
+  .signupLink {
+    border: 2px solid transparent;
+    background-color: var(--font-third-color);
+  }
+
+  .signupLink:hover {
+    background-color: transparent;
+    border-color: var(--font-secondary-color);
+  }
+
+  .isActive {
+    border-bottom: 2px solid var(--font-main-color);
+  }
+
+  .navLink {
+    border-bottom: 2px solid transparent;
+  }
 }

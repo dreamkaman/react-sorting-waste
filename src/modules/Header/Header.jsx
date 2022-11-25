@@ -1,19 +1,46 @@
 import { Link, NavLink } from 'react-router-dom';
+
+import Avatar from 'modules/Avatar';
+
 import img from '../../images/png/logo.png';
 
 import s from './Header.module.scss';
 
 const Header = () => {
+  const isLoggined = true; //should be red from Redux
+
+  const authButtons = (
+    <ul className={s.authList}>
+      <li className={s.authListItem}>
+        <Link className={s.loginLink} to="/login">
+          Login
+        </Link>
+      </li>
+      <li className={s.authListItem}>
+        <Link className={s.signupLink} to="/signup">
+          Sign up
+        </Link>
+      </li>
+    </ul>
+  );
+
   return (
     <header>
       <div className={s.contacts}>
         <p className={s.text}>Have any questions?</p>
-        <a className={s.tel} href="tel:+380441234567">
-          +38 044 123 45 67
-        </a>
-        <a className={s.mail} href="mailto:support@wasteservice.com">
-          support@wasteservice.com
-        </a>
+        <ul className={s.contactLinks}>
+          <li>
+            <a className={s.tel} href="tel:+380441234567">
+              +38 044 123 45 67
+            </a>
+          </li>
+          <li>
+            <a className={s.mail} href="mailto:support@wasteservice.com">
+              support@wasteservice.com
+            </a>
+          </li>
+        </ul>
+        <div className={s.avatarWrapper}>{isLoggined ? <Avatar /> : null}</div>
       </div>
       <div className="container">
         <nav className={s.navigation}>
@@ -47,18 +74,7 @@ const Header = () => {
               </NavLink>
             </li>
           </ul>
-          <ul className={s.authList}>
-            <li className={s.authListItem}>
-              <Link className={s.loginLink} to="/login">
-                Login
-              </Link>
-            </li>
-            <li className={s.authListItem}>
-              <Link className={s.signupLink} to="/signup">
-                Sign up
-              </Link>
-            </li>
-          </ul>
+          {isLoggined ? null : authButtons}
         </nav>
       </div>
     </header>
