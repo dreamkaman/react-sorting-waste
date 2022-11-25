@@ -6,6 +6,7 @@ import MyRoutes from 'Routes';
 
 
 import './App.css';
+import HeroSlider from './modules/HeroSlider';
 
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
       <Header />
 
       <MyRoutes />
+
+      <HeroSlider/>
 
       <Footer />
 
