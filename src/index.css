@@ -1,14 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 /* normalizer */
 
 :root {
-  --main-font-family: 'Verdana', sans-serif;
-  --second-font-family: 'Gotham Pro bold', sans-serif;
-  /* --font-main-text-color: rgb(0, 0, 0);
-  --font-grey-color: #9b9faa;
-  --bg-grey-color: #f0f1f3;
-  --lines-grey: #e0e0e0;
-  --bg-blue-color: #264061;
-  --accent-color: #fc842d; */
+  --main-font-family: 'Roboto', sans-serif;
+  --font-main-color: #006940;
+  --font-secondary-color: #38913c;
+  --font-third-color: #fdc400;
+  --font-light-color: #ffffff;
+  --font-dark-color: #313131;
+  --font-header-line-color: #183d27;
 }
 
 html {
@@ -26,7 +26,9 @@ body {
   margin: 0;
 
   font-family: var(--main-font-family);
-  /* color: var(--font-main-text-color); */
+  font-size: 18px;
+
+  color: var(--font-main-color);
   letter-spacing: 0.04em;
   max-width: 100%;
 }
