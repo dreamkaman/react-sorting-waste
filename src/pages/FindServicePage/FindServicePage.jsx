@@ -1,3 +1,5 @@
-export const FindServicePage = () => {
-  return <div>FindServicePage</div>;
+const FindServicePage = () => {
+  return <div>Hello FindServicePage!</div>;
 };
+
+export default FindServicePage;
