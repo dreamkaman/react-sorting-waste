@@ -9,7 +9,6 @@ import WebsiteUsersInfo from 'modules/WebsiteUsersInfo';
 import MyRoutes from 'Routes';
 
 import './App.css';
-import HeroSlider from './modules/HeroSlider';
 
 function App() {
   return (
@@ -17,12 +16,6 @@ function App() {
       <Header />
 
       <MyRoutes />
-
-      <HeroSlider />
-
-      <HelpPlanet />
-
-      <WebsiteUsersInfo />
 
       <Footer />
     </div>

@@ -1,7 +1,9 @@
+import HeroSlider from '../../modules/HeroSlider';
+
 const HomePage = () => {
   return (
     <main>
-      <p>Hello Home page!</p>
+      <HeroSlider/>
     </main>
   );
 };
