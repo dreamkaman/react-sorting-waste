@@ -1,0 +1,51 @@
+.container {
+    width: 100%;
+    background-image: linear-gradient(rgba(30, 50, 38, 0.9), rgba(30, 50, 38, 0.9)), url('../../images/BucketsOfBottles.png');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    .statisticList {
+        max-width: 1560px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 12%;
+        padding-bottom: 4%;
+        margin: 0 auto;
+        .statisticItem {
+            max-width: 345px;
+            .title {
+                font-style: normal;
+                font-weight: 700;
+                font-size: 70px;
+                line-height: 85px;
+                margin: 0 0 5px 0;
+                color: #FFFFFF;
+            }
+
+            .category {
+                font-style: normal;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 29px;
+                color: #FDC400;
+                margin: 0 0 38px 0;
+            }
+
+            .description {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 40px;
+                color: #A9A9A9;
+                margin: 0;
+            }
+        }
+        .line {
+            background-color: #A9A9A9;
+            width: 1px;
+            margin: 15px 0;
+            margin-right: 10px;
+        }
+    }
+}
