@@ -23,11 +23,11 @@ const HeroSlider = () => {
             <img className={styles.image} src={slide.image} alt={'slider-' + index} />
             <div className={styles.slideInfo}>
               <p>{slide.description}</p>
-              <h1>
+              <h2>
                 {slide.titles.map((title, index) =>
                   <>{title} <br /></>,
                 )}
-              </h1>
+              </h2>
             </div>
           </div>,
         )

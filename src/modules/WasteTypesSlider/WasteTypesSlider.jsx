@@ -1,5 +1,11 @@
+import React from 'react';
+
 const WasteTypesSlider = () => {
-  return <div>Hello WasteTypesSlider!</div>;
+  return (
+    <div>
+      WasteTypesSlider
+    </div>
+  );
 };
 
 export default WasteTypesSlider;
