@@ -1,0 +1,78 @@
+.container {
+    display: flex;
+    justify-content: center;
+    max-width: 1560px;
+    margin: 0 auto;
+    gap: 35px;
+    position: relative;
+    top: 150px;
+    .form {
+        width: 100%;
+        padding: 4% 3%;
+        max-width: 593px;
+        background: #006940;
+        display: flex;
+        flex-direction: column;
+        .slogan {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 29px;
+            letter-spacing: 0.05em;
+            color: #FDC400;
+            margin-bottom: 20px;
+        }
+        .formTitle {
+            font-weight: 600;
+            font-size: 40px;
+            line-height: 48px;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        .buttonList {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            list-style: none;
+            gap: 25px;
+            padding: 0;
+            margin-top: auto;
+            .buttonListItem {
+                width: 233px;
+                height: 58px;
+                background: #FDC400;
+                .findLink {
+                    display: flex;
+                    height: 100%;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 22px;
+                    color: #006940;
+                    text-decoration: none;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .registerLink {
+                    display: flex;
+                    height: 100%;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 22px;
+                    color: #006940;
+                    text-decoration: none;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+    .image {
+        width: auto;
+        height: 555px;
+    }
+}
