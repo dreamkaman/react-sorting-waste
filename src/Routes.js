@@ -7,7 +7,7 @@ import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 import LoginPage from 'pages/LoginPage';
 import SignUpPage from 'pages/SignUpPage';
 import ProfileServicePage from 'pages/ProfileServicePage';
-import { RequiredAuth } from 'shared/hoc/PrivateRoutes';
+import { PrivateRoutes } from 'shared/hoc/PrivateRoutes';
 
 const MyRoutes = () => {
   return (
@@ -20,9 +20,9 @@ const MyRoutes = () => {
       <Route
         path="/profile"
         element={
-          <RequiredAuth>
+          <PrivateRoutes>
             <ProfileServicePage />
-          </RequiredAuth>
+          </PrivateRoutes>
         }
       />
       <Route path="*" element={<NotFoundPage />} />
