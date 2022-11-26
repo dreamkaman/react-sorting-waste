@@ -61,6 +61,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -98,7 +99,8 @@ nav {
 
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 1024px; /* ????? */
+    max-width: 1024px;
+    /* ????? */
     padding-left: 30px;
     padding-right: 30px;
   }
