@@ -1,5 +1,16 @@
+import { useLocation, useNavigate } from 'react-router-dom';
 const LoginPage = () => {
-  return <main>Hello LoginPage!</main>;
+  const navigation = useNavigate();
+  const location = useLocation();
+
+  const fromPage = location.state?.from?.pathname || '/';
+
+  return (
+    <main>
+      <h2>Hello LoginPage!</h2>
+      <p>You came from - {fromPage}</p>
+    </main>
+  );
 };
 
 export default LoginPage;

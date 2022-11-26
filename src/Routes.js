@@ -7,6 +7,7 @@ import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 import LoginPage from 'pages/LoginPage';
 import SignUpPage from 'pages/SignUpPage';
 import ProfileServicePage from 'pages/ProfileServicePage';
+import { PrivateRoutes } from 'shared/hoc/PrivateRoutes';
 
 const MyRoutes = () => {
   return (
@@ -16,7 +17,14 @@ const MyRoutes = () => {
       <Route path="/about" element={<AboutUsPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
-      <Route path="/profile" element={<ProfileServicePage />} />
+      <Route
+        path="/profile"
+        element={
+          <PrivateRoutes>
+            <ProfileServicePage />
+          </PrivateRoutes>
+        }
+      />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

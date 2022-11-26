@@ -2,10 +2,6 @@ import Header from '../src/modules/Header';
 
 import Footer from '../src/modules/Footer';
 
-import HelpPlanet from 'modules/HelpPlanet';
-
-import WebsiteUsersInfo from 'modules/WebsiteUsersInfo';
-
 import MyRoutes from 'Routes';
 
 import './App.css';
