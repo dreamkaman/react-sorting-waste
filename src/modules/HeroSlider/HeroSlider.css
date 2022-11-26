@@ -1,0 +1,24 @@
+/*
+.carousel.carousel-slider .control-arrow {
+    !*top: 0;*!
+    !*bottom: 0;*!
+    color: #ff0000;
+    font-size: 26px;
+    margin-top: 0;
+    padding: 5px;
+
+}
+.carousel.carousel-slider .control-arrow:hover {
+    !*top: 0;*!
+    !*bottom: 0;*!
+    color: #ff0000;
+    font-size: 26px;
+    margin-top: 0;
+    padding: 5px;
+    background-color: transparent;
+}
+
+.carousel .control-prev.control-arrow:before {
+    content: '\25ba';
+    !*border-right: 8px solid #ff0000;*!
+}*/
