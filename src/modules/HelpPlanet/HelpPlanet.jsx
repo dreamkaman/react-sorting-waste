@@ -2,7 +2,6 @@ import styles from './HelpPlanet.module.scss';
 import truckImage from '../../images/TruckMainPage.png';
 import { Link } from 'react-router-dom';
 
-
 const HelpPlanet = () => {
   return (
     <section>
@@ -27,10 +26,10 @@ const HelpPlanet = () => {
             </li>
           </ul>
         </div>
-        <img src={truckImage} alt='truck' className={styles.image}></img>
+        <img src={truckImage} alt="truck" className={styles.image}></img>
       </div>
     </section>
-  )
+  );
 };
 
 export default HelpPlanet;

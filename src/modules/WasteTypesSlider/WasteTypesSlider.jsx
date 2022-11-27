@@ -13,6 +13,7 @@ import arrowRight from '../../images/waste-slider/arrows/right.svg';
 import arrowLeft from '../../images/waste-slider/arrows/left.svg';
 
 import { data } from './dataWasteSlide';
+import { Link } from 'react-router-dom';
 
 const NextArrow = (props) => {
   const { className, onClick } = props;
@@ -83,7 +84,14 @@ const WasteTypesSlider = () => {
             </div>
             <div className={styles.slideContent}>
               <h6>{slide.title}</h6>
-              <p>{slide.description}</p>
+              <p>{slide.description}
+                <Link
+                  to="/about"
+                  className={styles.readMore}
+                >...read more
+                </Link>
+              </p>
+
             </div>
           </div>,
         )}
