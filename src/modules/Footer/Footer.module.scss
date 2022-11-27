@@ -1,1 +1,205 @@
+footer {
+    background-image: linear-gradient(rgba(30, 50, 38, 0.9), rgba(30, 50, 38, 0.9)), url('../../images/footerBackground.png');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding: 5vw;
+    .information {
+        display: flex;
+        justify-content: space-around;
+        .socialMedia {
+            // width: 30%;
+            .logo {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+                .image {
+                    width: 70px;
+                    height: 50px;
+                }
+                .txtEco {
+                    font-family: 'Roboto';
+                    font-style: normal;
+                    font-weight: 900;
+                    font-size: 50px;
+                    line-height: 59px;
+                    text-align: center;
+                    letter-spacing: -0.031em;
+                    color: gray;
+                    margin: 0;
+                }
+                .txtGo {
+                    color: white;
+                }
+            }
+            .description {
+                margin-top: 100px;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 300;
+                font-size: 25px;
+                line-height: 50px;
+                color: #FFFFFF;
+            }
+            .socialMediaLinks {
+                display: flex;
+                gap: 7%;
+                .socialMediaLink {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 62px;
+                    height: 62px;
+                    background: #006940;
+                    border-radius: 100%;
+                    &:hover > svg * {
+                        fill: #FDC400;
+                    }
+                }
+            }
+        }
+        .links {
+            .linksTitle {
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 300;
+                font-size: 25px;
+                line-height: 30px;
+                color: #FFFFFF;
+                text-transform: uppercase;
+                margin-bottom: 48px;
+                margin-top: 0;
+            }
+            .menu {
+                padding: 0;
+                margin-top: 0;
+                .menuItem {
+                    list-style: none;
+                    margin-bottom: 32px;
+                    .navLink {
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 300;
+                        font-size: 20px;
+                        line-height: 24px;
+                        color: #FFFFFF;
+                        text-decoration: none;
+                        &:hover {
+                            color:  #FDC400;
+                        }
+                    }
+                }
+            }
+        }
+        .contacts {
+            .contactsTitle {
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 300;
+                font-size: 25px;
+                line-height: 30px;
+                color: #FFFFFF;
+                text-transform: uppercase;
+                margin-top: 0;
+            }
+            .contactLinks {
+                padding: 0;
+                list-style: none;
+                margin-bottom: 32px;
+                min-width: 360px;
+                .contactLink {
+                    padding: 15px 0;
+                    border-bottom: 1px solid #505050;
+                    display: flex;
+                    align-items: center;
+                    .linkLogo {
+                        padding-right: 15px;
+                        max-width: 35px;
+                    }
+                    .tel {
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 18px;
+                        line-height: 30px;
+                        color: #FFFFFF;
+                        text-decoration: none;
+                        &:hover {
+                            color:  #FDC400;
+                        }
+                    }
+                    .mail {
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 18px;
+                        line-height: 30px;
+                        color: #FFFFFF;
+                        text-decoration: none;
+                        &:hover {
+                            color:  #FDC400;
+                        }
+                    }
+                }
+                .contactLinkAddress {
+                    padding: 15px 0;
+                    display: flex;
+                    align-items: center;
+                    .linkLogo {
+                        padding-right: 15px;
+                        max-width: 35px;
+                    }
+                    .location {
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 18px;
+                        line-height: 30px;
+                        color: #FFFFFF;
+                        text-decoration: none;
+                        &:hover {
+                            color:  #FDC400;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .copyright {
+        text-align: center;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 25px;
+        line-height: 30px;
+        color: #FFFFFF;
+        margin-top: 75px;
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 1200px) {
+    .socialMedia {
+        width: 30%;
+    }
+
+    .socialMediaLinks {
+        margin-top: 70px;
+    }
+}
+
+@media (min-width: 300px) and (max-width:1199px) {
+    .information {
+        flex-direction: column;
+    }
+    .socialMedia {
+        min-width: 100%;
+        margin-bottom: 25px;
+    }
+    .socialMediaLinks {
+        justify-content: center;
+        margin-top: 25px;
+    }
+}
 
