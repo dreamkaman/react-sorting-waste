@@ -67,6 +67,8 @@ html {
 
 button {
   display: block;
+  padding: 0;
+  cursor: pointer;
 }
 
 nav {
@@ -88,7 +90,7 @@ nav {
 /* ================================Containers =========================================*/
 @media screen and (min-width: 320px) {
   .container {
-    max-width: 480px;
+    max-width: 640px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 15px;

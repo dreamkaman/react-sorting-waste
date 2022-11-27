@@ -79,7 +79,7 @@ const Header = () => {
               </NavLink>
             </li>
           </ul>
-          {isLoggined ? null : authButtons}
+          <div className={s.authButtonsWrapper}>{isLoggined ? null : authButtons}</div>
         </nav>
       </div>
     </header>
