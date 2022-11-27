@@ -1,5 +1,13 @@
+.avatarWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
 .helloTxt {
-  margin: 0 15px;
+  padding: 10px 20px;
+  min-width: max-content;
   color: var(--font-third-color);
 }
 
@@ -13,7 +21,7 @@
 
 .contextMenu {
   position: absolute;
-  bottom: calc(-100% - 5px);
+  top: 100%;
   right: 0;
 
   border: 1px solid var(--font-main-color);
@@ -39,11 +47,12 @@
 
 @media screen and (min-width: 768px) {
   .avatar {
-    width: 40px;
+    width: 35px;
   }
 }
 
 @media screen and (min-width: 1025px) {
   .avatar {
+    width: 40px;
   }
 }

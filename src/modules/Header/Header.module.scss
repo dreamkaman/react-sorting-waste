@@ -1,11 +1,5 @@
 .contacts {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 70px;
-  padding: 0 10px;
-
+  padding: 10px 10px;
   font-size: 14px;
   background-color: var(--font-header-line-color);
 }
@@ -13,26 +7,24 @@
 .contactLinks {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .text {
-  margin-right: 20px;
+  display: inline-block;
+  padding: 5px 0;
+  min-width: max-content;
 
   color: var(--font-light-color);
 }
 
 .tel,
 .mail {
+  display: inline-block;
+  padding: 5px 0;
+  min-width: max-content;
   color: var(--font-light-color);
-}
-
-.tel:hover,
-.mail:hover {
-  color: var(--font-third-color);
-}
-
-.tel {
-  margin-right: 20px;
 }
 
 .tel::before {
@@ -48,9 +40,9 @@
 
 .mail::before {
   content: '';
-  width: 10px;
-  height: 10px;
-  padding: 0 15px;
+  width: 8px;
+  height: 8px;
+  padding: 0 10px;
 
   background-image: url('../../images/png/mail.png');
   background-repeat: no-repeat;
@@ -58,22 +50,19 @@
 }
 
 .avatarWrapper {
-  position: relative; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  width: 400px;
+  display: block;
+  min-height: 40px;
+  width: 100%;
 }
 
+//==================================Navigation menu==============================================
 .navigation {
   display: flex;
-  width: 100%;
-  min-height: 120px;
+  min-height: 60px;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
+
 .logoLink {
   display: flex;
   align-items: center;
@@ -81,7 +70,7 @@
 }
 
 .logo {
-  width: 50px;
+  width: 40px;
 }
 
 .txtGo {
@@ -90,99 +79,183 @@
 }
 
 .txtEco {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 900;
 }
 
 .menu {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
-  width: 40%;
-}
-
-// .menuItem:not(:last-child) {
-//   margin-right: 60px;
-// }
-
-.menuItem a {
-  display: inline-block;
-  min-width: max-content;
-  padding: 10px 25px;
-  text-transform: uppercase;
-  font-weight: 900;
-}
-
-.menuItem a:hover {
-  color: var(--font-light-color);
-  background-color: var(--font-main-color);
+  display: none;
 }
 
 .authList {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-weight: 500;
+  display: none;
 }
 
-.authListItem:not(:last-child) {
-  margin-right: 10px;
-}
-
-.loginLink,
-.signupLink {
-  display: inline-block;
-
-  padding: 8px 25px;
-  border-radius: 3px;
-  min-width: max-content;
-}
-
-.loginLink {
-  border: 2px solid var(--font-secondary-color);
-}
-
-.loginLink:hover {
-  background-color: var(--font-third-color);
-  border-color: transparent;
-}
-
-.signupLink {
-  border: 2px solid transparent;
-  background-color: var(--font-third-color);
-}
-
-.signupLink:hover {
-  background-color: transparent;
-  border-color: var(--font-secondary-color);
-}
-
-.isActive {
-  border-bottom: 2px solid var(--font-main-color);
-}
-
-.navLink {
-  border-bottom: 2px solid transparent;
+.authButtonsWrapper {
+  display: none;
 }
 
 @media screen and (min-width: 320px) {
+  .contacts {
+    font-size: 16px;
+  }
+
+  .tel,
+  .mail {
+    padding-left: 20px;
+  }
+
+  .tel::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    padding: 0 15px;
+
+    background-image: url('../../images/png/tel.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .mail::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    padding: 0 15px;
+
+    background-image: url('../../images/png/mail.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }
 
 @media screen and (min-width: 768px) {
+  .contacts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px 50px;
+  }
+
+  .contactLinks {
+    flex-wrap: nowrap;
+  }
+
+  .tel:hover,
+  .mail:hover {
+    color: var(--font-third-color);
+  }
+
+  .tel::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    padding: 0 15px;
+
+    background-image: url('../../images/png/tel.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .mail::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    padding: 0 15px;
+
+    background-image: url('../../images/png/mail.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  //==========================Navigation menu==========================
+  .navigation {
+    min-height: 80px;
+    justify-content: space-around;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    min-width: 50%;
+  }
+
+  .menuItem a {
+    display: inline-block;
+    min-width: max-content;
+    padding: 8px 15px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+
+  .menuItem a:hover {
+    color: var(--font-light-color);
+    background-color: var(--font-main-color);
+  }
+
+  .authButtonsWrapper {
+    display: block;
+    width: 170px;
+  }
+
+  .authList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .authListItem:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .loginLink,
+  .signupLink {
+    display: inline-block;
+
+    padding: 6px 15px;
+    border-radius: 3px;
+    min-width: max-content;
+  }
+
+  .loginLink {
+    border: 2px solid var(--font-secondary-color);
+  }
+
+  .loginLink:hover {
+    background-color: var(--font-third-color);
+    border-color: transparent;
+  }
+
+  .signupLink {
+    border: 2px solid transparent;
+    background-color: var(--font-third-color);
+  }
+
+  .signupLink:hover {
+    background-color: transparent;
+    border-color: var(--font-secondary-color);
+  }
+
+  .isActive {
+    border-bottom: 2px solid var(--font-main-color);
+  }
+
+  .navLink {
+    border-bottom: 2px solid transparent;
+  }
 }
 
 @media screen and (min-width: 1025px) {
   .contacts {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-    min-height: 70px;
     font-size: 18px;
-    padding: 0 30px;
-    background-color: var(--font-header-line-color);
+    padding: 20px 150px;
+    flex-wrap: nowrap;
+    justify-content: center;
   }
 
   .text {
@@ -226,40 +299,17 @@
     background-repeat: no-repeat;
     background-position: center;
   }
-
+  //=================================Navigation menu=============================
   .navigation {
-    display: flex;
-    width: 100%;
-    min-height: 120px;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  .logoLink {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    min-height: 100px;
   }
 
   .logo {
     width: 50px;
   }
 
-  .txtGo {
-    color: var(--font-secondary-color);
-    margin-left: 5px;
-  }
-
   .txtEco {
     font-size: 40px;
-    font-weight: 900;
-  }
-
-  .menu {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-
-    width: 40%;
   }
 
   .menuItem:not(:last-child) {
@@ -267,63 +317,14 @@
   }
 
   .menuItem a {
-    display: inline-block;
-    min-width: max-content;
-    padding: 10px 25px;
-    text-transform: uppercase;
-    font-weight: 900;
+    font-size: 18px;
   }
 
-  .menuItem a:hover {
-    color: var(--font-light-color);
-    background-color: var(--font-main-color);
+  .authButtonsWrapper {
+    width: 200px;
   }
 
   .authList {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-weight: 500;
-  }
-
-  .authListItem:not(:last-child) {
-    margin-right: 10px;
-  }
-
-  .loginLink,
-  .signupLink {
-    display: inline-block;
-
-    padding: 8px 25px;
-    border-radius: 3px;
-    min-width: max-content;
-  }
-
-  .loginLink {
-    border: 2px solid var(--font-secondary-color);
-  }
-
-  .loginLink:hover {
-    background-color: var(--font-third-color);
-    border-color: transparent;
-  }
-
-  .signupLink {
-    border: 2px solid transparent;
-    background-color: var(--font-third-color);
-  }
-
-  .signupLink:hover {
-    background-color: transparent;
-    border-color: var(--font-secondary-color);
-  }
-
-  .isActive {
-    border-bottom: 2px solid var(--font-main-color);
-  }
-
-  .navLink {
-    border-bottom: 2px solid transparent;
+    font-size: 18px;
   }
 }
