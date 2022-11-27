@@ -1,5 +1,5 @@
-.image{
-height: 80vh;
+.image {
+  height: 80vh;
   /*height: 60vw;*/
   object-fit: cover;
 }
@@ -31,15 +31,17 @@ height: 80vh;
 
 /* ================================ Media =========================================*/
 @media screen and (min-width: 320px) {
-  .image{
+  .image {
     height: 60vw;
   }
   .slideInfo {
     padding-left: 10vw;
+
     p {
       font-size: 3vw;
       margin-bottom: 1.5vh;
     }
+
     h1 {
       font-size: 6vw;
     }
@@ -47,15 +49,17 @@ height: 80vh;
 }
 
 @media screen and (min-width: 768px) {
-  .image{
+  .image {
     height: 60vw;
   }
   .slideInfo {
     padding-left: 10vw;
+
     p {
       font-size: 3vw;
       margin-bottom: 1.5vh;
     }
+
     h2 {
       font-size: 6vw;
     }
@@ -63,15 +67,17 @@ height: 80vh;
 }
 
 @media screen and (min-width: 1280px) {
-  .image{
+  .image {
     height: 80vh;
   }
   .slideInfo {
     padding-left: 10vw;
+
     p {
       font-size: 2vw;
       margin-bottom: 1.5vh;
     }
+
     h2 {
       font-size: 5vw;
     }

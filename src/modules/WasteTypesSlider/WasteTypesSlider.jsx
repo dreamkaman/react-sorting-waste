@@ -1,9 +1,93 @@
 import React from 'react';
 
-const WasteTypesSlider = () => {
+import styles from './WasteTypesSlider.module.scss';
+import './WasteTypesSlider.css';
+
+import Slider from 'react-slick';
+/*import './slick.css';
+import './slick-theme.css';*/
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+import arrowRight from '../../images/waste-slider/arrows/right.svg';
+import arrowLeft from '../../images/waste-slider/arrows/left.svg';
+
+import { data } from './dataWasteSlide';
+
+const NextArrow = (props) => {
+  const { className, onClick } = props;
   return (
-    <div>
-      WasteTypesSlider
+    <div
+      className={className}
+      onClick={onClick}
+    >
+      <img className={styles.arrows} src={arrowRight} alt='arrowRight' />
+    </div>
+  );
+};
+
+const PrevArrow = (props) => {
+  const { className, onClick } = props;
+  return (
+    <div
+      className={className}
+      onClick={onClick}
+    >
+      <img className={styles.arrows} src={arrowLeft} alt='arrowLeft' />
+    </div>
+  );
+};
+
+const WasteTypesSlider = () => {
+
+  const settings = {
+    dots: false,
+    autoplay: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 3,
+
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
+  return (
+    <div className={styles.wasteSlider}>
+      <Slider {...settings}>
+        {data.map((slide, index) =>
+          <div className={styles.slide} key={'wasteSlide_' + index}>
+            <div className={styles.slideImage}>
+              <img src={slide.image} alt={slide.title} />
+            </div>
+            <div className={styles.slideContent}>
+              <h6>{slide.title}</h6>
+              <p>{slide.description}</p>
+            </div>
+          </div>,
+        )}
+      </Slider>
     </div>
   );
 };
