@@ -1,13 +1,14 @@
 import { Link, NavLink } from 'react-router-dom';
 
 import Avatar from 'modules/Avatar';
+import Burger from 'shared/components/Burger';
 
 import img from '../../images/png/logo.png';
 
 import s from './Header.module.scss';
 
 const Header = () => {
-  const isLoggined = true; //should be red from Redux
+  const isLoggined = false; //should be red from Redux
 
   const authButtons = (
     <ul className={s.authList}>
@@ -28,6 +29,7 @@ const Header = () => {
     <header>
       <div className={s.contacts}>
         <p className={s.text}>Have any questions?</p>
+
         <ul className={s.contactLinks}>
           <li>
             <a className={s.tel} href="tel:+380441234567">
@@ -35,13 +37,14 @@ const Header = () => {
             </a>
           </li>
           <li>
-            <a className={s.mail} href="mailto:support@wasteservice.com">
-              support@wasteservice.com
+            <a className={s.mail} href="mailto:support@wasteservices.com">
+              support@wasteservices.com
             </a>
           </li>
         </ul>
         <div className={s.avatarWrapper}>{isLoggined ? <Avatar /> : null}</div>
       </div>
+
       <div className="container">
         <nav className={s.navigation}>
           <Link className={s.logoLink} to="/">
@@ -50,6 +53,8 @@ const Header = () => {
               <span className={s.txtGo}>Go</span>ECO
             </p>
           </Link>
+
+          <Burger />
 
           <ul className={s.menu}>
             <li className={s.menuItem}>

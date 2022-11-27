@@ -23,13 +23,13 @@ const Avatar = ({ userName = 'anonymous' }) => {
   );
 
   return (
-    <>
+    <div className={s.avatarWrapper}>
       <p className={s.helloTxt}>Hello, {userName}</p>
       <div className={s.avatar} onClick={contextMenuVisibility}>
         <img src={avatar} alt="Avatar" />
       </div>
       {isVisible ? contextMenu : null}
-    </>
+    </div>
   );
 };
 
