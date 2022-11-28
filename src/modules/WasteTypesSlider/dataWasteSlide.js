@@ -1,7 +1,7 @@
 import Paper from './../../images/waste-slider/Paper.jpg';
 import Plastic from './../../images/waste-slider/Plastic.jpg';
 import Glass from './../../images/waste-slider/Glass.jpg';
-import Metall from './../../images/waste-slider/Metall.jpg';
+import Metal from './../../images/waste-slider/Metal.jpg';
 import Electric from './../../images/waste-slider/Electric.jpg';
 
 export const data = [
@@ -24,8 +24,8 @@ export const data = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ',
   },
   {
-    image: Metall,
-    title: 'Metall',
+    image: Metal,
+    title: 'Metal',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ',
   },
