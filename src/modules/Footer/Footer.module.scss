@@ -102,12 +102,13 @@ footer {
                 color: #FFFFFF;
                 text-transform: uppercase;
                 margin-top: 0;
+                margin-bottom: 33px;
             }
             .contactLinks {
                 padding: 0;
                 list-style: none;
                 margin-bottom: 32px;
-                min-width: 360px;
+                min-width: 355px;
                 .contactLink {
                     padding: 15px 0;
                     border-bottom: 1px solid #505050;
@@ -200,6 +201,10 @@ footer {
     .socialMediaLinks {
         justify-content: center;
         margin-top: 25px;
+    }
+
+    .contacts {
+        margin-top: 33px;
     }
 }
 
