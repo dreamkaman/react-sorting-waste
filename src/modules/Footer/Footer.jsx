@@ -103,7 +103,7 @@ const Footer = () => {
               </Link>
             </li>
             <li className={styles.menuItem}>
-              <Link to="/about" className={styles.navLink}>
+              <Link to="/services" className={styles.navLink}>
                 Find service
               </Link>
             </li>
