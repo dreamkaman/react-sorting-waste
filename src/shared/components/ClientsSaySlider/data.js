@@ -10,20 +10,20 @@ export const slides = [
     imageURL: img1,
     quote:
       'We really appreciated agency`s hands-on approach as well as their ability to contribute not just with design but with the overall idea of the project',
-    clientName: 'Michael Johnson',
+    clientName: 'Michael Johnson1',
   },
   {
     id: uuidv4(),
     imageURL: img2,
     quote:
       'We really appreciated agency`s hands-on approach as well as their ability to contribute not just with design but with the overall idea of the project',
-    clientName: 'Michael Johnson',
+    clientName: 'Michael Johnson2',
   },
   {
     id: uuidv4(),
     imageURL: img3,
     quote:
       'We really appreciated agency`s hands-on approach as well as their ability to contribute not just with design but with the overall idea of the project',
-    clientName: 'Michael Johnson',
+    clientName: 'Michael Johnson3',
   },
 ];
