@@ -6,8 +6,8 @@
 .title {
 }
 
-.paragraph {
-  font-size: 48px;
+.spanTitle {
+  display: block;
   font-weight: 600;
 }
 
@@ -38,5 +38,9 @@
   .title {
     font-size: 24;
     font-weight: 400;
+  }
+
+  .spanTitle {
+    font-size: 48px;
   }
 }

@@ -101,7 +101,6 @@ nav {
 @media screen and (min-width: 768px) {
   .container {
     max-width: 1024px;
-    /* ????? */
     padding-left: 30px;
     padding-right: 30px;
   }
