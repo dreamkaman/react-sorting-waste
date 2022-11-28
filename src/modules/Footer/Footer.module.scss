@@ -108,7 +108,7 @@ footer {
                 padding: 0;
                 list-style: none;
                 margin-bottom: 32px;
-                min-width: 355px;
+                min-width: 350px;
                 .contactLink {
                     padding: 15px 0;
                     border-bottom: 1px solid #505050;
@@ -172,7 +172,7 @@ footer {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 300;
-        font-size: 25px;
+        font-size: 20px;
         line-height: 30px;
         color: #FFFFFF;
         margin-top: 75px;
@@ -194,10 +194,12 @@ footer {
     .information {
         flex-direction: column;
     }
+
     .socialMedia {
         min-width: 100%;
         margin-bottom: 25px;
     }
+    
     .socialMediaLinks {
         justify-content: center;
         margin-top: 25px;
