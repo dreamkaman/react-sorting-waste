@@ -15,12 +15,12 @@ const HelpPlanet = () => {
           </div>
           <ul className={styles.buttonList}>
             <li className={styles.buttonListItem}>
-              <Link className={styles.findLink} to="/services">
+              <Link className={styles.link} to="/services">
                 FIND SERVICE
               </Link>
             </li>
             <li className={styles.buttonListItem}>
-              <Link className={styles.registerLink} to="/signup">
+              <Link className={styles.link} to="/signup">
                 REGISTER SERVICE
               </Link>
             </li>
