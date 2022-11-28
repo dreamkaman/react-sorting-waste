@@ -25,7 +25,7 @@ const HeroSlider = () => {
               <p>{slide.description}</p>
               <h2>
                 {slide.titles.map((title, index) =>
-                  <span key={index + 'title'}>{title} <br /></span>
+                  <span className={styles.titles} key={index + 'title'}>{title} </span>
                 )}
               </h2>
             </div>
