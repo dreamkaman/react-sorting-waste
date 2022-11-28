@@ -3,13 +3,14 @@
     justify-content: center;
     max-width: 1560px;
     margin: 0 auto;
-    gap: 35px;
+    gap: 1.5vw;
     position: relative;
     top: 150px;
     .form {
         width: 100%;
         padding: 4% 3%;
         max-width: 593px;
+        max-height: 553px;
         background: #006940;
         display: flex;
         flex-direction: column;
@@ -37,13 +38,20 @@
             flex-direction: row;
             justify-content: space-between;
             list-style: none;
-            gap: 25px;
             padding: 0;
             margin-top: auto;
             .buttonListItem {
-                width: 233px;
+                max-width: 233px;
+                width: 17vw;
                 height: 58px;
                 background: #FDC400;
+                &:hover {
+                    background: transparent;
+                    border: 1px solid #FDC400;
+                }
+                &:hover .link{
+                    color: #FDC400;
+                }
                 .findLink {
                     display: flex;
                     height: 100%;
@@ -56,7 +64,7 @@
                     align-items: center;
                     justify-content: center;
                 }
-                .registerLink {
+                .link {
                     display: flex;
                     height: 100%;
                     font-style: normal;
@@ -73,6 +81,86 @@
     }
     .image {
         width: auto;
-        height: 555px;
+        height: 30vw;
+        max-height: 553px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1300px) {
+    .container {
+        display: flex;
+        align-items: center;
+        flex-direction: column-reverse;
+        .form {
+            width: 100%;
+            padding: 8% 5%;
+            max-width: 593px;
+            max-height: 553px;
+            background: #006940;
+            display: flex;
+            flex-direction: column;
+            .buttonList {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                list-style: none;
+                padding: 0;
+                margin-top: 100px;
+                .buttonListItem {
+                    max-width: 233px;
+                    min-width: 220px;
+                    width: 17vw;
+                    height: 58px;
+                    background: #FDC400;
+                }
+            }
+        }
+        .image {
+            width: 100%;
+            position: absolute;
+            z-index: -1;
+            bottom: 100px;
+            height: 100%;
+            max-height: 553px;
+            min-height: 500px;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        display: flex;
+        align-items: center;
+        flex-direction: column-reverse;
+        gap: 0;
+        .form {
+            width: 100%;
+            padding: 8% 5%;
+            max-width: 593px;
+            max-height: 553px;
+            background: #006940;
+            display: flex;
+            flex-direction: column;
+            .buttonList {
+                display: flex;
+                flex-direction: column;
+                list-style: none;
+                padding: 0;
+                margin-top: 50px;
+                align-items: center;
+                gap: 10px;
+                .buttonListItem {
+                    max-width: 233px;
+                    min-width: 200px;
+                    width: 100%;
+                    height: 58px;
+                    background: #FDC400;
+                }
+            }
+        }
+        .image {
+            width: 100%;
+            height: 100%;
+        }
     }
 }
