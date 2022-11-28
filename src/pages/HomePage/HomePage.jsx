@@ -6,6 +6,8 @@ import WebsiteUsersInfo from 'modules/WebsiteUsersInfo';
 import WasteTypes from '../../modules/WasteTypes';
 
 
+import ClientsSay from 'modules/ClientsSay';
+
 const HomePage = () => {
   return (
     <main>
@@ -13,6 +15,7 @@ const HomePage = () => {
       <WasteTypes/>
       <HelpPlanet />
       <WebsiteUsersInfo />
+      <ClientsSay />
     </main>
   );
 };

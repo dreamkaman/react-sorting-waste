@@ -1,0 +1,42 @@
+.wrapper {
+  padding: 0;
+  color: var(--font-dark-color);
+}
+
+.title {
+}
+
+.paragraph {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.iconWrapper {
+  background-color: black;
+  width: 10px;
+  height: 10px;
+}
+.truckIcon {
+  width: 8px;
+  height: 8px;
+}
+
+@media screen and (min-width: 320px) {
+  .wrapper {
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1024px) {
+  .wrapper {
+    padding: 100px;
+  }
+
+  .title {
+    font-size: 24;
+    font-weight: 400;
+  }
+}
