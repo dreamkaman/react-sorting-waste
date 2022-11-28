@@ -9,6 +9,7 @@
   --font-light-color: #ffffff;
   --font-dark-color: #313131;
   --font-header-line-color: #183d27;
+  --font-error-color: #ff0000;
 }
 
 html {

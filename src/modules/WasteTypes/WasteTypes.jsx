@@ -5,11 +5,10 @@ import styles from './WasteTypes.module.scss'
 const WasteTypes = () => {
   return (
     <div className={styles.container}>
-      <h3>
-        <span className={styles.title}>Let’s Sort Out</span>
-        <br/>
+      <h2 className={styles.title}>
+        Let’s Sort Out
         <span className={styles.description}>Your Waste Problem</span>
-      </h3>
+      </h2>
       <WasteTypesSlider/>
     </div>
   );

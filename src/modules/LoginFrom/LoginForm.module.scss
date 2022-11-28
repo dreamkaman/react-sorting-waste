@@ -1,0 +1,40 @@
+.formContainer {
+  margin-bottom: 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  color: var(--font-light-color);
+  font-size: 30px;
+
+  Form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .label {
+
+    }
+
+    .errorLabel {
+      color: var(--font-error-color);
+    }
+
+    .field {
+      height: 63px;
+      width: 100%;
+    }
+
+    .errorField {
+      color: var(--font-error-color);
+    }
+
+    .errorMessage {
+      color: var(--font-error-color);
+      font-size: 24px;
+    }
+  }
+}
+
+
+
