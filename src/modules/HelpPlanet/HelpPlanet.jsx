@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const HelpPlanet = () => {
   return (
     <section>
-      <div className={styles.container}>
+      <div className={styles.wrap}>
         <div className={styles.form}>
           <div>
             <p className={styles.slogan}>Help our planet</p>

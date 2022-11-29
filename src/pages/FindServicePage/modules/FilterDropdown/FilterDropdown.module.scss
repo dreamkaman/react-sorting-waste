@@ -1,0 +1,88 @@
+.container {
+    width: 240px;
+    box-sizing: border-box;
+    margin-left: 25px;
+    .filterButton {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 260px;
+        border: 2px solid #FDC400;
+        padding: 10px;
+        max-height: 40px;
+        box-sizing: border-box;
+        background-color: white;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .menu {
+        position: absolute;
+        background-color: white;
+        z-index: 100;
+        padding: 10px;
+        max-width: 260px;
+        box-sizing: border-box;
+        .checkboxes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            border-bottom: 2px solid #FDC400;
+            padding-bottom: 10px;
+            .checkbox input {
+                &:hover {
+                    cursor: pointer;
+                }
+                &:checked {
+                    accent-color: #1E3226;
+                }
+            }
+        }
+        .distance {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .apply {
+            width: 100%;
+            border: none;
+            font-size: 15px;
+            font-weight: 700;
+            height: 40px;
+            background-color: #FDC400;
+            margin-top: 10px;
+            color: #1E3226;
+            &:hover {
+                background-color: transparent;
+                border: 2px solid #1E3226;
+                cursor: pointer;
+            }
+        }
+        .reset {
+            width: 100%;
+            border: none;
+            font-size: 15px;
+            font-weight: 700;
+            height: 40px;
+            background-color: rgb(245, 168, 168);
+            margin-top: 10px;
+            color: #1E3226;
+            &:hover {
+                background-color: rgb(245, 130, 130);
+                cursor: pointer;
+            }
+        }
+    }
+
+    .distance {
+        border: 2px solid #1E3226;
+        background-color: #1E3226;
+        color: white;
+        font-size: 15px;
+        padding: 10px;
+        height: 40px;
+        box-sizing: border-box;
+        &:focus {
+            outline: none;
+        }
+    }
+}

@@ -2,7 +2,7 @@ import styles from './WebsiteUsersInfo.module.scss';
 
 const WebsiteUsersInfo = () => {
   return (
-    <section className={styles.container}>
+    <section className={styles.wrap}>
       <div className={styles.statisticList}>
         <div className={styles.statisticList1}>
           <div className={styles.statisticItem}>
