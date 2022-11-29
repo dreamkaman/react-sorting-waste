@@ -26,7 +26,7 @@ const Avatar = ({ userName = 'anonymous' }) => {
     <div className={s.avatarWrapper}>
       <p className={s.helloTxt}>Hello, {userName}</p>
       <div className={s.avatar} onClick={contextMenuVisibility}>
-        <img src={avatar} alt="Avatar" />
+        <img src={avatar} alt="Avatar" className={s.image} />
       </div>
       {isVisible ? contextMenu : null}
     </div>
