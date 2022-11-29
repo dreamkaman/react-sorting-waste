@@ -1,5 +1,9 @@
+import Maps from "modules/Maps";
+
 const FindServicePage = () => {
-  return <div>Hello FindServicePage!</div>;
+  return (
+    <Maps />
+  );
 };
 
 export default FindServicePage;

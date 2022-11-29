@@ -1,0 +1,94 @@
+.infoCard {
+    background-color: white;
+    min-width: 260px;
+    max-width: 400px;
+    float: right;
+    position: absolute;
+    right: 10vw;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 15px;
+    .infoCard_title {
+        display: flex;
+        padding: 10px;
+        padding-top: 50%;
+        color: white;
+        font-size: 20px;
+        margin: 0;
+        height: 30%;
+        background-image: url('https://www.montgomerycountymd.gov/SWS/Resources/Images/collections/curbside-recycling-bins.jpg');
+        background-size: cover;
+        border-radius: 15px;
+    }
+
+    .infoCard_type {
+        font-size: 15px;
+        padding: 0 10px;
+    }
+
+    .infoCard_description {
+        font-size: 15px;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .block2 {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+        align-items: center;
+        p {
+            margin: 0;
+            color: gray;
+        }
+        .ImageGroup {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 20px;
+            padding: 10px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .infoCard_buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        padding: 0 10px 10px 10px;
+        position: absolute;
+        top: 105%;
+        width: 100%;
+        box-sizing: border-box;
+        .infoCard_button {
+            padding: 10px;
+            background-color: #1E3226;
+            border: none;
+            color: white;
+            width: 50%;
+            border-radius: 10px;
+            &:hover {
+                background-color: #284935;
+                cursor: pointer;
+            }
+        }
+    }
+    .infoCardCancel {
+        width: 25px;
+        height: 25px;
+        margin: 10px;
+        background-color: rgba(149, 149, 149, 0.6941176471);
+        border: none;
+        color: white;
+        position: absolute;
+        top: 0;
+        border-radius: 100%;
+        right: 0;
+        &:hover {
+            background-color: rgba(117, 117, 117, 0.694);
+            cursor: pointer;
+        }
+    }
+}

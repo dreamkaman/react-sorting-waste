@@ -15,14 +15,13 @@ footer {
                 align-items: center;
                 gap: 10px;
                 .image {
-                    width: 70px;
-                    height: 50px;
+                    width: 50px;
                 }
                 .txtEco {
                     font-family: 'Roboto';
                     font-style: normal;
                     font-weight: 900;
-                    font-size: 50px;
+                    font-size: 40px;
                     line-height: 59px;
                     text-align: center;
                     letter-spacing: -0.031em;
@@ -53,6 +52,7 @@ footer {
                     height: 62px;
                     background: #006940;
                     border-radius: 100%;
+                    transition: .2s;
                     &:hover > svg * {
                         fill: #FDC400;
                     }
@@ -85,6 +85,7 @@ footer {
                         line-height: 24px;
                         color: #FFFFFF;
                         text-decoration: none;
+                        transition: .2s;
                         &:hover {
                             color:  #FDC400;
                         }
@@ -108,7 +109,7 @@ footer {
                 padding: 0;
                 list-style: none;
                 margin-bottom: 32px;
-                min-width: 355px;
+                min-width: 350px;
                 .contactLink {
                     padding: 15px 0;
                     border-bottom: 1px solid #505050;
@@ -126,6 +127,7 @@ footer {
                         line-height: 30px;
                         color: #FFFFFF;
                         text-decoration: none;
+                        transition: .2s;
                         &:hover {
                             color:  #FDC400;
                         }
@@ -138,6 +140,7 @@ footer {
                         line-height: 30px;
                         color: #FFFFFF;
                         text-decoration: none;
+                        transition: .2s;
                         &:hover {
                             color:  #FDC400;
                         }
@@ -159,6 +162,7 @@ footer {
                         line-height: 30px;
                         color: #FFFFFF;
                         text-decoration: none;
+                        transition: .2s;
                         &:hover {
                             color:  #FDC400;
                         }
@@ -172,7 +176,7 @@ footer {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 300;
-        font-size: 25px;
+        font-size: 20px;
         line-height: 30px;
         color: #FFFFFF;
         margin-top: 75px;
@@ -194,10 +198,12 @@ footer {
     .information {
         flex-direction: column;
     }
+
     .socialMedia {
         min-width: 100%;
         margin-bottom: 25px;
     }
+    
     .socialMediaLinks {
         justify-content: center;
         margin-top: 25px;
