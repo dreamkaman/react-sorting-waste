@@ -1,17 +1,9 @@
-.loginContainer{
+.loginContainer {
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: linear-gradient(rgba(58, 58, 58, 0.9), rgba(58, 58, 58, 0.9)), url('../../images/loginBackground.png');
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
+  justify-content: center;
+  background-color: var(--font-grey-color);
 
-  h2{
-    margin-top: 160px;
-    margin-bottom: 140px;
-    font-size: 50px;
-    font-weight: 700;
-    color: var(--font-light-color);
-  }
 }
