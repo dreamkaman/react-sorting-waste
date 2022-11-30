@@ -1,7 +1,7 @@
 .infoCard {
     background-color: white;
-    min-width: 260px;
-    max-width: 400px;
+    width: 300px;
+    height: 350px;
     float: right;
     position: absolute;
     right: 10vw;
@@ -15,7 +15,6 @@
         color: white;
         font-size: 20px;
         margin: 0;
-        height: 30%;
         background-image: url('https://www.montgomerycountymd.gov/SWS/Resources/Images/collections/curbside-recycling-bins.jpg');
         background-size: cover;
         border-radius: 15px;
@@ -24,6 +23,7 @@
     .infoCard_type {
         font-size: 15px;
         padding: 0 10px;
+        margin-top: 50px;
     }
 
     .infoCard_description {
