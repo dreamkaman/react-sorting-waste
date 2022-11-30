@@ -4,54 +4,107 @@ import styles from './LoginForm.module.scss';
 import { validate } from 'uuid';
 import classnames from 'classnames';
 
+import image from '../../images/loginBackground.png';
+
 const validateEmail = (value) => {
   if (!value) {
     return 'Required';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    return  'Invalid email address';
+    return 'Invalid email address. Example: \'example@mail.com\'';
   }
-}
+};
 
 const validatePassword = (value) => {
   if (!value) {
     return 'Required';
-  } else if (/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g.test(value)) {
-    return  'Invalid password';
+  } else if (
+    !/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g.test(value)
+  ) {
+    return 'Invalid password. Example:\'a0A#ccsxcvx\'';
   }
-}
+};
 
 const LoginForm = () => {
   return (
     <div className={styles.formContainer}>
+      <div className={styles.loginContainer} style={{ backgroundImage: `url(${image})` }}>
+        <span>Login</span>
+      </div>
+
       <Formik
         initialValues={{
           email: '',
           password: '',
+          toggle: false,
         }}
         onSubmit={(values) => {
           console.log('submit', values);
         }}
       >
-        {({ errors, touched }) => (
+        {({ values, errors, touched }) => (
           <Form>
+            <div className={styles.emailContainer}>
+              <label
+                className={classnames(styles.label, {
+                  [styles.errorLabel]: errors.email && touched.email,
+                })}
+              >
+                Email
+              </label>
+              <Field
+                className={classnames(styles.field, {
+                  [styles.errorField]: errors.email && touched.email,
+                })}
+                name="email"
+                type="email"
+                placeholder="Enter email"
+                validate={validateEmail}
+              />
+            </div>
 
-            <label className={classnames(styles.label, {[styles.errorLabel]: errors.email && touched.email})}>
-              Email
-            </label>
-            <Field
-              className={classnames(styles.field, {[styles.errorField]: errors.email && touched.email})}
-              name="email" type="email" validate={validateEmail}/>
-            {errors.email && touched.email && (<div className={styles.errorMessage}>
-              {errors.email}</div>)}
+            <div
+              className={classnames(styles.errorMessage, {
+                [styles.errorMessageActive]: errors.email && touched.email,
+              })}
+            >
+              {errors.email}
+            </div>
 
-            <label className={classnames(styles.label, {[styles.errorLabel]: errors.password && touched.password})}>
-              Password
-            </label>
-            <Field
-              className={classnames(styles.field, {[styles.errorField]: errors.password && touched.password})}
-              name="password" type="password" validate={validatePassword()}/>
-            {errors.password && touched.password && (<div className={styles.errorMessage}>
-              {errors.password}</div>)}
+            <div className={styles.passwordContainer}>
+              <label
+                className={classnames(styles.label, {
+                  [styles.errorLabel]: errors.password && touched.password,
+                })}
+              >
+                Password
+              </label>
+              <Field
+                className={classnames(styles.field, {
+                  [styles.errorField]: errors.password && touched.password,
+                })}
+                name="password"
+                type={values.toggle ? 'text' : 'password'}
+                placeholder="Enter password"
+                validate={validatePassword}
+              />
+            </div>
+
+            <div
+              className={classnames(styles.errorMessage, {
+                [styles.errorMessageActive]: errors.password && touched.password,
+              })}
+            >
+              {errors.password}
+            </div>
+
+            <div className={styles.toolsContainer}>
+              <label>
+                <Field type="checkbox" name="toggle" />
+                Show password
+              </label>
+
+              <a href="#">Forgot Password?</a>
+            </div>
 
             <button type="submit">Submit</button>
           </Form>

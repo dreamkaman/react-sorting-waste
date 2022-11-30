@@ -1,37 +1,193 @@
 .formContainer {
-  margin-bottom: 370px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 80%;
-  color: var(--font-light-color);
-  font-size: 30px;
+  width: 670px;
+  background: var(--font-light-color);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);
+
+  .loginContainer{
+    height: 180px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    position: relative;
+    z-index: 1;
+
+    span{
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--font-light-color);
+      text-transform: uppercase;
+      line-height: 1.2;
+      text-align: center;
+    }
+  }
+  .loginContainer::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(54,84,99,0.7);
+  }
 
   Form {
-    display: flex;
-    flex-direction: column;
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding: 50px 100px 80px 100px;
 
-    .label {
-
-    }
-
-    .errorLabel {
-      color: var(--font-error-color);
-    }
-
-    .field {
-      height: 63px;
+    .emailContainer, .passwordContainer {
       width: 100%;
+      display: flex;
+      align-items: center;
+
+      .label {
+        font-size: 15px;
+        color: var(--font-grey-color);
+        line-height: 1.2;
+        text-align: right;
+        padding-right: 20px;
+        width: 25%;
+      }
+
+      .errorLabel {
+        color: var(--font-error-color);
+      }
+
+      .field {
+        font-size: 15px;
+        color: #555555;
+        line-height: 1.2;
+
+        display: block;
+        width: 75%;
+        background: transparent;
+        padding: 0 5px;
+        height: 45px;
+
+        border: none;
+        border-bottom: 1px solid #b2b2b2;
+
+        outline: none;
+
+      }
+
+      .field:focus{
+        border-bottom: 1px solid var(--font-secondary-color);
+      }
+
+      .errorField {
+        color: var(--font-error-color);
+        border-bottom: 1px solid var(--font-error-color);
+      }
     }
 
-    .errorField {
-      color: var(--font-error-color);
-    }
 
     .errorMessage {
+      padding-top: 5px;
+      width: 75%;
+      height: 25px;
+      font-size: 12px;
+      opacity: 0;
+    }
+
+    .errorMessageActive {
       color: var(--font-error-color);
-      font-size: 24px;
+      opacity: 1;
+    }
+
+
+    .toolsContainer{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 75%;
+      padding: 5px 0 30px 0;
+      font-size: 14px;
+
+      label{
+        display: block;
+        position: relative;
+        cursor: pointer;
+
+        input {
+          /*display: none;*/
+
+        }
+      }
+
+
+      /*label::before {
+        content: "\2714";
+        color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        border-radius: 2px;
+        background: #fff;
+        border: 1px solid #e6e6e6;
+        left: 0;
+        top: 50%;
+
+        !*transform: translateY(-50%);*!
+
+      }
+
+      input:checked + label::before {
+        color: #57b846;
+        content: '\2714';
+        border: 1px solid #ff0000;
+      }*/
+
+      a:hover{
+        transition-duration: 0.2s;
+        color: var(--font-header-line-color);
+      }
+
+    }
+
+
+
+
+    button{
+      outline: none ;
+      border: none;
+      transition-duration: 0.2s;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 20px;
+      min-width: 160px;
+      height: 50px;
+      color: var(--font-light-color);
+      font-size: 16px;
+      font-weight: 400;
+      background-color: var(--font-main-color);
+      border-radius: 25px;
+    }
+    button:hover {
+      background-color: var(--font-secondary-color);
+    }
+    button:active {
+      background-color: var(--font-header-line-color);
     }
   }
 }

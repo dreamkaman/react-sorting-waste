@@ -11,7 +11,7 @@ const LoginPage = () => {
 
   return (
     <main className={styles.loginContainer}>
-      <h2>Login</h2>
+
       <LoginForm/>
 
       {/*
