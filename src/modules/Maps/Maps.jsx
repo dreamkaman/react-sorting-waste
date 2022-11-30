@@ -11,6 +11,7 @@ import FilterDropdown from "pages/FindServicePage/modules/FilterDropdown";
 import ServiceListDropdown from "pages/FindServicePage/modules/ServiceListDropdown";
 import GetLocationButton from "pages/FindServicePage/modules/GetLocationButton";
 import InfoCard from "pages/FindServicePage/modules/InfoCard";
+import MakeOrderForm from "modules/MakeOrderForm";
 
 const icon = {
   url: CustomMarker,
@@ -38,12 +39,14 @@ function Map() {
 
     const [services, setServices] = useState(servicesList);
     const [selected, setSelected] = useState(null);
+    const [openMakeOrder, setOpenMakeOrder] = useState(false);
     const [currentService, setCurrentService] = useState(null);
     const [map, setMap] = useState(/** @type google.maps.Map */ (null));
     const [distance, setDistance] = useState("");
     const [duration, setDuration] = useState("");
     const [infoCard, setInfoCard] = useState(false);
-
+    const [isOpen, setIsOpen] = useState(false);
+    
     const [directionsService, setDirectionsService] = useState();
     const [directionsRenderer, setDirectionsRenderer] = useState();
 
@@ -106,7 +109,7 @@ function Map() {
                     directionsRenderer?.setMap(map);
                 }}
             >
-                {infoCard && <InfoCard service={ currentService } setInfoCard={ setInfoCard }/>}
+                {infoCard && <InfoCard service={ currentService } setInfoCard={ setInfoCard } setIsOpen={ setIsOpen }/>}
                     <div className={styles.mapTools}>
                         <div className={styles.navigation}> 
                             <PlacesInput setSelected={setSelected} originRef={originRef} map={map}/>
@@ -157,6 +160,7 @@ function Map() {
                 {selected && <MarkerF position={selected} />}
                 <GetLocationButton map={map} setSelected={setSelected}/>
             </GoogleMap>
+            {isOpen && <MakeOrderForm setIsOpen={setIsOpen} service={ currentService }/>}
         </section>
     );
 }
