@@ -8,7 +8,7 @@ import img from '../../images/png/logo.png';
 import s from './Header.module.scss';
 
 const Header = () => {
-  const isLoggined = true; //should be red from Redux
+  const isLoggined = false; //should be red from Redux
 
   const authButtons = (
     <ul className={s.authList}>

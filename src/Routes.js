@@ -1,32 +1,36 @@
+import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import FindServicePage from 'pages/FindServicePage';
-import HomePage from 'pages/HomePage';
-import AboutUsPage from 'pages/AboutUsPage';
-import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
-import LoginPage from 'pages/LoginPage';
-import SignUpPage from 'pages/SignUpPage';
-import ProfileServicePage from 'pages/ProfileServicePage';
 import { PrivateRoutes } from 'shared/hoc/PrivateRoutes';
+
+const HomePage = lazy(() => import('pages/HomePage'));
+const FindServicePage = lazy(() => import('pages/FindServicePage'));
+const AboutUsPage = lazy(() => import('pages/AboutUsPage'));
+const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
+const SignUpPage = lazy(() => import('pages/SignUpPage'));
+const ProfileServicePage = lazy(() => import('pages/ProfileServicePage'));
 
 const MyRoutes = () => {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/services" element={<FindServicePage />} />
-      <Route path="/about" element={<AboutUsPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/signup" element={<SignUpPage />} />
-      <Route
-        path="/profile"
-        element={
-          <PrivateRoutes>
-            <ProfileServicePage />
-          </PrivateRoutes>
-        }
-      />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/services" element={<FindServicePage />} />
+        <Route path="/about" element={<AboutUsPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoutes>
+              <ProfileServicePage />
+            </PrivateRoutes>
+          }
+        />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Suspense>
   );
 };
 

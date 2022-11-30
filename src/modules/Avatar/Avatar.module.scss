@@ -12,10 +12,14 @@
 }
 
 .avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30px;
   border: 2px solid var(--font-third-color);
   border-radius: 50%;
   overflow: hidden;
+
   cursor: pointer;
 }
 
