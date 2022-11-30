@@ -5,12 +5,14 @@ import { validate } from 'uuid';
 import classnames from 'classnames';
 
 import image from '../../images/loginBackground.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const validateEmail = (value) => {
   if (!value) {
     return 'Required';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    return 'Invalid email address. Example: \'example@mail.com\'';
+    return "Invalid email address. Example: 'example@mail.com'";
   }
 };
 
@@ -20,14 +22,15 @@ const validatePassword = (value) => {
   } else if (
     !/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g.test(value)
   ) {
-    return 'Invalid password. Example:\'a0A#ccsxcvx\'';
+    return "Invalid password. Example:'a0A#ccsxcvx'";
   }
 };
 
 const LoginForm = () => {
   return (
-    <div className={styles.formContainer}>
-      <div className={styles.loginContainer} style={{ backgroundImage: `url(${image})` }}>
+    <div className={styles.loginFormContainer}>
+      <div className={styles.headerContainer} style={{ backgroundImage: `url(${image})` }}>
+        <FontAwesomeIcon className={styles.closeIcon} icon={faXmark} />
         <span>Login</span>
       </div>
 

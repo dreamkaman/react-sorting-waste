@@ -1,14 +1,14 @@
-.formContainer {
+.loginFormContainer {
   width: 670px;
   background: var(--font-light-color);
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
 
-  .loginContainer{
-    height: 180px;
+  .headerContainer {
     width: 100%;
+    height: 180px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -22,7 +22,35 @@
     position: relative;
     z-index: 1;
 
-    span{
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(54, 84, 99, 0.7);
+    }
+
+    .closeIcon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: var(--font-light-color);
+      margin: 10px 15px;
+      font-size: 24px;
+      cursor: pointer;
+      transition-duration: 0.2s;
+
+      &:hover {
+        color: var(--font-third-color);
+      }
+    }
+
+
+    span {
       font-size: 30px;
       font-weight: 700;
       color: var(--font-light-color);
@@ -30,18 +58,10 @@
       line-height: 1.2;
       text-align: center;
     }
+
+
   }
-  .loginContainer::before {
-    content: "";
-    display: block;
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(54,84,99,0.7);
-  }
+
 
   Form {
     width: 100%;
@@ -72,23 +92,20 @@
         font-size: 15px;
         color: #555555;
         line-height: 1.2;
-
         display: block;
         width: 75%;
         background: transparent;
         padding: 0 5px;
         height: 45px;
-
         border: none;
         border-bottom: 1px solid #b2b2b2;
-
         outline: none;
 
+        &:focus {
+          border-bottom: 1px solid var(--font-secondary-color);
+        }
       }
 
-      .field:focus{
-        border-bottom: 1px solid var(--font-secondary-color);
-      }
 
       .errorField {
         color: var(--font-error-color);
@@ -111,7 +128,7 @@
     }
 
 
-    .toolsContainer{
+    .toolsContainer {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -119,12 +136,13 @@
       padding: 5px 0 30px 0;
       font-size: 14px;
 
-      label{
+      label {
         display: block;
         position: relative;
         cursor: pointer;
 
         input {
+          margin-right: 10px;
           /*display: none;*/
 
         }
@@ -156,7 +174,7 @@
         border: 1px solid #ff0000;
       }*/
 
-      a:hover{
+      a:hover {
         transition-duration: 0.2s;
         color: var(--font-header-line-color);
       }
@@ -164,10 +182,8 @@
     }
 
 
-
-
-    button{
-      outline: none ;
+    button {
+      outline: none;
       border: none;
       transition-duration: 0.2s;
 
@@ -181,13 +197,91 @@
       font-size: 16px;
       font-weight: 400;
       background-color: var(--font-main-color);
-      border-radius: 25px;
+      border-radius: 10px;
     }
+
     button:hover {
       background-color: var(--font-secondary-color);
     }
+
     button:active {
       background-color: var(--font-header-line-color);
+    }
+  }
+}
+
+
+/* ================================ Media screen =========================================*/
+@media screen and (max-width: 500px) {
+  .loginFormContainer {
+
+    Form {
+
+
+      .emailContainer, .passwordContainer {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        margin-top: 30px;
+
+
+        .label {
+          padding: 0 5px;
+          font-size: 15px;
+          /*color: var(--font-grey-color);*/
+          line-height: 1.2;
+          text-align: left;
+          width: 100%;
+          color: var(--font-main-color);
+        }
+
+        .field {
+          width: 100%;
+          padding: 0 5px;
+
+        }
+
+      }
+
+      .errorMessage {
+        box-sizing: border-box;
+        padding-top: 5px;
+        padding-left: 5px;
+        width: 100%;
+        height: 25px;
+        font-size: 12px;
+      }
+
+      .toolsContainer {
+        flex-direction: column;
+        align-items: flex-end;
+        width: 75%;
+        padding: 0px 0 30px 0;
+        font-size: 14px;
+
+        label {
+          margin-bottom: 15px;
+          display: block;
+          position: relative;
+          cursor: pointer;
+
+          input {
+            margin-right: 10px;
+
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .loginFormContainer {
+    width: 100%;
+
+    Form {
+      padding: 50px 7vw 80px 7vw;
     }
   }
 }
