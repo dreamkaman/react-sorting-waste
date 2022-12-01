@@ -15,6 +15,7 @@ import arrowLeft from '../../images/waste-slider/arrows/left.svg';
 import { data } from './dataWasteSlide';
 import { Link } from 'react-router-dom';
 
+
 const NextArrow = (props) => {
   const { className, onClick } = props;
   return (
@@ -66,7 +67,7 @@ const WasteTypesSlider = () => {
         },
       },
       {
-        breakpoint: 320,
+        breakpoint: 520,
         settings: {
           slidesToShow: 1,
         },
@@ -78,7 +79,7 @@ const WasteTypesSlider = () => {
     <div className={styles.wasteSlider}>
       <Slider {...settings}>
         {data.map((slide, index) =>
-          <div className={styles.slide} key={'wasteSlide_' + index}>
+          <div className={styles.slide} key={slide.id}>
             <div className={styles.slideImage}>
               <img src={slide.image} alt={slide.title} />
             </div>
