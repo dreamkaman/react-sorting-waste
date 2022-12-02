@@ -1,5 +1,6 @@
 import * as userAPI from '../../API/users/usersAPI';
 import * as authActions from './authActions';
+
 export const loginUserOperation = () => async (dispatch) => {
   dispatch(authActions.loginUserRequest());
 

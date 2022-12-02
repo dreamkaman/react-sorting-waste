@@ -1,4 +1,6 @@
-import { createReducer } from '@reduxjs/toolkit';
+import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import * as authActions from './authActions';
 
-const userReducer = createReducer({});
+const userReducer = createReducer({ email: '', token: '' });
+
+
