@@ -18,7 +18,7 @@ const Header = () => {
         </Link>
       </li>
       <li className={s.authListItem}>
-        <Link className={s.signupLink} to="/signup">
+        <Link className={s.loginLink} to="/signup">
           Sign up
         </Link>
       </li>
