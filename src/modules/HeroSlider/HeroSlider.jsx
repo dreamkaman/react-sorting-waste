@@ -19,13 +19,13 @@ const HeroSlider = () => {
       dynamicHeight={true}>
       {
         data.map((slide, index) =>
-          <div key={index}>
-            <img className={styles.image} src={slide.image} alt={'slider-' + index} />
+          <div key={slide.id}>
+            <img className={styles.image} src={slide.image} alt={'slider-' + slide.id} />
             <div className={styles.slideInfo}>
               <p>{slide.description}</p>
               <h2>
                 {slide.titles.map((title, index) =>
-                  <span className={styles.titles} key={index + 'title'}>{title} </span>
+                  <span className={styles.titles} key={index + title}>{title} </span>
                 )}
               </h2>
             </div>
