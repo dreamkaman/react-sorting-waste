@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Field, Form, Formik } from 'formik';
 import classnames from 'classnames';
+import * as yup from 'yup';
 
 const validateEmail = (value) => {
   if (!value) {
