@@ -63,7 +63,7 @@
   justify-content: space-between;
 }
 
-.logoLink {
+.authLink {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -213,32 +213,19 @@
     margin-right: 10px;
   }
 
-  .loginLink,
-  .signupLink {
+  .authLink {
     display: inline-block;
 
     padding: 6px 15px;
     border-radius: 3px;
     min-width: max-content;
-  }
 
-  .loginLink {
     border: 2px solid var(--font-secondary-color);
   }
 
-  .loginLink:hover {
+  .authLink:hover {
     background-color: var(--font-third-color);
     border-color: transparent;
-  }
-
-  .signupLink {
-    border: 2px solid transparent;
-    background-color: var(--font-third-color);
-  }
-
-  .signupLink:hover {
-    background-color: transparent;
-    border-color: var(--font-secondary-color);
   }
 
   .isActive {
