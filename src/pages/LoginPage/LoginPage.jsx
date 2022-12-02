@@ -11,7 +11,7 @@ const LoginPage = () => {
   const fromPage = location.state?.from?.pathname || '/';
 
   return (
-    <main className={classnames('container', styles.loginContainer )}>
+    <main className={classnames('container', styles.formContainer )}>
 
       <LoginForm/>
 
