@@ -83,9 +83,25 @@ function FilterDropdown({ servicesList, setServices, selected, map }) {
         if (!checked.length) return;
 
         if (filteredServices.length > 0) {
-            filteredServices.filter((item) => checked.includes(item.type))
+            let newList = [];
+            checked.forEach(el => {
+                filteredServices.filter(ele => {
+                    if (ele.type.includes(el)) {
+                        if (!newList.includes(ele)) newList.push(ele)
+                    }    
+                })
+            })
+            filteredServices = newList;
         } else {
-            filteredServices = servicesList.filter((item) => checked.includes(item.type));
+            let newList = [];
+            checked.forEach(el => {
+                servicesList.filter(ele => {
+                    if (ele.type.includes(el)) {
+                        if (!newList.includes(ele)) newList.push(ele)
+                    }    
+                })
+            })
+            filteredServices = newList;
         }
         setServices(filteredServices);
     }
