@@ -1,6 +1,15 @@
-import { createReducer, combineReducers } from '@reduxjs/toolkit';
+import { createReducer } from '@reduxjs/toolkit';
 import * as authActions from './authActions';
 
-const userReducer = createReducer({ email: '', token: '' });
-
-
+const userReducer = createReducer({
+  id: null,
+  name: '',
+  email: '',
+  address: '',
+  phoneNumber: '',
+  workHours: '',
+  city: '',
+  country: '',
+  free: '',
+  delivery: '',
+});

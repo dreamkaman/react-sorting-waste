@@ -1,6 +1,4 @@
 import axios from 'axios';
-const BASE_URL = 'http://localhost:8080/';
+import * as paths from './paths';
 
-const authURL = BASE_URL + 'auth';
-
-export const postUser = (email, password) => axios.post(authURL, { email, password });
+export const postUser = (email, password) => axios.post(paths.authURL, { email, password });
