@@ -1,4 +1,4 @@
-.loginFormContainer {
+.formContainer {
   width: 670px;
   background: var(--font-light-color);
   border-radius: 10px;
@@ -68,10 +68,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    /*padding: 50px 100px 80px 100px;*/
-    padding: 50px 50px 80px 50px;
-
-
+    padding: 50px 50px 50px 50px;
 
     .fieldsContainer {
       width: 100%;
@@ -84,7 +81,7 @@
         line-height: 1.2;
         text-align: right;
         padding-right: 20px;
-        width: 30%;
+        width: 25%;
       }
 
       .errorLabel {
@@ -96,14 +93,14 @@
         color: #555555;
         line-height: 1.2;
         display: block;
-        width: 70%;
+        width: 75%;
         background: transparent;
         padding: 0 5px;
+        /*height: 45px;*/
         height: 35px;
         border: none;
         border-bottom: 1px solid #b2b2b2;
         outline: none;
-
 
         &:focus {
           border-bottom: 1px solid var(--font-secondary-color);
@@ -119,14 +116,12 @@
 
 
     .errorMessage {
-      box-sizing: border-box;
       padding-top: 5px;
       width: 75%;
       height: 25px;
       font-size: 12px;
       opacity: 0;
       text-align: right;
-      padding-right: 10px;
     }
 
     .errorMessageActive {
@@ -154,32 +149,6 @@
 
         }
       }
-
-
-      /*label::before {
-        content: "\2714";
-        color: red;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        border-radius: 2px;
-        background: #fff;
-        border: 1px solid #e6e6e6;
-        left: 0;
-        top: 50%;
-
-        !*transform: translateY(-50%);*!
-
-      }
-
-      input:checked + label::before {
-        color: #57b846;
-        content: '\2714';
-        border: 1px solid #ff0000;
-      }*/
 
       a:hover {
         transition-duration: 0.2s;
@@ -214,73 +183,22 @@
     button:active {
       background-color: var(--font-header-line-color);
     }
-
-    /* ========= group ============*/
-
-    .fieldsGroup{
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-
-      .fieldsContainer {
-        width: 45%;
-        display: flex;
-        align-items: center;
-
-        .label {
-          text-align: right;
-          padding-right: 20px;
-          width: 30%;
-        }
-
-
-        .field {
-          line-height: 1.2;
-          display: block;
-          width: 70%;
-          background: transparent;
-          padding: 0 5px;
-          height: 45px;
-          border: none;
-          border-bottom: 1px solid #b2b2b2;
-          outline: none;
-
-
-        }
-      }
-      /*.fieldsContainer:nth-of-type(1) {
-        width: 60%;
-
-      }
-      .fieldsContainer:nth-of-type(2) {
-        width: 40%;
-
-      }*/
-    }
   }
-
 }
-
-
-
-
-
 
 
 /* ================================ Media screen =========================================*/
 @media screen and (max-width: 500px) {
-  .loginFormContainer {
+  .formContainer {
 
     Form {
 
-
-      .emailContainer, .passwordContainer {
+      .fieldsContainer {
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
         flex-direction: column;
-        margin-top: 30px;
+        margin-top: 0px;
 
 
         .label {
@@ -334,14 +252,12 @@
 }
 
 @media screen and (max-width: 768px) {
-  .loginFormContainer {
+  .formContainer {
     width: 100%;
 
     Form {
-      padding: 50px 7vw 80px 7vw;
+      padding: 50px 7vw 50px 7vw;
     }
   }
 }
-
-
 
