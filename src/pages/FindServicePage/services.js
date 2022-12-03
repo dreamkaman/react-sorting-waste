@@ -5,6 +5,7 @@ export default [
     position: { lat: 43.69, lng: -79.43 },
     rating: 4.0,
     type: ['Paper', 'Glass', 'Clothes'],
+    option: 'Free',
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ export default [
     position: { lat: 44.69, lng: -79.73 },
     rating: 4.9,
     type: ['Glass', 'Metal'],
+    option: 'Free',
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ export default [
     position: { lat: 42.99, lng: -79.93 },
     rating: 4.8,
     type: ['Metal'],
+    option: 'Paid',
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ export default [
     position: { lat: 44.19, lng: -78.73 },
     rating: 4.2,
     type: ['Electric', 'Metal'],
+    option: 'Paid',
   },
   {
     id: 5,
@@ -33,5 +37,6 @@ export default [
     position: { lat: 44.39, lng: -78.23 },
     rating: 4.5,
     type: ['Paper', 'Organic'],
+    option: 'Paid',
   },
 ];
