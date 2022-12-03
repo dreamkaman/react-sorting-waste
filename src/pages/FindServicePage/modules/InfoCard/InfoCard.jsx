@@ -16,7 +16,7 @@ const InfoCard = ({service, setInfoCard, setIsOpen}) => {
         </div>
         <p className={styles.description}>Delivery options:eco taxi</p>
         <div className={styles.block2}>
-          <p className={styles.charge}>Free/paid</p>
+          <p className={styles.charge}>{service.option}</p>
           <div className={styles.ImageGroup}>
             <FontAwesomeIcon icon={faStarHalfStroke} className={styles.feedback} onClick={() => setInfoCard(false)}/>
             <div className={styles.tooltipFeedback}>

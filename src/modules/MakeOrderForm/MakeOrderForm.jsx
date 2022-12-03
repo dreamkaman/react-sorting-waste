@@ -1,47 +1,37 @@
 import ReactDom from 'react-dom';
 import styles from './MakeOrderForm.module.scss';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import classnames from 'classnames';
+import * as Yup from 'yup';
 
 const MakeOrderForm = ({setIsOpen, service}) => {
 
-  const handleSubmit = () => {
-    setTimeout(() => {
-      setIsOpen(false);
-    }, 1500)
+  const validationSchema = Yup.object({
+    name: Yup.string().required('Required'),
+    email: Yup.string().required('Required').email("Invalid email. Example: 'example@mail.com'"),
+    phone: Yup.string()
+      .required('Required')
+      .matches(
+        /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)$/,
+        'Phone number is not valid',
+      ),
+    city: Yup.string().required('Required'),
+    street: Yup.string().required('Required'),
+    country: Yup.string().required('Required'),
+    quantity: Yup.string().required('Required'),
+  });
+  
+   const ErrorField = (props) => {
+    return (
+      <div
+        className={classnames(styles.errorMessage, {
+          [styles.errorMessageActive]: props?.errors && props?.touched,
+        })}
+      >
+        {props?.errors}
+      </div>
+    );
   }
-
-  const validateEmail = (value) => {
-    if (!value) {
-      return 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-      return "Invalid email address. Example: 'example@mail.com'";
-    }
-  };  
-
-  const validateNumber = (value) => {
-    if (!value) {
-      return 'Required';
-    } else if (!/^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/i.test(value)) {
-      return "Invalid phone number";
-    }
-  };  
-
-  const validateText = (value) => {
-    if (!value) {
-      return 'Required';
-    } else if (!/^.{1,}$/i.test(value)) {
-      return "Invalid input value";
-    }
-  }; 
-
-  const validateStreet = (value) => {
-    if (!value) {
-      return 'Required';
-    } else if (/^(?=.*?\d)(?=.*?[a-zA-Z])[a-zA-Z\d]+$/.test(value)) {
-      return "Invalid input value";
-    }
-  };  
 
   return ReactDom.createPortal(
     <>
@@ -49,15 +39,19 @@ const MakeOrderForm = ({setIsOpen, service}) => {
           <Formik
           initialValues={{
             name: '',
-            mobileNumber: '',
+            phone: '',
             email: '',
             city: '',
             street: '',
             country: '',
             quantity: '',
           }}
+          validationSchema={validationSchema}
           onSubmit={(values) => {
-            console.log('submit', values);
+            console.log(values)
+            setTimeout(() => {
+              setIsOpen(false);
+            }, 1100);;
           }}
         >
           {({ values, errors, touched }) => (
@@ -102,40 +96,28 @@ const MakeOrderForm = ({setIsOpen, service}) => {
                       name="name"
                       type="text"
                       placeholder="Enter name"
-                      validate={validateText}
                     />
-                      <div
-                        className={classnames(styles.errorMessage, {
-                          [styles.errorMessageActive]: errors.name && touched.name,
-                        })}>
-                        {errors.name}
-                      </div>
+                    <ErrorField errors={errors.name} touched={touched.name}/>
                   </div>
                 </div>
 
                 <div className={styles.inputContainer}>
                   <label 
                     className={classnames(styles.label, {
-                      [styles.errorLabel]: errors.mobileNumber && touched.mobileNumber,
+                      [styles.errorLabel]: errors.phone && touched.phone,
                     })}>
                     Mobile number
                   </label>
                   <div className={styles.inputWrap}>
                     <Field
                         className={classnames(styles.field, {
-                          [styles.errorField]: errors.mobileNumber && touched.mobileNumber,
+                          [styles.errorField]: errors.phone && touched.phone,
                         })}
-                        name="mobileNumber"
+                        name="phone"
                         type="text"
                         placeholder="Enter number"
-                        validate={validateNumber}
                       />
-                      <div
-                        className={classnames(styles.errorMessage, {
-                          [styles.errorMessageActive]: errors.mobileNumber && touched.mobileNumber,
-                        })}>
-                        {errors.mobileNumber}
-                      </div>
+                      <ErrorField errors={errors.phone} touched={touched.phone}/>
                   </div>
                 </div>
 
@@ -156,44 +138,55 @@ const MakeOrderForm = ({setIsOpen, service}) => {
                         name="email"
                         type="email"
                         placeholder="Enter email"
-                        validate={validateEmail}
                       />
-                      <div
-                          className={classnames(styles.errorMessage, {
-                            [styles.errorMessageActive]: errors.email && touched.email,
-                          })}>
-                        {errors.email}
-                      </div>
+                      <ErrorField errors={errors.email} touched={touched.email}/>
                   </div>
                 </div>
 
               <div className={styles.formGroup}>
 
                 <div className={styles.inputContainer}>
-                  <label 
-                    className={classnames(styles.label, {
-                      [styles.errorLabel]: errors.city && touched.city,
-                    })}>
-                    City
-                  </label>
-                  <div className={styles.inputWrap}>
-                    <Field
-                        className={classnames(styles.field, {
-                          [styles.errorField]: errors.city && touched.city,
-                        })}
-                        name="city"
-                        type="text"
-                        placeholder="Enter city"
-                        validate={validateText}
-                      />
-                      <div
-                          className={classnames(styles.errorMessage, {
-                            [styles.errorMessageActive]: errors.city && touched.city,
-                          })}>
-                        {errors.city}
-                      </div>
+                    <label 
+                      className={classnames(styles.label, {
+                        [styles.errorLabel]: errors.country && touched.country,
+                      })}>
+                      Country
+                    </label>
+                    <div className={styles.inputWrap}>
+                      <Field
+                          className={classnames(styles.field, {
+                            [styles.errorField]: errors.country && touched.country,
+                          })}
+                          name="country"
+                          type="text"
+                          placeholder="Enter country"
+                        />
+                        <ErrorField errors={errors.country} touched={touched.country}/> 
+                    </div>
                   </div>
-                </div>
+
+                  <div className={styles.inputContainer}>
+                    <label 
+                      className={classnames(styles.label, {
+                        [styles.errorLabel]: errors.city && touched.city,
+                      })}>
+                      City
+                    </label>
+                    <div className={styles.inputWrap}>
+                      <Field
+                          className={classnames(styles.field, {
+                            [styles.errorField]: errors.city && touched.city,
+                          })}
+                          name="city"
+                          type="text"
+                          placeholder="Enter city"
+                        />
+                        <ErrorField errors={errors.city} touched={touched.city}/>
+                    </div>
+                  </div>
+
+              </div>
+              <div className={styles.formGroup}>
 
                 <div className={styles.inputContainer}>
                   <label 
@@ -210,43 +203,8 @@ const MakeOrderForm = ({setIsOpen, service}) => {
                         name="street"
                         type="text"
                         placeholder="Enter street"
-                        validate={validateStreet}
                       />
-                      <div
-                          className={classnames(styles.errorMessage, {
-                            [styles.errorMessageActive]: errors.street && touched.street,
-                          })}>
-                        {errors.street}
-                      </div>  
-                  </div>
-                </div>
-
-              </div>
-              <div className={styles.formGroup}>
-
-                <div className={styles.inputContainer}>
-                  <label 
-                    className={classnames(styles.label, {
-                      [styles.errorLabel]: errors.country && touched.country,
-                    })}>
-                    Country
-                  </label>
-                  <div className={styles.inputWrap}>
-                    <Field
-                        className={classnames(styles.field, {
-                          [styles.errorField]: errors.country && touched.country,
-                        })}
-                        name="country"
-                        type="text"
-                        placeholder="Enter country"
-                        validate={validateText}
-                      />
-                      <div
-                          className={classnames(styles.errorMessage, {
-                            [styles.errorMessageActive]: errors.country && touched.country,
-                          })}>
-                        {errors.country}
-                      </div>
+                      <ErrorField errors={errors.street} touched={touched.street}/>  
                   </div>
                 </div>
 
@@ -265,30 +223,27 @@ const MakeOrderForm = ({setIsOpen, service}) => {
                         name="quantity"
                         type="text"
                         placeholder="Enter quantity"
-                        validate={validateText}
                       />
-                      <div
-                          className={classnames(styles.errorMessage, {
-                            [styles.errorMessageActive]: errors.quantity && touched.quantity,
-                          })}>
-                        {errors.quantity}
-                      </div>
+                      <ErrorField errors={errors.country} touched={touched.country}/>
                   </div>
                 </div>
 
               </div>
 
               <div className={styles.buttons}>
-                <input 
-                  type="submit" 
-                  value='Submit' 
-                  className={styles.submit}
-                  onClick={handleSubmit}/>
+
                 <button 
+                  type="submit" 
+                  className={styles.submit}>
+                  Submit
+                </button>
+                <button 
+                  type="submit"
                   onClick={() => setIsOpen(false)} 
                   className={styles.cancel}> 
                   Cancel 
                 </button>
+
               </div>
             </div>
             </Form>
