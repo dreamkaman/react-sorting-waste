@@ -29,14 +29,14 @@ const validationSchema = Yup.object({
     .oneOf([Yup.ref('password'), null], 'Passwords must match'),
 });
 
- const ErrorField = (errors, touched) => {
+ const ErrorField = (props) => {
   return (
     <div
       className={classnames(styles.errorMessage, {
-        [styles.errorMessageActive]: errors && touched,
+        [styles.errorMessageActive]: props?.errors && props?.touched,
       })}
     >
-      {errors}
+      {props?.errors}
     </div>
   );
 }
@@ -87,17 +87,7 @@ const RegistrationForm = () => {
                 placeholder="Enter company name"
               />
             </div>
-
-
-            {/*TODO*/}
-            {/*<div
-              className={classnames(styles.errorMessage, {
-                [styles.errorMessageActive]: errors.company && touched.company,
-              })}
-            >
-              {errors.company}
-            </div>*/}
-            {ErrorField(errors.company, touched.company)}
+            <ErrorField errors={errors.company} touched={touched.company}/>
 
             <div className={styles.fieldsContainer}>
               <label
@@ -116,14 +106,7 @@ const RegistrationForm = () => {
                 placeholder="Enter email"
               />
             </div>
-
-            <div
-              className={classnames(styles.errorMessage, {
-                [styles.errorMessageActive]: errors.email && touched.email,
-              })}
-            >
-              {errors.email}
-            </div>
+            <ErrorField errors={errors.email} touched={touched.email}/>
 
             <div className={styles.fieldsContainer}>
               <label
@@ -142,14 +125,8 @@ const RegistrationForm = () => {
                 placeholder="Enter phone"
               />
             </div>
+            <ErrorField errors={errors.phone} touched={touched.phone}/>
 
-            <div
-              className={classnames(styles.errorMessage, {
-                [styles.errorMessageActive]: errors.phone && touched.phone,
-              })}
-            >
-              {errors.phone}
-            </div>
 
             <div className={styles.fieldsContainer}>
               <label
@@ -168,14 +145,7 @@ const RegistrationForm = () => {
                 placeholder="Enter country"
               />
             </div>
-
-            <div
-              className={classnames(styles.errorMessage, {
-                [styles.errorMessageActive]: errors.country && touched.country,
-              })}
-            >
-              {errors.country}
-            </div>
+            <ErrorField errors={errors.country} touched={touched.country}/>
 
             <div className={styles.fieldsContainer}>
               <label
@@ -194,14 +164,8 @@ const RegistrationForm = () => {
                 placeholder="Enter city"
               />
             </div>
+            <ErrorField errors={errors.city} touched={touched.city}/>
 
-            <div
-              className={classnames(styles.errorMessage, {
-                [styles.errorMessageActive]: errors.city && touched.city,
-              })}
-            >
-              {errors.city}
-            </div>
 
             <div className={styles.fieldsContainer}>
               <label
@@ -220,14 +184,7 @@ const RegistrationForm = () => {
                 placeholder="Enter street"
               />
             </div>
-
-            <div
-              className={classnames(styles.errorMessage, {
-                [styles.errorMessageActive]: errors.street && touched.street,
-              })}
-            >
-              {errors.street}
-            </div>
+            <ErrorField errors={errors.street} touched={touched.street}/>
 
             <div className={styles.fieldsContainer}>
               <label className={classnames(styles.label)}>Type of waste</label>
@@ -240,7 +197,7 @@ const RegistrationForm = () => {
                 <option value="Electric Supply elements">Electric Supply elements</option>
               </Field>
             </div>
-            <div className={classnames(styles.errorMessage)}></div>
+            <ErrorField />
 
             <div className={styles.fieldsContainer}>
               <label className={classnames(styles.label)}>Delivery condition option</label>
@@ -250,8 +207,7 @@ const RegistrationForm = () => {
                 <option value="Paid">Paid</option>
               </Field>
             </div>
-
-            <div className={classnames(styles.errorMessage)}></div>
+            <ErrorField />
 
             <div className={styles.fieldsContainer}>
               <label
@@ -270,14 +226,7 @@ const RegistrationForm = () => {
                 placeholder="Enter password"
               />
             </div>
-
-            <div
-              className={classnames(styles.errorMessage, {
-                [styles.errorMessageActive]: errors.password && touched.password,
-              })}
-            >
-              {errors.password}
-            </div>
+            <ErrorField errors={errors.password} touched={touched.password}/>
 
             <div className={styles.fieldsContainer}>
               <label
@@ -296,14 +245,7 @@ const RegistrationForm = () => {
                 placeholder="Enter password"
               />
             </div>
-
-            <div
-              className={classnames(styles.errorMessage, {
-                [styles.errorMessageActive]: errors.confirmPassword && touched.confirmPassword,
-              })}
-            >
-              {errors.confirmPassword}
-            </div>
+            <ErrorField errors={errors.confirmPassword} touched={touched.confirmPassword}/>
 
             <div className={styles.toolsContainer}>
               <label>
