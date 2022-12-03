@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import img1 from 'images/for-clients-say-slider/slider-picture-1.jpg';
 import img2 from 'images/for-clients-say-slider/slider-picture-2.jpg';
 import img3 from 'images/for-clients-say-slider/slider-picture-3.jpg';
+import img4 from 'images/for-clients-say-slider/slider-picture-4.jpg';
 
 export const slides = [
   {
@@ -25,5 +26,12 @@ export const slides = [
     quote:
       'We really appreciated agency`s hands-on approach as well as their ability to contribute not just with design but with the overall idea of the project',
     clientName: 'Michael Johnson3',
+  },
+  {
+    id: uuidv4(),
+    imageURL: img4,
+    quote:
+      'We really appreciated agency`s hands-on approach as well as their ability to contribute not just with design but with the overall idea of the project',
+    clientName: 'Michael Johnson4',
   },
 ];

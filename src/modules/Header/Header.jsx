@@ -13,12 +13,12 @@ const Header = () => {
   const authButtons = (
     <ul className={s.authList}>
       <li className={s.authListItem}>
-        <Link className={s.loginLink} to="/login">
+        <Link className={s.authLink} to="/login">
           Login
         </Link>
       </li>
       <li className={s.authListItem}>
-        <Link className={s.signupLink} to="/signup">
+        <Link className={s.authLink} to="/signup">
           Sign up
         </Link>
       </li>
