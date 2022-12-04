@@ -1,4 +1,4 @@
-import * as userAPI from '../../API/users/usersAPI';
+import * as userAPI from 'API/users/usersAPI';
 import * as authActions from './authActions';
 
 export const loginUserOperation = (email, password) => async (dispatch) => {
@@ -32,7 +32,7 @@ export const signupServiceOperation =
     dispatch(authActions.registerUserRequest()); //
 
     try {
-      const service = await userAPI({
+      const service = await userAPI.signupUser({
         name,
         email,
         password,
@@ -45,10 +45,11 @@ export const signupServiceOperation =
         free,
         delivery,
       });
+
       console.log(service);
-      dispatch(authActions.loginUserSuccess(service));
+      dispatch(authActions.registerUserSuccess(service));
     } catch (error) {
       console.log(error);
-      dispatch(authActions.loginUserError(error));
+      dispatch(authActions.registerUserError(error));
     }
   };
