@@ -1,34 +1,28 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Field, Form, Formik } from 'formik';
 
 import styles from './LoginForm.module.scss';
-import { validate } from 'uuid';
+
 import classnames from 'classnames';
 
-import image from '../../images/loginBackground.png';
+import image from '../../images/backgroundForm.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import * as Yup from 'yup';
 
-const validateEmail = (value) => {
-  if (!value) {
-    return 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    return "Invalid email address. Example: 'example@mail.com'";
-  }
-};
 
-const validatePassword = (value) => {
-  if (!value) {
-    return 'Required';
-  } else if (
-    !/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g.test(value)
-  ) {
-    return "Invalid password. Example:'a0A#ccsxcvx'";
-  }
-};
+const validationSchema = Yup.object({
+  email: Yup.string().required('Required').email("Invalid email. Example: 'example@mail.com'"),
+  password: Yup.string()
+    .required('Required')
+    .matches(
+      /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g,
+      "Invalid password. Example:'a0A#ccsxcvx'",
+    )
+});
 
 const LoginForm = () => {
   return (
-    <div className={styles.loginFormContainer}>
+    <div className={styles.formContainer}>
       <div className={styles.headerContainer} style={{ backgroundImage: `url(${image})` }}>
         <FontAwesomeIcon className={styles.closeIcon} icon={faXmark} />
         <span>Login</span>
@@ -40,13 +34,14 @@ const LoginForm = () => {
           password: '',
           toggle: false,
         }}
+        validationSchema={validationSchema}
         onSubmit={(values) => {
           console.log('submit', values);
         }}
       >
         {({ values, errors, touched }) => (
           <Form>
-            <div className={styles.emailContainer}>
+            <div className={styles.fieldsContainer}>
               <label
                 className={classnames(styles.label, {
                   [styles.errorLabel]: errors.email && touched.email,
@@ -61,7 +56,6 @@ const LoginForm = () => {
                 name="email"
                 type="email"
                 placeholder="Enter email"
-                validate={validateEmail}
               />
             </div>
 
@@ -73,7 +67,7 @@ const LoginForm = () => {
               {errors.email}
             </div>
 
-            <div className={styles.passwordContainer}>
+            <div className={styles.fieldsContainer}>
               <label
                 className={classnames(styles.label, {
                   [styles.errorLabel]: errors.password && touched.password,
@@ -88,7 +82,6 @@ const LoginForm = () => {
                 name="password"
                 type={values.toggle ? 'text' : 'password'}
                 placeholder="Enter password"
-                validate={validatePassword}
               />
             </div>
 

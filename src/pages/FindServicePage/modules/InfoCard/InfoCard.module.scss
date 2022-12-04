@@ -1,76 +1,134 @@
 .infoCard {
     background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);
     width: 300px;
-    height: 350px;
+    height: 300px;
     float: right;
     position: absolute;
     right: 10vw;
     top: 50%;
     transform: translate(0, -50%);
     border-radius: 15px;
-    .infoCard_title {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .image {
         display: flex;
         padding: 10px;
         padding-top: 50%;
-        color: white;
-        font-size: 20px;
         margin: 0;
-        background-image: url('https://www.montgomerycountymd.gov/SWS/Resources/Images/collections/curbside-recycling-bins.jpg');
+        background-image: url('https://funart.pro/uploads/posts/2021-04/1618699089_35-funart_pro-p-gorod-toronto-krasivie-mesta-foto-39.jpg');
         background-size: cover;
         border-radius: 15px;
     }
 
-    .infoCard_type {
-        font-size: 15px;
-        padding: 0 10px;
-        margin-top: 50px;
+    .block1 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 15px;
+        .name {
+            font-size: 18px;
+        }
+        .rating {
+            color: black;
+            display: flex;
+            gap: 5px;
+            .star {
+                color: var(--font-third-color);
+            }
+        }
     }
 
-    .infoCard_description {
+    .infoCard_type {
         font-size: 15px;
-        padding: 10px;
+        padding: 0 15px;
+    }
+
+    .description {
+        font-size: 15px;
+        padding: 0 15px;
         margin: 0;
     }
 
     .block2 {
         display: flex;
         justify-content: space-between;
-        padding: 0 10px;
+        padding: 0 15px 15px 15px;
         align-items: center;
+
         p {
             margin: 0;
             color: gray;
         }
+
         .ImageGroup {
             display: flex;
             align-items: center;
             justify-content: flex-end;
             gap: 20px;
-            padding: 10px;
-            &:hover {
-                cursor: pointer;
-            }
-        }
-    }
+            color: black;
 
-    .infoCard_buttons {
-        display: flex;
-        flex-direction: row;
-        gap: 5px;
-        padding: 0 10px 10px 10px;
-        position: absolute;
-        top: 105%;
-        width: 100%;
-        box-sizing: border-box;
-        .infoCard_button {
-            padding: 10px;
-            background-color: #1E3226;
-            border: none;
-            color: white;
-            width: 50%;
-            border-radius: 10px;
+            .feedback {
+                width: 25px;
+                &:hover + .tooltipFeedback{
+                    display: block;
+                }
+            }
+
+            .tooltipFeedback {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 20%;
+                background-color: var(--font-header-line-color);
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 15px;
+            }
+
+            .ask {
+                width: 25px;
+                &:hover + .tooltipAsk{
+                    display: block;
+                }
+            }
+
+            .tooltipAsk {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 35%;
+                background-color: var(--font-header-line-color);
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 15px;
+            }
+
+            .order {
+                width: 25px;
+                &:hover + .tooltipOrder{
+                    display: block;
+                }
+            }
+
+            .tooltipOrder {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 55%;
+                background-color: var(--font-header-line-color);
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 15px;
+            }
+
             &:hover {
-                background-color: #284935;
                 cursor: pointer;
             }
         }
@@ -86,6 +144,7 @@
         top: 0;
         border-radius: 100%;
         right: 0;
+
         &:hover {
             background-color: rgba(117, 117, 117, 0.694);
             cursor: pointer;

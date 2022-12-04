@@ -1,4 +1,4 @@
-.loginFormContainer {
+.formContainer {
   width: 670px;
   background: var(--font-light-color);
   border-radius: 10px;
@@ -68,9 +68,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    padding: 50px 100px 80px 100px;
+    padding: 50px 100px 50px 100px;
 
-    .emailContainer, .passwordContainer {
+    .fieldsContainer {
       width: 100%;
       display: flex;
       align-items: center;
@@ -96,7 +96,8 @@
         width: 75%;
         background: transparent;
         padding: 0 5px;
-        height: 45px;
+        /*height: 45px;*/
+        height: 35px;
         border: none;
         border-bottom: 1px solid #b2b2b2;
         outline: none;
@@ -120,6 +121,7 @@
       height: 25px;
       font-size: 12px;
       opacity: 0;
+      text-align: right;
     }
 
     .errorMessageActive {
@@ -213,17 +215,17 @@
 
 /* ================================ Media screen =========================================*/
 @media screen and (max-width: 500px) {
-  .loginFormContainer {
+  .formContainer {
 
     Form {
 
 
-      .emailContainer, .passwordContainer {
+      .fieldsContainer {
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
         flex-direction: column;
-        margin-top: 30px;
+        margin-top: 0px;
 
 
         .label {
@@ -277,11 +279,11 @@
 }
 
 @media screen and (max-width: 768px) {
-  .loginFormContainer {
+  .formContainer {
     width: 100%;
 
     Form {
-      padding: 50px 7vw 80px 7vw;
+      padding: 50px 7vw 50px 7vw;
     }
   }
 }

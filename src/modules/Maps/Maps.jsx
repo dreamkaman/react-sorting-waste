@@ -129,21 +129,21 @@ function Map() {
                     {(distance || duration) && 
                     <h4> <FontAwesomeIcon icon={faLocationDot} className={styles.icon}/> Distance: {distance} <FontAwesomeIcon icon={faClock} className={styles.icon}/> Duration: {duration}</h4>}
                 </div>
-                {services.map(({ id, name, position, rating}) => {
+                {services.map((service) => {
                     return (
-                    <div key={id}>
+                    <div key={service.id}>
                         <MarkerF
-                            position={position}
+                            position={service.position}
                             icon={icon}
                             className={styles.marker}
                             onClick={() => {
                                 setInfoCard(true)
-                                map.setCenter(position);
-                                setCurrentService({ id, name, position });
+                                map.setCenter(service.position);
+                                setCurrentService(service);
                             }}>
                         </MarkerF>
                         <InfoWindowF
-                            position={position}
+                            position={service.position}
                             options={{
                                 // eslint-disable-next-line no-undef
                                 pixelOffset: new window.google.maps.Size(0, -40),
@@ -151,7 +151,7 @@ function Map() {
                             >
                             <div className={styles.infoWindow}>
                                 <FontAwesomeIcon icon={faStar} className={styles.star}/>
-                                <p className={styles.infoWindow_title}>{rating}</p>
+                                <p className={styles.infoWindow_title}>{service.rating}</p>
                             </div>
                         </InfoWindowF>
                     </div>
