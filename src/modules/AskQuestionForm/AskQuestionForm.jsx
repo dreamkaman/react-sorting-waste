@@ -43,7 +43,7 @@ const AskQuestionForm = ({setIsOpenQuestion, service}) => {
               <div className={styles.inputs}>
 
                   <div className={styles.title}>
-                    <FontAwesomeIcon icon={faCircleQuestion} />
+                    <FontAwesomeIcon icon={faCircleQuestion} className={styles.icon}/>
                     Ask A Question
                   </div>
                   <div className={styles.inputContainer}>

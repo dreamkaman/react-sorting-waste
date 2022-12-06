@@ -34,7 +34,18 @@
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
 
-            color: var(--font-light-color);
+            background: linear-gradient(rgba(51, 71, 42, 0.8), rgba(51, 71, 42, 0.8)), url('../../images/BucketsOfBottles.png');
+            background-size: cover;
+            background-position: top center;
+            background-repeat: no-repeat;
+
+            letter-spacing: 2px;
+            color: white;
+            font-size: 24px;
+
+            .icon {
+                font-size: 34px;
+            }
         }
 
         .inputContainer {
@@ -140,7 +151,9 @@
             font-size: 16px;
             font-weight: 400;
             background-color: var(--font-grey-color);
-            border-radius: 15px;
+            border-radius: 10px;
+
+            width: 100px;
 
             &:hover {
                 background-color: rgba(158, 158, 158, 0.7);
@@ -162,7 +175,8 @@
             font-size: 16px;
             font-weight: 400;
             background-color: var(--font-main-color);
-            border-radius: 15px;
+            border-radius: 10px;
+            width: 100px;
 
             &:hover {
                 background-color: var(--font-secondary-color);
