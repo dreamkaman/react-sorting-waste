@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { faSliders } from '@fortawesome/free-solid-svg-icons';
 import styles from './FilterDropdown.module.scss'
 
 const categories = [
@@ -39,17 +39,18 @@ function FilterDropdown({ servicesList, setServices, selected, map }) {
         setChecked(newChecked)
     }
 
-    const handleClick = async () => {
+    const handleApply = async () => {
+        setIsOpen(false);
         let filteredServices = [];
         // eslint-disable-next-line no-undef
         if (selected && parseInt(radiusValue) > 0) {
             circle.setMap(null);
             // eslint-disable-next-line no-undef
             setCircle(new google.maps.Circle({
-                strokeColor: "#fd7d20",
+                strokeColor: "#117024",
                 strokeOpacity: 0.7,
                 strokeWeight: 2,
-                fillColor: "#fd7d20",
+                fillColor: "#23ba42",
                 fillOpacity: 0.25,
                 map,
                 // eslint-disable-next-line no-undef
@@ -68,7 +69,6 @@ function FilterDropdown({ servicesList, setServices, selected, map }) {
                     },
                     (result, status) => {
                         if (status === "OK" && result) {
-                            console.log({result})
                             if (result.routes[0].legs[0].distance.value < parseInt(radiusValue) * 1000) {
                                 filteredServices.push(service);
                             } 
@@ -104,6 +104,7 @@ function FilterDropdown({ servicesList, setServices, selected, map }) {
             filteredServices = newList;
         }
         setServices(filteredServices);
+
     }
 
     const handleReset = () => {
@@ -116,11 +117,14 @@ function FilterDropdown({ servicesList, setServices, selected, map }) {
     return (
         <div className={styles.container}>
             <div className={styles.filterButton} onClick={() => setIsOpen(!isOpen)}>
-                Filter 
-                <FontAwesomeIcon icon={faSortDown} className={styles.star}/>
+                Filters 
+                <FontAwesomeIcon icon={faSliders} className={styles.star}/>
+            </div>
+            <div className={styles.filterButtonMobile} onClick={() => setIsOpen(!isOpen)}>
+                <FontAwesomeIcon icon={faSliders} className={styles.star}/>
             </div>
             {isOpen && <div className={styles.menu}>
-                <p>Type:</p>
+                <p>Type of waste:</p>
                 <div className={styles.checkboxes}>
                     {categories.map((category) => {
                         return(
@@ -145,8 +149,8 @@ function FilterDropdown({ servicesList, setServices, selected, map }) {
                         value={radiusValue}
                     />
                 </div>
-                <button type='submit' className={styles.apply} onClick={ handleClick }>Apply</button>
-                <button type='submit' className={styles.reset} onClick={ handleReset }>Reset</button>
+                <button type='submit' className={styles.apply} onClick={ handleApply }>Show Eco Services</button>
+                <button type='submit' className={styles.reset} onClick={ handleReset }>Clear all</button>
             </div>}
         </div>
     )
