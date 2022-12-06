@@ -4,7 +4,7 @@ import { Field, Form, Formik } from 'formik';
 import classnames from 'classnames';
 import * as Yup from 'yup';
 
-const MakeOrderForm = ({setIsOpen, service}) => {
+const MakeOrderForm = ({setIsOpenOrder, service}) => {
 
   const validationSchema = Yup.object({
     name: Yup.string().required('Required'),
@@ -48,10 +48,7 @@ const MakeOrderForm = ({setIsOpen, service}) => {
           }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
-            console.log(values)
-            setTimeout(() => {
-              setIsOpen(false);
-            }, 1100);;
+            console.log(values);
           }}
         >
           {({ values, errors, touched }) => (
@@ -239,16 +236,16 @@ const MakeOrderForm = ({setIsOpen, service}) => {
                 </button>
                 <button 
                   type="submit"
-                  onClick={() => setIsOpen(false)} 
+                  onClick={() => setIsOpenOrder(false)} 
                   className={styles.cancel}> 
                   Cancel 
                 </button>
 
               </div>
-            </div>
+              </div>
             </Form>
-        )}
-      </Formik>
+          )}
+        </Formik>
       </div>
     </>,
     document.getElementById('portal')

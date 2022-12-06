@@ -10,7 +10,9 @@ import usePlacesAutoComplete, {
     getLatLng,
 } from "use-places-autocomplete";
 import "@reach/combobox/styles.css";
-import styles from './PlacesInput.module.scss'
+import styles from './PlacesInput.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass, faClose } from '@fortawesome/free-solid-svg-icons';
 
 
 const PlacesInput = ({ setSelected, originRef, map }) => {
@@ -33,19 +35,22 @@ const PlacesInput = ({ setSelected, originRef, map }) => {
 
     return (
         <Combobox onSelect={handleSelect}>
-            <ComboboxInput
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                disabled={!ready}
-                ref={originRef}
-                className={styles.input}
-                placeholder="Name or address..."
-            />
-            <ComboboxPopover>
+            <div className={styles.inputContainer}>
+                <ComboboxInput
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                    disabled={!ready}
+                    ref={originRef}
+                    className={styles.input}
+                    placeholder="Search your city" />
+                <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.iconSearch} onClick={() => handleSelect(value)}/>
+                <FontAwesomeIcon icon={faClose} className={styles.iconClose} onClick={() => setValue('')}/>
+            </div>
+            <ComboboxPopover style={{width: "310px", marginTop: "10px", marginLeft: "-15px"}}>
                 <ComboboxList>
                     {status === "OK" &&
                     data.map(({ place_id, description }) => (
-                        <ComboboxOption key={place_id} value={description} />
+                        <ComboboxOption key={place_id} value={description} style={{width: "310px", padding: "15px", borderBottom: '1px solid rgb(218,220,224)', color: 'black'}}/>
                     ))}
                 </ComboboxList>
             </ComboboxPopover>

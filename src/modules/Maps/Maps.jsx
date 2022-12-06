@@ -8,10 +8,11 @@ import servicesList from "../../pages/FindServicePage/services";
 import styles from './Maps.module.scss';
 import PlacesInput from "pages/FindServicePage/modules/PlacesInput";
 import FilterDropdown from "pages/FindServicePage/modules/FilterDropdown";
-import ServiceListDropdown from "pages/FindServicePage/modules/ServiceListDropdown";
 import GetLocationButton from "pages/FindServicePage/modules/GetLocationButton";
 import InfoCard from "pages/FindServicePage/modules/InfoCard";
 import MakeOrderForm from "modules/MakeOrderForm";
+import LeaveFeedbackForm from "modules/LeaveFeedbackForm";
+import AskQuestionForm from "modules/AskQuestionForm";
 
 const icon = {
   url: CustomMarker,
@@ -23,6 +24,10 @@ const mapOptions = {
     lat: 43.69,
     lng: -79.43,
   },
+  scrollwheel: false,
+  keyboardShortcuts: false,
+  mapTypeControl: false,
+  fullscreenControl: false,
 };
 
 const Maps = () => {
@@ -39,13 +44,14 @@ function Map() {
 
     const [services, setServices] = useState(servicesList);
     const [selected, setSelected] = useState(null);
-    const [openMakeOrder, setOpenMakeOrder] = useState(false);
     const [currentService, setCurrentService] = useState(null);
     const [map, setMap] = useState(/** @type google.maps.Map */ (null));
     const [distance, setDistance] = useState("");
     const [duration, setDuration] = useState("");
     const [infoCard, setInfoCard] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpenOrder, setIsOpenOrder] = useState(false);
+    const [isOpenFeedback, setIsOpenFeedback] = useState(false);
+    const [isOpenQuestion, setIsOpenQuestion] = useState(false);
     
     const [directionsService, setDirectionsService] = useState();
     const [directionsRenderer, setDirectionsRenderer] = useState();
@@ -99,7 +105,9 @@ function Map() {
 
     return (
         <section className={styles.mapContainer}>
-            <div className={styles.imageBlock}></div>
+            <div className={styles.imageBlock}>
+                <p className={styles.title}>REQUEST FOR A PICKUP</p>
+            </div>
             <GoogleMap
                 options={mapOptions}
                 mapContainerClassName={styles.map}
@@ -108,26 +116,26 @@ function Map() {
                     setMap(map);
                     directionsRenderer?.setMap(map);
                 }}
+                className={styles.map}
             >
-                {infoCard && <InfoCard service={ currentService } setInfoCard={ setInfoCard } setIsOpen={ setIsOpen }/>}
+                {isOpenQuestion && <AskQuestionForm setIsOpenQuestion={setIsOpenQuestion} service={ currentService }/>}
+                {infoCard && <InfoCard 
+                    service={ currentService } 
+                    setInfoCard={ setInfoCard } 
+                    setIsOpenOrder={ setIsOpenOrder } 
+                    setIsOpenQuestion={ setIsOpenQuestion }
+                    setIsOpenFeedback={ setIsOpenFeedback } 
+                    calculateRoute={ calculateRoute }/>}
                     <div className={styles.mapTools}>
                         <div className={styles.navigation}> 
                             <PlacesInput setSelected={setSelected} originRef={originRef} map={map}/>
-                            <div className={styles.inputs}>
-                                <ServiceListDropdown 
-                                    services={services} 
-                                    destiantionRef={destiantionRef}
-                                    calculateRoute={calculateRoute}/>
-                            </div>
-                            <div className={styles.buttons}>
-                                <button type="submit" onClick={clearRoute}>
-                                    Clear
-                                </button>
-                            </div>
                             <FilterDropdown servicesList={servicesList} setServices={setServices} selected={selected} map={map}/>
-                    </div>
+                            <button type="submit" onClick={clearRoute} className={styles.clear}>
+                                Clear the route
+                            </button>
+                        </div>
                     {(distance || duration) && 
-                    <h4> <FontAwesomeIcon icon={faLocationDot} className={styles.icon}/> Distance: {distance} <FontAwesomeIcon icon={faClock} className={styles.icon}/> Duration: {duration}</h4>}
+                    <h4> <FontAwesomeIcon icon={faLocationDot} className={styles.icon}/> Distance: {distance} </h4>}
                 </div>
                 {services.map((service) => {
                     return (
@@ -160,7 +168,8 @@ function Map() {
                 {selected && <MarkerF position={selected} />}
                 <GetLocationButton map={map} setSelected={setSelected}/>
             </GoogleMap>
-            {isOpen && <MakeOrderForm setIsOpen={setIsOpen} service={ currentService }/>}
+            {isOpenOrder && <MakeOrderForm setIsOpenOrder={setIsOpenOrder} service={ currentService }/>}
+            {isOpenFeedback && <LeaveFeedbackForm setIsOpenFeedback={setIsOpenFeedback} service={ currentService }/>}
         </section>
     );
 }

@@ -78,6 +78,25 @@
                 }
             }
 
+            .tooltipRoute {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 15%;
+                background-color: var(--font-header-line-color);
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 15px;
+            }
+
+            .route {
+                width: 25px;
+                &:hover + .tooltipRoute{
+                    display: block;
+                }
+            }
+
             .tooltipFeedback {
                 display: none;
                 position: absolute;
@@ -120,7 +139,7 @@
                 display: none;
                 position: absolute;
                 top: 100%;
-                left: 55%;
+                left: 50%;
                 background-color: var(--font-header-line-color);
                 color: white;
                 padding: 10px;
