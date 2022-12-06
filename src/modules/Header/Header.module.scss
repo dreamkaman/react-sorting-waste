@@ -63,15 +63,12 @@
   justify-content: space-between;
 }
 
-.logoLink {
-  display: flex;
-  align-items: center;
-}
-
-.authLink {
+.authButton {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: var(--font-secondary-color);
+  background-color: transparent;
 }
 
 .logo {
@@ -94,6 +91,9 @@
 
 .authList {
   display: none;
+
+  .authListItem {
+  }
 }
 
 .authButtonsWrapper {
@@ -218,7 +218,7 @@
     margin-right: 10px;
   }
 
-  .authLink {
+  .authButton {
     display: inline-block;
 
     padding: 6px 15px;
@@ -226,9 +226,12 @@
     min-width: max-content;
 
     border: 2px solid var(--font-secondary-color);
+
+    font-size: 12px;
+    font-weight: 500;
   }
 
-  .authLink:hover {
+  .authButton:hover {
     background-color: var(--font-third-color);
     border-color: transparent;
   }
@@ -316,7 +319,8 @@
     width: 200px;
   }
 
-  .authList {
+  .authList,
+  .authButton {
     font-size: 18px;
   }
 }
