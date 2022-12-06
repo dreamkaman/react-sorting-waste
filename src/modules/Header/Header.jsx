@@ -6,22 +6,61 @@ import Burger from 'shared/components/Burger';
 import img from '../../images/png/logo.png';
 
 import s from './Header.module.scss';
+import { useEffect, useState } from 'react';
+import Modal from '../Modal';
+import LoginForm from '../LoginFrom';
+import RegistrationForm from '../RegistrationForm';
+
 
 const Header = () => {
   const isLoggined = false; //should be red from Redux
 
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openSignUp, setOpenSignUp] = useState(false);
+
+
+//======== TODO check overflow ==================================
+  useEffect(() => {
+    if (openSignUp || openLogin) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [openSignUp, openLogin]);
+
+
   const authButtons = (
     <ul className={s.authList}>
+
       <li className={s.authListItem}>
-        <Link className={s.authLink} to="/login">
+        <button className={s.authButton} onClick={() => setOpenLogin(true)}>
           Login
-        </Link>
+        </button>
+
+        <Modal open={openLogin} onClose={() => {
+          setOpenLogin(false);
+        }}>
+          <LoginForm onClose={() => {
+            setOpenLogin(false);
+          }} />
+        </Modal>
       </li>
+
       <li className={s.authListItem}>
-        <Link className={s.authLink} to="/signup">
+        <button className={s.authButton} onClick={() => setOpenSignUp(true)}>
           Sign up
-        </Link>
+        </button>
+
+        <Modal open={openSignUp} onClose={() => {
+          setOpenSignUp(false);
+        }}>
+          <RegistrationForm onClose={() => {
+            setOpenSignUp(false);
+          }} />
+        </Modal>
       </li>
+
     </ul>
   );
 
@@ -32,12 +71,12 @@ const Header = () => {
 
         <ul className={s.contactLinks}>
           <li>
-            <a className={s.tel} href="tel:+380441234567">
+            <a className={s.tel} href='tel:+380441234567'>
               +38 044 123 45 67
             </a>
           </li>
           <li>
-            <a className={s.mail} href="mailto:support@wasteservices.com">
+            <a className={s.mail} href='mailto:support@wasteservices.com'>
               support@wasteservices.com
             </a>
           </li>
@@ -45,10 +84,10 @@ const Header = () => {
         <div className={s.avatarWrapper}>{isLoggined ? <Avatar /> : null}</div>
       </div>
 
-      <div className="container">
+      <div className='container'>
         <nav className={s.navigation}>
-          <Link className={s.logoLink} to="/">
-            <img className={s.logo} src={img} alt="logo" />
+          <Link className={s.logoLink} to='/'>
+            <img className={s.logo} src={img} alt='logo' />
             <p className={s.txtEco}>
               <span className={s.txtGo}>Go</span>ECO
             </p>
@@ -58,13 +97,13 @@ const Header = () => {
 
           <ul className={s.menu}>
             <li className={s.menuItem}>
-              <NavLink to="/" className={({ isActive }) => (isActive ? s.isActive : s.navLink)}>
+              <NavLink to='/' className={({ isActive }) => (isActive ? s.isActive : s.navLink)}>
                 home
               </NavLink>
             </li>
             <li className={s.menuItem}>
               <NavLink
-                to="/services"
+                to='/services'
                 className={({ isActive }) => (isActive ? s.isActive : s.navLink)}
               >
                 find service
@@ -72,7 +111,7 @@ const Header = () => {
             </li>
             <li className={s.menuItem}>
               <NavLink
-                to="/about"
+                to='/about'
                 className={({ isActive }) => (isActive ? s.isActive : s.navLink)}
               >
                 about us

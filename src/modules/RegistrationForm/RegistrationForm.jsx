@@ -41,11 +41,11 @@ const validationSchema = Yup.object({
   );
 }
 
-const RegistrationForm = () => {
+const RegistrationForm = ({onClose}) => {
   return (
     <div className={styles.formContainer}>
       <div className={styles.headerContainer} style={{ backgroundImage: `url(${image})` }}>
-        <FontAwesomeIcon className={styles.closeIcon} icon={faXmark} />
+        <FontAwesomeIcon onClick={onClose} className={styles.closeIcon} icon={faXmark} />
         <span>Sign Up</span>
       </div>
 
@@ -64,9 +64,13 @@ const RegistrationForm = () => {
           toggle: false,
         }}
         validationSchema={validationSchema}
+
+        // TODO submit button ====================
         onSubmit={(values) => {
           console.log('submit', values);
+          onClose();
         }}
+
       >
         {({ values, errors, touched }) => (
           <Form>
