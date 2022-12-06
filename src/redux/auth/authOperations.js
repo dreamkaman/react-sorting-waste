@@ -1,13 +1,10 @@
-import * as userAPI from '../../API/users/usersAPI';
-import * as authActions from './authActions';
+import * as serviceAPI from 'API/services/servicesAPI';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const loginUserOperation = () => async (dispatch) => {
-  dispatch(authActions.loginUserRequest());
-
-  try {
-    const user = await userAPI('test@gmail.com', '123456');
-    dispatch(authActions.loginUserSuccess(user));
-  } catch (error) {
-    dispatch(authActions.loginUserError(error));
-  }
-};
+export const loginServiceOperation = createAsyncThunk(
+  'service/login',
+  async ({ login, password }) => {
+    const response = await serviceAPI.loginService({ login, password });
+    return response.data;
+  },
+);
