@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import * as servicesOperations from 'redux/services/servicesOperations';
 import * as authOperations from 'redux/auth/authOperations';
 
 import { Link } from 'react-router-dom';
@@ -7,9 +8,10 @@ import s from './NotFoundPage.module.scss';
 
 const NotFoundPage = () => {
   const dispatch = useDispatch();
+
   const testValues = {
     name: 'Test ECO Servise 2',
-    email: 'test9@gmail.com',
+    email: 'testik6@gmail.com',
     password: 'Rhdkshn#01',
     address: '5, Adriano Chelentano street',
     phoneNumber: '+380671234567',
@@ -21,38 +23,13 @@ const NotFoundPage = () => {
     delivery: true,
   };
 
-  function handleClick(values) {
-    const {
-      name,
-      email,
-      password,
-      address,
-      phoneNumber,
-      workHours,
-      photo,
-      city,
-      country,
-      free,
-      delivery,
-    } = values;
-    console.log(email, password);
-    console.log(
-      dispatch(
-        authOperations.signupServiceOperation({
-          name,
-          email,
-          password,
-          address,
-          phoneNumber,
-          workHours,
-          photo,
-          city,
-          country,
-          free,
-          delivery,
-        }),
-      ),
-    );
+  function handleClick(ecoServiceObject) {
+    // dispatch(servicesOperations.signupServiceOperation(ecoServiceObject));
+    // dispatch(servicesOperations.getServicesOperation());
+    dispatch(servicesOperations.deleteServiceOperation(11));
+    // dispatch(
+    //   authOperations.loginServiceOperation({ email: 'testik1@gmail.com', password: 'Rhdkshn#01' }),
+    // );
   }
   return (
     <section className={('container', s.section)}>
