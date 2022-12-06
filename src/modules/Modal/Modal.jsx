@@ -24,6 +24,15 @@ const Modal = (props) => {
 
   });
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [open]);
+
   if (open) {
     return createPortal(
       <div className={styles.modalContainer} onClick={onClose}>

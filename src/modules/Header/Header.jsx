@@ -6,7 +6,7 @@ import Burger from 'shared/components/Burger';
 import img from '../../images/png/logo.png';
 
 import s from './Header.module.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Modal from '../Modal';
 import LoginForm from '../LoginFrom';
 import RegistrationForm from '../RegistrationForm';
@@ -17,18 +17,6 @@ const Header = () => {
 
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
-
-
-//======== TODO check overflow ==================================
-  useEffect(() => {
-    if (openSignUp || openLogin) {
-      document.body.style.overflow = 'hidden';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [openSignUp, openLogin]);
-
 
   const authButtons = (
     <ul className={s.authList}>
