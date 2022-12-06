@@ -1,4 +1,3 @@
-
 .contacts {
   padding: 10px 10px;
   font-size: 14px;
@@ -10,6 +9,12 @@
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .text {
@@ -93,7 +98,8 @@
 .authList {
   display: none;
 
-  .authListItem{}
+  .authListItem {
+  }
 }
 
 .authButtonsWrapper {
@@ -319,7 +325,8 @@
     width: 200px;
   }
 
-  .authList, .authButton {
+  .authList,
+  .authButton {
     font-size: 18px;
   }
 }
