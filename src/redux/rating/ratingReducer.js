@@ -2,7 +2,7 @@ import { combineReducers, createReducer } from '@reduxjs/toolkit';
 
 const ratingObject = createReducer(null, {
   'wastePointRating/get/pending': () => null,
-  'wastePointRating/get/fulfilled': (_state, { payload }) => ({ ...payload.successObject }),
+  'wastePointRating/get/fulfilled': (_, { payload }) => ({ ...payload.successObject }),
   'wastePointRating/get/rejected': () => null,
 });
 
@@ -15,7 +15,7 @@ const isLoading = createReducer(false, {
 const error = createReducer(null, {
   'wastePointRating/get/pending': () => null,
   'wastePointRating/get/fulfilled': () => null,
-  'wastePointRating/get/rejected': (_state, action) => action?.error?.message,
+  'wastePointRating/get/rejected': (_, action) => action?.error?.message,
 });
 
 export const ratingReducer = combineReducers({

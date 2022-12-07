@@ -1,6 +1,8 @@
 import * as serviceAPI from 'API/goeco/goecoAPI';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+import { initialServiceState } from './authReducer';
+
 export const loginServiceOperation = createAsyncThunk(
   'service/login',
   async ({ email, password }) => {
@@ -8,3 +10,7 @@ export const loginServiceOperation = createAsyncThunk(
     return response.data;
   },
 );
+
+export const logoutServiceOperation = createAsyncThunk('service/logout', () => {
+  return initialServiceState;
+});

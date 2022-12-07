@@ -39,10 +39,8 @@ const LoginForm = ({ onClose }) => {
         validationSchema={validationSchema}
         // TODO submit button ====================
         onSubmit={(values) => {
-          console.log('submit', values);
           const { email, password } = values;
           console.log(email);
-          console.log(password);
           dispatch(loginServiceOperation({ email, password }));
           onClose();
         }}

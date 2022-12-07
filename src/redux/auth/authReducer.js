@@ -1,6 +1,6 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
 
-const initialServiceState = {
+export const initialServiceState = {
   id: null,
   name: null,
   email: null,
@@ -14,21 +14,23 @@ const initialServiceState = {
 };
 
 const serviceInfo = createReducer(initialServiceState, {
-  'service/login/pending': (_state, action) => ({ ...initialServiceState }),
-  'service/login/fulfilled': (_state, { payload }) => ({ ...payload.successObject }),
-  'service/login/rejected': (_state, _action) => ({ ...initialServiceState }),
+  'service/login/pending': () => ({ ...initialServiceState }),
+  'service/login/fulfilled': (_, { payload }) => ({ ...payload.successObject }),
+  'service/login/rejected': () => ({ ...initialServiceState }),
+
+  'service/logout/fulfilled': () => ({ ...initialServiceState }),
 });
 
 const isLoading = createReducer(false, {
-  'service/login/pending': (_state, _action) => true,
-  'service/login/fulfilled': (_state, _action) => false,
-  'service/login/rejected': (_state, _action) => false,
+  'service/login/pending': () => true,
+  'service/login/fulfilled': () => false,
+  'service/login/rejected': () => false,
 });
 
 const error = createReducer(null, {
-  'service/login/pending': (_state, _action) => null,
-  'service/login/fulfilled': (_state, _action) => null,
-  'service/login/rejected': (_state, action) => action?.error?.message,
+  'service/login/pending': () => null,
+  'service/login/fulfilled': () => null,
+  'service/login/rejected': (_, action) => action?.error?.message,
 });
 
 export const loginServiceReducer = combineReducers({

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import Avatar from 'modules/Avatar';
 import Burger from 'shared/components/Burger';
-import { isLoggined } from 'redux/auth/authSelectors';
+import { isLoggined, serviceName } from 'redux/auth/authSelectors';
 
 import img from '../../images/png/logo.png';
 
@@ -15,6 +15,7 @@ import RegistrationForm from '../RegistrationForm';
 
 const Header = () => {
   const isLogginedUser = useSelector(isLoggined); //should be red from Redux
+  const serviceNameProp = useSelector(serviceName);
 
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
@@ -78,7 +79,9 @@ const Header = () => {
             </a>
           </li>
         </ul>
-        <div className={s.avatarWrapper}>{isLogginedUser ? <Avatar /> : null}</div>
+        <div className={s.avatarWrapper}>
+          {isLogginedUser ? <Avatar userName={serviceNameProp} /> : null}
+        </div>
       </div>
 
       <div className="container">

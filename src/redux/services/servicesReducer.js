@@ -1,33 +1,34 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
 
 const entities = createReducer([], {
-  'services/get/pending': (_state, _action) => [],
-  'services/get/fulfilled': (_state, { payload }) => [...payload?.successObject],
-  'services/get/rejected': (state, _action) => state,
-  'service/signup/pending': (state, _action) => state,
+  'services/get/pending': () => [],
+  'services/get/fulfilled': (_, { payload }) => [...payload?.successObject],
+  'services/get/rejected': (state) => state,
+  'service/signup/pending': (state) => state,
   'service/signup/fulfilled': (state, { payload }) => [...state, ...payload?.successObject],
-  'service/signup/rejected': (state, _action) => state,
-  'service/delete/pending': (state, _action) => state,
-  'service/delete/fulfilled': (_state, action) => {
-    console.log(action);
+  'service/signup/rejected': (state) => state,
+  'service/delete/pending': (state) => state,
+  'service/delete/fulfilled': (_state, { payload }) => {
+    // const { }
+    console.log(payload);
   },
-  'service/delete/rejected': (state, _action) => state,
+  'service/delete/rejected': (state) => state,
 });
 
 const isLoading = createReducer(false, {
-  'services/get/pending': (_state, _action) => true,
-  'services/get/fulfilled': (_state, _action) => false,
-  'services/get/rejected': (_state, _action) => false,
-  'service/signup/pending': (_state, _action) => true,
-  'service/signup/fulfilled': (_state, _action) => false,
-  'service/signup/rejected': (_state, _action) => false,
+  'services/get/pending': () => true,
+  'services/get/fulfilled': () => false,
+  'services/get/rejected': () => false,
+  'service/signup/pending': () => true,
+  'service/signup/fulfilled': () => false,
+  'service/signup/rejected': () => false,
 });
 
 const error = createReducer(null, {
-  'services/get/pending': (_state, _action) => null,
-  'services/get/rejected': (_state, action) => action?.error?.message,
-  'service/signup/pending': (_state, _action) => null,
-  'service/signup/rejected': (_state, action) => action?.error?.message,
+  'services/get/pending': () => null,
+  'services/get/rejected': (_, action) => action?.error?.message,
+  'service/signup/pending': () => null,
+  'service/signup/rejected': (_, action) => action?.error?.message,
 });
 
 export const servicesReducer = combineReducers({
