@@ -1,10 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as serviceAPI from 'API/services/servicesAPI';
 
-export const getWastePointsOperation = createAsyncThunk('wastePoints/get', async () => {
-  const response = await serviceAPI.getAllWastePoints();
-  return response.data;
-});
+export const getFilteredWastePointsOperation = createAsyncThunk(
+  'wastePoints/getFiltered',
+  async (filter = {}) => {
+    const response = await serviceAPI.getFilteredWastePoints(filter);
+    return response.data;
+  },
+);
 
 export const postWastePointOperation = createAsyncThunk(
   'wastePoint/post',
@@ -22,7 +25,7 @@ export const getWastePointByIdOperation = createAsyncThunk(
   },
 );
 
-export const getWastePointsByEcoServiceId = createAsyncThunk(
+export const getWastePointsByEcoServiceIdOperation = createAsyncThunk(
   'wastePointsByEcoServiceId/get',
   async (ecoServiceId) => {
     const response = await serviceAPI.getWastPointsByEcoServiceId(ecoServiceId);
