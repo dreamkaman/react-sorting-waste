@@ -4,8 +4,7 @@ import styles from './WasteTypesSlider.module.scss';
 import './WasteTypesSlider.css';
 
 import Slider from 'react-slick';
-/*import './slick.css';
-import './slick-theme.css';*/
+
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
