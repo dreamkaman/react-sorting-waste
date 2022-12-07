@@ -1,4 +1,4 @@
-import * as serviceAPI from 'API/services/servicesAPI';
+import * as serviceAPI from 'API/goeco/goecoAPI';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const loginServiceOperation = createAsyncThunk(

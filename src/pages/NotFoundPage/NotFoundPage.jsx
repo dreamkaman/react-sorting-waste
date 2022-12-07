@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import * as servicesOperations from 'redux/services/servicesOperations';
+import * as wastePointOperations from 'redux/wastePoints/wastePointsOperations';
 import * as authOperations from 'redux/auth/authOperations';
 
 import { Link } from 'react-router-dom';
@@ -26,7 +27,9 @@ const NotFoundPage = () => {
   function handleClick(ecoServiceObject) {
     // dispatch(servicesOperations.signupServiceOperation(ecoServiceObject));
     // dispatch(servicesOperations.getServicesOperation());
-    dispatch(servicesOperations.deleteServiceOperation(11));
+    // dispatch(servicesOperations.deleteServiceOperation(11));
+    // dispatch(wastePointOperations.getWastePointsOperation());
+    dispatch(wastePointOperations.getFilteredWastePointsOperation({ types: ['paper'] }));
     // dispatch(
     //   authOperations.loginServiceOperation({ email: 'testik1@gmail.com', password: 'Rhdkshn#01' }),
     // );
