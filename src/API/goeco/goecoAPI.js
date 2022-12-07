@@ -1,7 +1,16 @@
 import axios from 'axios';
 import * as paths from './paths';
 
-export const loginService = (email, password) => axios.post(paths.authURL, { email, password });
+export const loginService = (email, password) =>
+  axios.post(
+    paths.authURL,
+    { email, password },
+    {
+      headers: {
+        'content-type': 'text/json',
+      },
+    },
+  );
 
 export const signupService = (ecoServiceObject) =>
   axios.post(paths.ecoServiceURL, ecoServiceObject);
