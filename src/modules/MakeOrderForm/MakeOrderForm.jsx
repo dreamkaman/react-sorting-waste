@@ -1,4 +1,5 @@
 import ReactDom from 'react-dom';
+import { useEffect } from 'react';
 import styles from './MakeOrderForm.module.scss';
 import { Field, Form, Formik } from 'formik';
 import classnames from 'classnames';
@@ -32,6 +33,11 @@ const MakeOrderForm = ({setIsOpenOrder, service}) => {
       </div>
     );
   }
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return ()=> document.body.style.overflow = 'unset';
+  }, []);
 
   return ReactDom.createPortal(
     <>
