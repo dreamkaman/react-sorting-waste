@@ -3,8 +3,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const loginServiceOperation = createAsyncThunk(
   'service/login',
-  async ({ login, password }) => {
-    const response = await serviceAPI.loginService({ login, password });
+  async ({ email, password }) => {
+    const response = await serviceAPI.loginService(email, password);
     return response.data;
   },
 );
