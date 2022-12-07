@@ -47,6 +47,25 @@ export const getWastPointsByEcoServiceId = (ecoServiceId) => {
 };
 
 export const postWastePointRating = (feedback) => {
-  const { rating, comments } = feedback;
-  return axios.post(paths.ratingsURL, {});
+  //feedback is object { rating, comment, wasteId }
+  return axios.post(paths.ratingsURL, feedback);
+};
+
+export const getWastePointRating = (wasteId) => {
+  const path = paths.ratingsURL + `/waste/${wasteId}`;
+  return axios.get(path);
+};
+
+export const postOrder = (order) => {
+  return axios.post(paths.ordersURL, order);
+};
+
+export const patchOrder = (orderId, newStatus) => {
+  const path = paths.ordersURL + `/${orderId}/${newStatus}`;
+  return axios.patch(path);
+};
+
+export const getOrdersByEcoserviceId = (ecoserviceId) => {
+  const path = paths.ordersURL + `/${ecoserviceId}`;
+  return axios.get(path);
 };

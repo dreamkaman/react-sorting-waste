@@ -9,4 +9,4 @@ export const wastePointsURL = BASE_URL + 'goeco/waste';
 
 export const ratingsURL = BASE_URL + 'goeco/rating';
 
-export const ordersURL = BASE_URL + '';
+export const ordersURL = BASE_URL + 'goeco/order';
