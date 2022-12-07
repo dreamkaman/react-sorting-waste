@@ -151,7 +151,7 @@
             align-items: center;
 
             width: 50px;
-            height: 50px;
+            height: 52px;
 
             &:hover {
                 cursor: pointer;
@@ -165,7 +165,7 @@
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 940px) {
     .container {
         width: 290px;
 

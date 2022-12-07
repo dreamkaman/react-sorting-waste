@@ -1,4 +1,5 @@
 import ReactDom from 'react-dom';
+import { useEffect } from 'react';
 import styles from './AskQuestionForm.module.scss';
 import { Field, Form, Formik } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,6 +25,12 @@ const AskQuestionForm = ({setIsOpenQuestion, service}) => {
       </div>
     );
   }
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return ()=> document.body.style.overflow = 'unset';
+  }, []);
+
 
   return ReactDom.createPortal(
     <>

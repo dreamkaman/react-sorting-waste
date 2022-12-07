@@ -12,7 +12,6 @@
 
     .imageBlock {
 
-        height: 45vh;
         background-image: linear-gradient(rgba(58, 58, 58, 0.8), rgba(58, 58, 58, 0.8)), url('../../images/map/mapImage.png');
         background-size: cover;
         background-position: top center;
@@ -21,8 +20,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
-        padding-bottom: 70px;
 
         .title {
             font-family: 'Inter';
@@ -122,17 +119,12 @@
     
     .map {
         height: 80vh;
-        width: 85vw;
         max-width: 100%;
-        border: 10px solid white;
         padding-top: 0;
         
         display: flex;
         align-items: center;
         margin: 0 auto;
-
-        position: relative;
-        bottom: 6vw;
     }
 
     .infoWindow {
@@ -157,12 +149,24 @@
         width: 50px;
         font-size: 12px;
    }
+
    .navigation {
         gap: 5px;
    }
+
+   .imageBlock {
+        height: 200px;
+    
+        padding-bottom: 0;
+   }
+
+   .map {
+        width: 100%;
+        border-top: 10px solid white;
+    }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 940px) {
     .clear {
         width: 130px;
         font-size: 15px;
@@ -171,6 +175,21 @@
    .navigation {
         gap: 20px;
    }
+
+   .imageBlock {
+        height: 400px;
+
+        padding-bottom: 95px;
+    }
+
+   .map {
+        width: 85vw;
+
+        border: 10px solid white;
+
+        position: relative;
+        bottom: 110px;
+    }
 }
 
 
