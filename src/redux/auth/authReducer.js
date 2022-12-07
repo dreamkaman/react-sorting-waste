@@ -14,8 +14,8 @@ const initialServiceState = {
 };
 
 const serviceInfo = createReducer(initialServiceState, {
-  'service/login/pending': (_state, action) => {},
-  'service/login/fulfilled': (_state, action) => {},
+  'service/login/pending': (_state, action) => ({ ...initialServiceState }),
+  'service/login/fulfilled': (_state, { payload }) => ({ ...payload.successObject }),
   'service/login/rejected': (_state, _action) => ({ ...initialServiceState }),
 });
 

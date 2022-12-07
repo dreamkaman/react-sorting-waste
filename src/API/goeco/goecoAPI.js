@@ -7,7 +7,8 @@ export const loginService = (email, password) =>
     { email, password },
     {
       headers: {
-        'content-type': 'text/json',
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
       },
     },
   );

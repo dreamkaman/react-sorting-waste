@@ -41,6 +41,8 @@ const LoginForm = ({ onClose }) => {
         onSubmit={(values) => {
           console.log('submit', values);
           const { email, password } = values;
+          console.log(email);
+          console.log(password);
           dispatch(loginServiceOperation({ email, password }));
           onClose();
         }}
