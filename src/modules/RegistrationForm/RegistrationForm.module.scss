@@ -158,31 +158,39 @@
 
     }
 
-
-    button {
-      outline: none;
-      border: none;
-      transition-duration: 0.2s;
-
+    .groupButtons {
+      margin-top: 10px;
+      width: 100%;
       display: flex;
       justify-content: center;
-      align-items: center;
-      padding: 0 20px;
-      min-width: 160px;
-      height: 50px;
-      color: var(--font-light-color);
-      font-size: 16px;
-      font-weight: 400;
-      background-color: var(--font-main-color);
-      border-radius: 10px;
-    }
+      flex-flow: row wrap;
 
-    button:hover {
-      background-color: var(--font-secondary-color);
-    }
+      button {
+        outline: none;
+        border: none;
+        transition-duration: 0.2s;
 
-    button:active {
-      background-color: var(--font-header-line-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        min-width: 160px;
+        height: 50px;
+        color: var(--font-light-color);
+        font-size: 16px;
+        font-weight: 400;
+        background-color: var(--font-main-color);
+        border-radius: 10px;
+        margin: 10px;
+      }
+
+      button:hover {
+        background-color: var(--font-secondary-color);
+      }
+
+      button:active {
+        background-color: var(--font-header-line-color);
+      }
     }
   }
 }

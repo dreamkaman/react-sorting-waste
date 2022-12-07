@@ -258,7 +258,11 @@ const RegistrationForm = ({onClose}) => {
               </label>
             </div>
 
-            <button type="submit">Submit</button>
+            <div className={styles.groupButtons}>
+              <button type='submit'>Submit</button>
+              <button type='button' onClick={onClose}>Close</button>
+            </div>
+
           </Form>
         )}
       </Formik>
