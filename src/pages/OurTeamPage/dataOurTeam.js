@@ -11,45 +11,44 @@ import { v4 as randomId } from 'uuid';
 export const dataPeople = [
   {
     id: randomId(),
-    name: 'Ashkhen Gevorgyan',
-    image: AshkhenGevorgyan,
-    role: 'QA Engineer/Copywriter',
-  },
-  {
-    id: randomId(),
-    name: 'Babken Sargsyan',
-    image: BabkenSargsyan,
-    role: 'Back end developer',
-  },
-  {
-    id: randomId(),
     name: 'Anna Sargsyan',
     image: AnnaSargsyan,
     role: 'QA Engineer/Scrum Master',
   },
   {
     id: randomId(),
+    name: 'Babken Sargsyan',
+    image: BabkenSargsyan,
+    role: 'Backend developer',
+  },
+  {
+    id: randomId(),
+    name: 'Ashkhen Gevorgyan',
+    image: AshkhenGevorgyan,
+    role: 'QA Engineer/Copywriter',
+  },
+  {
+    id: randomId(),
     name: 'Volodymyr Riabushko',
     image: VolodymyrRiabushko,
-    role: 'Front end developer',
+    role: 'Frontend developer',
   },
   {
     id: randomId(),
     name: 'Tejaswini Yellayyagari',
     image: TejaswiniYellayyagari,
-    role: 'Back end developer',
+    role: 'Backend developer',
   },
   {
     id: randomId(),
     name: 'Andrii Tretiak',
     image: AndriiTretiak,
-    role: 'Front end developer',
+    role: 'Frontend developer',
   },
   {
     id: randomId(),
     name: 'Ihor Onishchenko',
     image: IhorOnishchenko,
-    role: 'Front end developer',
+    role: 'Frontend developer',
   },
-
 ];
