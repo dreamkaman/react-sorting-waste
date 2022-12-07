@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as serviceAPI from 'API/services/servicesAPI';
+import * as serviceAPI from 'API/goeco/goecoAPI';
 
 export const getServicesOperation = createAsyncThunk('services/get', async () => {
   const response = await serviceAPI.getServices();

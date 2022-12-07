@@ -53,7 +53,7 @@ const Header = () => {
   );
 
   return (
-    <header>
+    <header className={s.headerUnderline}>
       <div className={s.contacts}>
         <p className={s.text}>Have any questions?</p>
 

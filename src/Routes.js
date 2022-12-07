@@ -7,8 +7,6 @@ const HomePage = lazy(() => import('pages/HomePage'));
 const FindServicePage = lazy(() => import('pages/FindServicePage'));
 const AboutUsPage = lazy(() => import('pages/AboutUsPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
-/*const LoginPage = lazy(() => import('pages/LoginPage'));
-const SignUpPage = lazy(() => import('pages/SignUpPage'));*/
 const ProfileServicePage = lazy(() => import('pages/ProfileServicePage'));
 
 const MyRoutes = () => {
@@ -18,10 +16,6 @@ const MyRoutes = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/services" element={<FindServicePage />} />
         <Route path="/about" element={<AboutUsPage />} />
-
-        {/*<Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />*/}
-
         <Route
           path="/profile"
           element={
