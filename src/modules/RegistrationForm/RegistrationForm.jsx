@@ -7,7 +7,6 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Field, Form, Formik } from 'formik';
 import classnames from 'classnames';
 import * as Yup from 'yup';
-import { useEffect } from 'react';
 
 const validationSchema = Yup.object({
   company: Yup.string().required('Required'),
@@ -46,9 +45,6 @@ const ErrorField = (props) => {
 
 const RegistrationForm = ({ onClose }) => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getServicesOperation());
-  }, [dispatch]);
 
   return (
     <div className={styles.formContainer}>
