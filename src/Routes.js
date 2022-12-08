@@ -10,6 +10,7 @@ const FindServicePage = lazy(() => import('pages/FindServicePage'));
 const AboutUsPage = lazy(() => import('pages/AboutUsPage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 const ProfileServicePage = lazy(() => import('pages/ProfileServicePage'));
+const RegisterWastePage = lazy(() => import('pages/RegisterWastePage'));
 
 const MyRoutes = () => {
   return (
@@ -26,6 +27,14 @@ const MyRoutes = () => {
               <ProfileServicePage />
               <OrdersBoardPage />
             </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/waste"
+          element={
+            // <PrivateRoutes>
+            <RegisterWastePage />
+            // </PrivateRoutes>
           }
         />
         <Route path="*" element={<NotFoundPage />} />
