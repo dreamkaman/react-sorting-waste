@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import {} from 'redux/orders/orderOperations';
+// import { } from 'redux/orders/orderOperations';
+import { getServicesOperation } from 'redux/services/servicesOperations';
 
 import { ordersArray } from 'redux/orders/orderSelectors';
 import { ecoServicesArray } from 'redux/services/servicesSelectors';

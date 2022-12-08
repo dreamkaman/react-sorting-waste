@@ -23,16 +23,22 @@ const Avatar = ({ userName = 'anonymous' }) => {
   const contextMenu = (
     <ul className={s.contextMenu} onClick={() => setIsVisible(!isVisible)}>
       <li className={s.contextMenuItem}>
-        <Link to="/dashboard">Orders dashboard</Link>
+        <Link to="/dashboard" className={s.contextMenuItemLink}>
+          Orders dashboard
+        </Link>
       </li>
       <li className={s.contextMenuItem}>
-        <Link to="/waste">Add waste point</Link>
+        <Link to="/waste" className={s.contextMenuItemLink}>
+          Add waste point
+        </Link>
       </li>
       <li className={s.contextMenuItem}>
-        <Link to="/profile">Edit profile</Link>
+        <Link to="/profile" className={s.contextMenuItemLink}>
+          Edit profile
+        </Link>
       </li>
-      <li className={s.contextMenuItem}>
-        <Link to="/" onClick={() => onLogOut()}>
+      <li className={s.contextMenuItem} onClick={() => onLogOut()}>
+        <Link to="/" className={s.contextMenuItemLink}>
           Logout
         </Link>
       </li>

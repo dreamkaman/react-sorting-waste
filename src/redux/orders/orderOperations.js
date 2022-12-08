@@ -1,6 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as goecoAPI from 'API/goeco/goecoAPI';
 
+export const getOrdersOperation = createAsyncThunk('orders/get', async () => {
+  const response = await goecoAPI.getOrders();
+  return response.data;
+});
+
 export const postOrderOperation = createAsyncThunk('order/post', async (order) => {
   const response = await goecoAPI.postOrder(order);
   return response.data;
