@@ -1,20 +1,32 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
 
 const entities = createReducer([], {
-  'wastePoints/getFiltered/pending': (_state, _action) => [],
-  'wastePoints/getFiltered/fulfilled': (_state, { payload }) => [...payload?.successObject],
-  'wastePoints/getFiltered/rejected': (state, _action) => state,
+  'wastePoints/getFiltered/pending': () => [],
+  'wastePoints/getFiltered/fulfilled': (_, { payload }) => [...payload?.successObject],
+  'wastePoints/getFiltered/rejected': (state) => state,
+  'wastePoint/post/pending': (state) => state,
+  'wastePoint/post/fulfilled': (state, { payload }) => [...state, payload?.successObject],
+  'wastePoint/post/rejected': (state) => state,
 });
 
 const isLoading = createReducer(false, {
-  'wastePoints/getFiltered/pending': (_state, _action) => true,
-  'wastePoints/getFiltered/fulfilled': (_state, _action) => false,
-  'wastePoints/getFiltered/rejected': (_state, _action) => false,
+  'wastePoints/getFiltered/pending': () => true,
+  'wastePoints/getFiltered/fulfilled': () => false,
+  'wastePoints/getFiltered/rejected': () => false,
+
+  'wastePoint/post/pending': () => true,
+  'wastePoint/post/fulfilled': () => false,
+  'wastePoint/post/rejected': () => false,
 });
 
 const error = createReducer(null, {
-  'wastePoints/getFiltered/pending': (_state, _action) => null,
-  'wastePoints/getFiltered/rejected': (_state, action) => action?.error?.message,
+  'wastePoints/getFiltered/pending': () => null,
+  'wastePoints/getFiltered/fulfilled': () => null,
+  'wastePoints/getFiltered/rejected': (_, action) => action?.error?.message,
+
+  'wastePoint/post/pending': () => null,
+  'wastePoint/post/fulfilled': () => null,
+  'wastePoint/post/rejected': () => (_, action) => action?.error?.message,
 });
 
 export const wastPointsReducer = combineReducers({

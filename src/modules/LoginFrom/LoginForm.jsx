@@ -1,4 +1,6 @@
 import { Field, Form, Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { loginServiceOperation } from 'redux/auth/authOperations';
 
 import styles from './LoginForm.module.scss';
 
@@ -9,18 +11,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import * as Yup from 'yup';
 
-
 const validationSchema = Yup.object({
-  email: Yup.string().required('Required').email('Invalid email. Example: \'example@mail.com\''),
+  email: Yup.string().required('Required').email("Invalid email. Example: 'example@mail.com'"),
   password: Yup.string()
     .required('Required')
     .matches(
       /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g,
-      'Invalid password. Example:\'a0A#ccsxcvx\'',
+      "Invalid password. Example:'a0A#ccsxcvx'",
     ),
 });
 
 const LoginForm = ({ onClose }) => {
+  const dispatch = useDispatch();
   return (
     <div className={styles.formContainer}>
       <div className={styles.headerContainer} style={{ backgroundImage: `url(${image})` }}>
@@ -35,13 +37,13 @@ const LoginForm = ({ onClose }) => {
           toggle: false,
         }}
         validationSchema={validationSchema}
-
         // TODO submit button ====================
         onSubmit={(values) => {
-          console.log('submit', values);
+          const { email, password } = values;
+          console.log(email);
+          dispatch(loginServiceOperation({ email, password }));
           onClose();
         }}
-
       >
         {({ values, errors, touched }) => (
           <Form>
@@ -57,9 +59,9 @@ const LoginForm = ({ onClose }) => {
                 className={classnames(styles.field, {
                   [styles.errorField]: errors.email && touched.email,
                 })}
-                name='email'
-                type='email'
-                placeholder='Enter email'
+                name="email"
+                type="email"
+                placeholder="Enter email"
               />
             </div>
 
@@ -83,9 +85,9 @@ const LoginForm = ({ onClose }) => {
                 className={classnames(styles.field, {
                   [styles.errorField]: errors.password && touched.password,
                 })}
-                name='password'
+                name="password"
                 type={values.toggle ? 'text' : 'password'}
-                placeholder='Enter password'
+                placeholder="Enter password"
               />
             </div>
 
@@ -99,16 +101,18 @@ const LoginForm = ({ onClose }) => {
 
             <div className={styles.toolsContainer}>
               <label>
-                <Field type='checkbox' name='toggle' />
+                <Field type="checkbox" name="toggle" />
                 Show password
               </label>
 
-              <a href='#'>Forgot Password?</a>
+              <a href="#">Forgot Password?</a>
             </div>
 
             <div className={styles.groupButtons}>
-              <button type='submit'>Submit</button>
-              <button type='button' onClick={onClose}>Close</button>
+              <button type="submit">Submit</button>
+              <button type="button" onClick={onClose}>
+                Close
+              </button>
             </div>
           </Form>
         )}

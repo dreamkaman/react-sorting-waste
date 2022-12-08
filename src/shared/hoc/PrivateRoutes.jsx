@@ -1,12 +1,14 @@
 import { useLocation, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { isLoggined } from 'redux/auth/authSelectors';
 
 const PrivateRoutes = ({ children }) => {
   const location = useLocation();
-  const auth = false; //useAuth - custom hook
+  const auth = useSelector(isLoggined);
   if (!auth) {
     return <Navigate to="/login" state={{ from: location }} />;
   }
-  return <div></div>;
+  return children;
 };
 
 export { PrivateRoutes };
