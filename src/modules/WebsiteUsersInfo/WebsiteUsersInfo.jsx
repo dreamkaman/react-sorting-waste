@@ -14,15 +14,15 @@ import styles from './WebsiteUsersInfo.module.scss';
 const WebsiteUsersInfo = () => {
   const dispatch = useDispatch();
 
+  const statCustomers = useSelector(ordersArray)?.length;
+  const statEcoServices = useSelector(ecoServicesArray)?.length;
+  const statWastPoints = useSelector(wastePointsArray)?.length;
+
   useEffect(() => {
     dispatch(getServicesOperation());
     dispatch(getOrdersOperation());
     dispatch(getFilteredWastePointsOperation());
   }, [dispatch]);
-
-  const statCustomers = useSelector(ordersArray)?.length;
-  const statEcoServices = useSelector(ecoServicesArray)?.length;
-  const statWastPoints = useSelector(wastePointsArray)?.length;
 
   return (
     <section className={styles.wrap}>
