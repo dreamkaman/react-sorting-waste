@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { signupServiceOperation, getServicesOperation } from 'redux/services/servicesOperations';
+import { signupServiceOperation } from 'redux/services/servicesOperations';
 import styles from './RegistrationForm.module.scss';
 import image from '../../images/backgroundForm.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

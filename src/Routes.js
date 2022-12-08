@@ -2,7 +2,8 @@ import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { PrivateRoutes } from 'shared/hoc/PrivateRoutes';
-import OurTeamPage from './pages/OurTeamPage';
+import OurTeamPage from 'pages/OurTeamPage';
+import OrdersBoardPage from 'pages/OrdersBoardPage';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const FindServicePage = lazy(() => import('pages/FindServicePage'));
@@ -23,6 +24,7 @@ const MyRoutes = () => {
           element={
             <PrivateRoutes>
               <ProfileServicePage />
+              <OrdersBoardPage />
             </PrivateRoutes>
           }
         />
