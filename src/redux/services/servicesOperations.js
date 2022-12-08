@@ -14,6 +14,31 @@ export const signupServiceOperation = createAsyncThunk(
   },
 );
 
+export const changeServiceInfoOperation = createAsyncThunk(
+  'service/changeInfo',
+  async (ecoServiceObject) => {
+    const response = await serviceAPI.signupService(ecoServiceObject);
+    return response.data;
+  },
+);
+
+export const changePasswordServiceOperation = createAsyncThunk(
+  'service/changePassword',
+  async (id, { oldPassword, newPassword, confirmPassword }) => {
+    const response = await serviceAPI.signupService(id, {
+      oldPassword,
+      newPassword,
+      confirmPassword,
+    });
+    return response.data;
+  },
+);
+
+export const getServiceByIdOperation = createAsyncThunk('service/getById', async (ecoServiceId) => {
+  const response = await serviceAPI.getServiceById(ecoServiceId);
+  return response.data;
+});
+
 export const deleteServiceOperation = createAsyncThunk('service/delete', async (ecoServiceId) => {
   const response = await serviceAPI.deleteService(ecoServiceId);
   return response.data;

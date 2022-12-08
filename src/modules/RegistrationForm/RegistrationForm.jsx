@@ -1,3 +1,5 @@
+import { useDispatch } from 'react-redux';
+import { signupServiceOperation, getServicesOperation } from 'redux/services/servicesOperations';
 import styles from './RegistrationForm.module.scss';
 import image from '../../images/backgroundForm.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -5,6 +7,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Field, Form, Formik } from 'formik';
 import classnames from 'classnames';
 import * as Yup from 'yup';
+import { useEffect } from 'react';
 
 const validationSchema = Yup.object({
   company: Yup.string().required('Required'),
@@ -29,7 +32,7 @@ const validationSchema = Yup.object({
     .oneOf([Yup.ref('password'), null], 'Passwords must match'),
 });
 
- const ErrorField = (props) => {
+const ErrorField = (props) => {
   return (
     <div
       className={classnames(styles.errorMessage, {
@@ -39,9 +42,14 @@ const validationSchema = Yup.object({
       {props?.errors}
     </div>
   );
-}
+};
 
-const RegistrationForm = ({onClose}) => {
+const RegistrationForm = ({ onClose }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getServicesOperation());
+  }, [dispatch]);
+
   return (
     <div className={styles.formContainer}>
       <div className={styles.headerContainer} style={{ backgroundImage: `url(${image})` }}>
@@ -64,13 +72,37 @@ const RegistrationForm = ({onClose}) => {
           toggle: false,
         }}
         validationSchema={validationSchema}
-
         // TODO submit button ====================
         onSubmit={(values) => {
           console.log('submit', values);
+          const {
+            company: name,
+            email,
+            password,
+            street: address,
+            phone: phoneNumber,
+            city,
+            country,
+          } = values;
+
+          const body = {
+            name,
+            email,
+            password,
+            address,
+            phoneNumber,
+            workHours: '9.00-18.00',
+            photo: 'withoutPhoto',
+            city,
+            country,
+            free: true,
+            delivery: true,
+          };
+
+          dispatch(signupServiceOperation(body));
+
           onClose();
         }}
-
       >
         {({ values, errors, touched }) => (
           <Form>
@@ -91,7 +123,7 @@ const RegistrationForm = ({onClose}) => {
                 placeholder="Enter company name"
               />
             </div>
-            <ErrorField errors={errors.company} touched={touched.company}/>
+            <ErrorField errors={errors.company} touched={touched.company} />
 
             <div className={styles.fieldsContainer}>
               <label
@@ -110,7 +142,7 @@ const RegistrationForm = ({onClose}) => {
                 placeholder="Enter email"
               />
             </div>
-            <ErrorField errors={errors.email} touched={touched.email}/>
+            <ErrorField errors={errors.email} touched={touched.email} />
 
             <div className={styles.fieldsContainer}>
               <label
@@ -129,8 +161,7 @@ const RegistrationForm = ({onClose}) => {
                 placeholder="Enter phone"
               />
             </div>
-            <ErrorField errors={errors.phone} touched={touched.phone}/>
-
+            <ErrorField errors={errors.phone} touched={touched.phone} />
 
             <div className={styles.fieldsContainer}>
               <label
@@ -149,7 +180,7 @@ const RegistrationForm = ({onClose}) => {
                 placeholder="Enter country"
               />
             </div>
-            <ErrorField errors={errors.country} touched={touched.country}/>
+            <ErrorField errors={errors.country} touched={touched.country} />
 
             <div className={styles.fieldsContainer}>
               <label
@@ -168,8 +199,7 @@ const RegistrationForm = ({onClose}) => {
                 placeholder="Enter city"
               />
             </div>
-            <ErrorField errors={errors.city} touched={touched.city}/>
-
+            <ErrorField errors={errors.city} touched={touched.city} />
 
             <div className={styles.fieldsContainer}>
               <label
@@ -188,7 +218,7 @@ const RegistrationForm = ({onClose}) => {
                 placeholder="Enter street"
               />
             </div>
-            <ErrorField errors={errors.street} touched={touched.street}/>
+            <ErrorField errors={errors.street} touched={touched.street} />
 
             <div className={styles.fieldsContainer}>
               <label className={classnames(styles.label)}>Type of waste</label>
@@ -230,7 +260,7 @@ const RegistrationForm = ({onClose}) => {
                 placeholder="Enter password"
               />
             </div>
-            <ErrorField errors={errors.password} touched={touched.password}/>
+            <ErrorField errors={errors.password} touched={touched.password} />
 
             <div className={styles.fieldsContainer}>
               <label
@@ -249,7 +279,7 @@ const RegistrationForm = ({onClose}) => {
                 placeholder="Enter password"
               />
             </div>
-            <ErrorField errors={errors.confirmPassword} touched={touched.confirmPassword}/>
+            <ErrorField errors={errors.confirmPassword} touched={touched.confirmPassword} />
 
             <div className={styles.toolsContainer}>
               <label>
@@ -259,10 +289,11 @@ const RegistrationForm = ({onClose}) => {
             </div>
 
             <div className={styles.groupButtons}>
-              <button type='submit'>Submit</button>
-              <button type='button' onClick={onClose}>Close</button>
+              <button type="submit">Submit</button>
+              <button type="button" onClick={onClose}>
+                Close
+              </button>
             </div>
-
           </Form>
         )}
       </Formik>
