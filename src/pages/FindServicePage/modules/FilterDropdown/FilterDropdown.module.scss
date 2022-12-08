@@ -76,7 +76,7 @@
                     cursor: pointer;
                 }
                 &:checked {
-                    accent-color: #1E3226;
+                    accent-color: var(--font-main-color);
                 }
             }
         }
@@ -84,6 +84,8 @@
         .distance {
             width: 100%;
             box-sizing: border-box;
+
+            accent-color: var(--font-main-color);
         }
 
         .apply {

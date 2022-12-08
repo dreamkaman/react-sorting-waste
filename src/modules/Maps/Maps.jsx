@@ -65,8 +65,6 @@ function Map() {
 
     /** @type React.MutableRefObject<HTMLInputElement> */
     const originRef = useRef();
-    /** @type React.MutableRefObject<HTMLInputElement> */
-    const destiantionRef = useRef();
 
     const clearRoute = async () => {
         setDistance('');

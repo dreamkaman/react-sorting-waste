@@ -151,9 +151,9 @@
               }
         
         
-              .errorField {
-                color: var(--font-error-color);
-                border-bottom: 1px solid var(--font-error-color);
+            .errorField {
+            color: var(--font-error-color);
+            border-bottom: 1px solid var(--font-error-color);
             }
 
             .errorMessage {
@@ -164,8 +164,8 @@
             }
           
             .errorMessageActive {
-            color: var(--font-error-color);
-            opacity: 1;
+                color: var(--font-error-color);
+                opacity: 1;
             }
         }
 
