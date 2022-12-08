@@ -9,9 +9,9 @@ import classnames from 'classnames';
 import * as Yup from 'yup';
 
 const validationSchema = Yup.object({
-  company: Yup.string().required('Required'),
-  email: Yup.string().required('Required').email("Invalid email. Example: 'example@mail.com'"),
-  phone: Yup.string()
+  name: Yup.string().required('Required'),
+  email: Yup.string().required('Required').email('Invalid email. Example: \'example@mail.com\''),
+  phoneNumber: Yup.string()
     .required('Required')
     .matches(
       /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)$/,
@@ -19,12 +19,14 @@ const validationSchema = Yup.object({
     ),
   country: Yup.string().required('Required'),
   city: Yup.string().required('Required'),
-  street: Yup.string().required('Required'),
+  address: Yup.string().required('Required'),
+  timeOpen: Yup.string().required('Required'),
+  timeClose: Yup.string().required('Required'),
   password: Yup.string()
     .required('Required')
     .matches(
       /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g,
-      "Invalid password. Example:'a0A#ccsxcvx'",
+      'Invalid password. Example:\'a0A#ccsxcvx\'',
     ),
   confirmPassword: Yup.string()
     .required('Required')
@@ -55,48 +57,38 @@ const RegistrationForm = ({ onClose }) => {
 
       <Formik
         initialValues={{
-          company: '',
+          name: '',
           email: '',
-          phone: '',
+          phoneNumber: '',
           country: '',
           city: '',
-          street: '',
-          waste: 'Paper',
-          option: 'Free',
+          address: '',
+          timeOpen: '',
+          timeClose: '',
           password: '',
           confirmPassword: '',
           toggle: false,
         }}
         validationSchema={validationSchema}
-        // TODO submit button ====================
+
         onSubmit={(values) => {
-          console.log('submit', values);
           const {
-            company: name,
-            email,
-            password,
-            street: address,
-            phone: phoneNumber,
-            city,
-            country,
+            timeOpen,
+            timeClose,
+            confirmPassword,
+            toggle,
+            ...data
           } = values;
 
           const body = {
-            name,
-            email,
-            password,
-            address,
-            phoneNumber,
-            workHours: '9.00-18.00',
+            ...data,
+            workHours: timeOpen+'-'+timeClose,
             photo: 'withoutPhoto',
-            city,
-            country,
             free: true,
             delivery: true,
           };
 
           dispatch(signupServiceOperation(body));
-
           onClose();
         }}
       >
@@ -105,21 +97,21 @@ const RegistrationForm = ({ onClose }) => {
             <div className={styles.fieldsContainer}>
               <label
                 className={classnames(styles.label, {
-                  [styles.errorLabel]: errors.company && touched.company,
+                  [styles.errorLabel]: errors.name && touched.name,
                 })}
               >
                 Company name
               </label>
               <Field
                 className={classnames(styles.field, {
-                  [styles.errorField]: errors.company && touched.company,
+                  [styles.errorField]: errors.name && touched.name,
                 })}
-                name="company"
-                type="text"
-                placeholder="Enter company name"
+                name='name'
+                type='text'
+                placeholder='Enter company name'
               />
             </div>
-            <ErrorField errors={errors.company} touched={touched.company} />
+            <ErrorField errors={errors.name} touched={touched.name} />
 
             <div className={styles.fieldsContainer}>
               <label
@@ -133,9 +125,9 @@ const RegistrationForm = ({ onClose }) => {
                 className={classnames(styles.field, {
                   [styles.errorField]: errors.email && touched.email,
                 })}
-                name="email"
-                type="email"
-                placeholder="Enter email"
+                name='email'
+                type='email'
+                placeholder='Enter email'
               />
             </div>
             <ErrorField errors={errors.email} touched={touched.email} />
@@ -143,21 +135,21 @@ const RegistrationForm = ({ onClose }) => {
             <div className={styles.fieldsContainer}>
               <label
                 className={classnames(styles.label, {
-                  [styles.errorLabel]: errors.phone && touched.phone,
+                  [styles.errorLabel]: errors.phoneNumber && touched.phoneNumber,
                 })}
               >
                 Phone
               </label>
               <Field
                 className={classnames(styles.field, {
-                  [styles.errorField]: errors.phone && touched.phone,
+                  [styles.errorField]: errors.phoneNumber && touched.phoneNumber,
                 })}
-                name="phone"
-                type="text"
-                placeholder="Enter phone"
+                name='phoneNumber'
+                type='text'
+                placeholder='Enter phone'
               />
             </div>
-            <ErrorField errors={errors.phone} touched={touched.phone} />
+            <ErrorField errors={errors.phoneNumber} touched={touched.phoneNumber} />
 
             <div className={styles.fieldsContainer}>
               <label
@@ -171,9 +163,9 @@ const RegistrationForm = ({ onClose }) => {
                 className={classnames(styles.field, {
                   [styles.errorField]: errors.country && touched.country,
                 })}
-                name="country"
-                type="country"
-                placeholder="Enter country"
+                name='country'
+                type='text'
+                placeholder='Enter country'
               />
             </div>
             <ErrorField errors={errors.country} touched={touched.country} />
@@ -190,9 +182,9 @@ const RegistrationForm = ({ onClose }) => {
                 className={classnames(styles.field, {
                   [styles.errorField]: errors.city && touched.city,
                 })}
-                name="city"
-                type="city"
-                placeholder="Enter city"
+                name='city'
+                type='text'
+                placeholder='Enter city'
               />
             </div>
             <ErrorField errors={errors.city} touched={touched.city} />
@@ -200,23 +192,79 @@ const RegistrationForm = ({ onClose }) => {
             <div className={styles.fieldsContainer}>
               <label
                 className={classnames(styles.label, {
-                  [styles.errorLabel]: errors.street && touched.street,
+                  [styles.errorLabel]: errors.address && touched.address,
                 })}
               >
                 Street
               </label>
               <Field
                 className={classnames(styles.field, {
-                  [styles.errorField]: errors.street && touched.street,
+                  [styles.errorField]: errors.address && touched.address,
                 })}
-                name="street"
-                type="street"
-                placeholder="Enter street"
+                name='address'
+                type='text'
+                placeholder='Enter street'
               />
             </div>
-            <ErrorField errors={errors.street} touched={touched.street} />
+            <ErrorField errors={errors.address} touched={touched.address} />
 
+
+            {/*<div className={styles.timeFieldsContainer}>*/}
             <div className={styles.fieldsContainer}>
+              <label
+                className={classnames(styles.label, {
+                  [styles.errorLabel]: errors.timeOpen && touched.timeOpen,
+                })}
+              >
+                Work Hours
+              </label>
+              <div className={styles.timeFieldsContainer}>
+                <div className={styles.timeContainer}>
+                  <small>Open:</small>
+                  <Field
+                    className={classnames(styles.field, styles.timeField, {
+                      [styles.errorField]: errors.timeOpen && touched.timeOpen,
+                    })}
+                    name='timeOpen'
+                    type='time'
+                  />
+                </div>
+                <div className={styles.timeContainer}>
+                  <small>Close:</small>
+                  <Field
+                    className={classnames(styles.field, styles.timeField, {
+                      [styles.errorField]: errors.timeClose && touched.timeClose,
+                    })}
+                    name='timeClose'
+                    type='time'
+                  />
+                </div>
+              </div>
+            </div>
+            <ErrorField errors={errors.timeOpen || errors.timeClose}
+                        touched={touched.timeOpen || touched.timeClose} />
+
+            {/*<div className={styles.fieldsContainer}>
+                <label
+                  className={classnames(styles.label, {
+                    [styles.errorLabel]: errors.timeClose && touched.timeClose,
+                  })}
+                >
+                  Work Hours
+                </label>
+                <Field
+                  className={classnames(styles.field, {
+                    [styles.errorField]: errors.timeClose && touched.timeClose,
+                  })}
+                  name='timeClose'
+                  type='time'
+                />
+              </div>*/}
+            {/*<ErrorField errors={errors.timeClose} touched={touched.timeClose} />*/}
+
+            {/*</div>*/}
+
+            {/*<div className={styles.fieldsContainer}>
               <label className={classnames(styles.label)}>Type of waste</label>
 
               <Field name="waste" as="select" className={classnames(styles.field)}>
@@ -227,9 +275,9 @@ const RegistrationForm = ({ onClose }) => {
                 <option value="Electric Supply elements">Electric Supply elements</option>
               </Field>
             </div>
-            <ErrorField />
+            <ErrorField />*/}
 
-            <div className={styles.fieldsContainer}>
+            {/*<div className={styles.fieldsContainer}>
               <label className={classnames(styles.label)}>Delivery condition option</label>
 
               <Field name="option" as="select" className={classnames(styles.field)}>
@@ -237,7 +285,7 @@ const RegistrationForm = ({ onClose }) => {
                 <option value="Paid">Paid</option>
               </Field>
             </div>
-            <ErrorField />
+            <ErrorField />*/}
 
             <div className={styles.fieldsContainer}>
               <label
@@ -251,9 +299,9 @@ const RegistrationForm = ({ onClose }) => {
                 className={classnames(styles.field, {
                   [styles.errorField]: errors.password && touched.password,
                 })}
-                name="password"
+                name='password'
                 type={values.toggle ? 'text' : 'password'}
-                placeholder="Enter password"
+                placeholder='Enter password'
               />
             </div>
             <ErrorField errors={errors.password} touched={touched.password} />
@@ -270,23 +318,23 @@ const RegistrationForm = ({ onClose }) => {
                 className={classnames(styles.field, {
                   [styles.errorField]: errors.confirmPassword && touched.confirmPassword,
                 })}
-                name="confirmPassword"
+                name='confirmPassword'
                 type={values.toggle ? 'text' : 'password'}
-                placeholder="Enter password"
+                placeholder='Enter password'
               />
             </div>
             <ErrorField errors={errors.confirmPassword} touched={touched.confirmPassword} />
 
             <div className={styles.toolsContainer}>
               <label>
-                <Field type="checkbox" name="toggle" />
+                <Field type='checkbox' name='toggle' />
                 Show password
               </label>
             </div>
 
             <div className={styles.groupButtons}>
-              <button type="submit">Submit</button>
-              <button type="button" onClick={onClose}>
+              <button type='submit'>Submit</button>
+              <button type='button' onClick={onClose}>
                 Close
               </button>
             </div>
