@@ -12,7 +12,7 @@ export const patchOrderOperation = createAsyncThunk('order/patch', async (orderI
 });
 
 export const getOrdersByEcoserviceIdOperation = createAsyncThunk(
-  'orders/get',
+  'ordersByEcoServiceId/get',
   async (ecoserviceId) => {
     const response = await goecoAPI.getOrdersByEcoserviceId(ecoserviceId);
     return response.data;

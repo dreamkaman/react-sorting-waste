@@ -1,9 +1,9 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
 
 const entities = createReducer([], {
-  'orders/get/pending': () => [],
-  'orders/get/fulfilled': (_state, { payload }) => [...payload?.successObject],
-  'orders/get/rejected': (state, _) => state,
+  'ordersByEcoServiceId/pending': () => [],
+  'ordersByEcoServiceId/fulfilled': (_state, { payload }) => [...payload?.successObject],
+  'ordersByEcoServiceId/rejected': (state, _) => state,
   'order/post/pending': (state, _action) => state,
   'order/post/fulfilled': (state, { payload }) => [...state, payload?.successObject],
   'order/post/rejected': (state, _action) => state,
@@ -19,9 +19,9 @@ const entities = createReducer([], {
 });
 
 const isLoading = createReducer(false, {
-  'orders/get/pending': () => true,
-  'orders/get/fulfilled': () => false,
-  'orders/get/rejected': () => false,
+  'ordersByEcoServiceId/pending': () => true,
+  'ordersByEcoServiceId/fulfilled': () => false,
+  'ordersByEcoServiceId/rejected': () => false,
   'order/post/pending': () => true,
   'order/post/fulfilled': () => false,
   'order/post/rejected': () => false,
@@ -31,9 +31,9 @@ const isLoading = createReducer(false, {
 });
 
 const error = createReducer(null, {
-  'orders/get/pending': () => null,
-  'orders/get/fulfilled': () => null,
-  'orders/get/rejected': (_, action) => action?.error?.message,
+  'ordersByEcoServiceId/pending': () => null,
+  'ordersByEcoServiceId/fulfilled': () => null,
+  'ordersByEcoServiceId/rejected': (_, action) => action?.error?.message,
   'order/post/pending': () => null,
   'order/post/fulfilled': () => null,
   'order/post/rejected': () => (_, action) => action?.error?.message,

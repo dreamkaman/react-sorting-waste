@@ -25,6 +25,13 @@ const MyRoutes = () => {
           element={
             <PrivateRoutes>
               <ProfileServicePage />
+            </PrivateRoutes>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoutes>
               <OrdersBoardPage />
             </PrivateRoutes>
           }
