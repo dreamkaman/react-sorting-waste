@@ -25,7 +25,16 @@ const OrdersBoardPage = () => {
         <td className={s.tableCeil}>{'-'}</td>
         <td className={s.tableCeil}>{order.customerEmail}</td>
         <td className={s.tableCeil}>{order.description}</td>
-        <td className={s.tableCeil}>{order.status}</td>
+        <td className={s.tableCeil}>
+          <select name="cars" id="cars" value={order.status}>
+            <option value="OPEN">OPEN</option>
+            <option value="OPEN">OPEN</option>
+            <option value="REVIEW">REVIEW</option>
+            <option value="APPROVED">APPROVED</option>
+            <option value="REJECTED">REJECTED</option>
+            <option value="FULFILLED ">FULFILLED </option>
+          </select>
+        </td>
       </tr>
     );
   });
