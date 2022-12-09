@@ -1,11 +1,15 @@
 import ReactDom from 'react-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+import { useDispatch } from 'react-redux';
+import { getServiceByIdOperation } from 'redux/services/servicesOperations';
+import { postOrderOperation } from 'redux/orders/orderOperations';
+
 import styles from './MakeOrderForm.module.scss';
 import { Field, Form, Formik } from 'formik';
 import classnames from 'classnames';
 import * as Yup from 'yup';
 
-const MakeOrderForm = ({setIsOpenOrder, service}) => {
 
   const validationSchema = Yup.object({
     name: Yup.string().required('Required'),
@@ -19,7 +23,7 @@ const MakeOrderForm = ({setIsOpenOrder, service}) => {
     city: Yup.string().required('Required'),
     street: Yup.string().required('Required'),
     country: Yup.string().required('Required'),
-    quantity: Yup.string().required('Required'),
+    description: Yup.string().required('Required'),
   });
   
    const ErrorField = (props) => {
@@ -34,10 +38,62 @@ const MakeOrderForm = ({setIsOpenOrder, service}) => {
     );
   }
 
+const MakeOrderForm = ({setIsOpenOrder, wastepoint}) => {
+
+  const dispatch = useDispatch();
+
+  const [ service, setService] = useState();
+  const [ checked, setChecked ] = useState([]);
+  const [ selectType, setSelectType ] = useState(false)
+
+  const fetchApi = async () => {
+    const requestService = await dispatch(getServiceByIdOperation(wastepoint.ecoServiceId));
+    setService(requestService.payload.successObject);
+  }
+
   useEffect(() => {
+    fetchApi();
+
     document.body.style.overflow = 'hidden';
     return ()=> document.body.style.overflow = 'unset';
+
   }, []);
+
+  useEffect(() => {
+    if(checked.length) {
+      setSelectType(false);
+    }
+  }, [checked]);
+
+  const handleToggle = (value) => {
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
+    if (currentIndex === -1) {
+        newChecked.push(value)
+    } else {
+        newChecked.splice(currentIndex, 1)
+    }
+    setChecked(newChecked);
+  }
+
+  const handleSubmit = (values) => {
+    if(!checked.length) {
+      setSelectType(true);
+      return;
+    }
+    setSelectType(false);
+    const requestObject = {
+      "orderId": 1,
+      "ecoServiceId": wastepoint.ecoServiceId,
+      "wasteId": wastepoint.id,
+      "customerName": values.name,
+      "customerEmail": values.email,
+      "description": values.description,
+      "status": "OPEN"
+    }
+
+    dispatch(postOrderOperation(requestObject));
+  }
 
   return ReactDom.createPortal(
     <>
@@ -50,17 +106,17 @@ const MakeOrderForm = ({setIsOpenOrder, service}) => {
             city: '',
             street: '',
             country: '',
-            quantity: '',
+            description: '',
           }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
-            console.log(values);
+            handleSubmit(values);
           }}
         >
           {({ values, errors, touched }) => (
           <Form className={styles.wrap}>
             <div className={styles.text}>
-              <h2>{service.name}</h2>
+              <h2>{service?.name}</h2>
               <p>Make an order</p>
             </div>
             <div className={styles.inputs}>
@@ -71,15 +127,18 @@ const MakeOrderForm = ({setIsOpenOrder, service}) => {
                   Select type(-s) of waste
                 </label>
                 <div className={styles.checkboxes}>
-                  {service.type.map((item, index) => {
+                  {wastepoint.types.map((item, index) => {
                     return (
-                      <p className={styles.checkbox} key={index}>
-                        <Field type="checkbox" name="checked" value={item} />
-                        {item}
-                      </p>
+                      <label className={styles.checkbox} key={index}>
+                          <input type="checkbox"  
+                              onChange={() => handleToggle(item)}
+                              checked={checked.indexOf(item) === -1 ? false : true}/>
+                          {item}
+                      </label>
                     )
                   })}
                 </div>
+                {selectType && <p className={styles.typesError}>Required</p>}
               </div>
 
               <div className={styles.formGroup}>
@@ -214,18 +273,18 @@ const MakeOrderForm = ({setIsOpenOrder, service}) => {
                 <div className={styles.inputContainer}>
                   <label 
                     className={classnames(styles.label, {
-                      [styles.errorLabel]: errors.quantity && touched.quantity,
+                      [styles.errorLabel]: errors.description && touched.description,
                     })}>
-                    Quantity
+                    Description
                   </label>
                   <div className={styles.inputWrap}>
                     <Field
                         className={classnames(styles.field, {
-                          [styles.errorField]: errors.quantity && touched.quantity,
+                          [styles.errorField]: errors.description && touched.description,
                         })}
-                        name="quantity"
+                        name="description"
                         type="text"
-                        placeholder="Enter quantity"
+                        placeholder="Enter description"
                       />
                       <ErrorField errors={errors.country} touched={touched.country}/>
                   </div>
