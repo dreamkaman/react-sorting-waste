@@ -10,7 +10,7 @@ import * as Yup from 'yup';
 
 const validationSchema = Yup.object({
   name: Yup.string().required('Required'),
-  email: Yup.string().required('Required').email('Invalid email. Example: \'example@mail.com\''),
+  email: Yup.string().required('Required').email("Invalid email. Example: 'example@mail.com'"),
   phoneNumber: Yup.string()
     .required('Required')
     .matches(
@@ -26,7 +26,7 @@ const validationSchema = Yup.object({
     .required('Required')
     .matches(
       /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g,
-      'Invalid password. Example:\'a0A#ccsxcvx\'',
+      "Invalid password. Example:'a0A#ccsxcvx'",
     ),
   confirmPassword: Yup.string()
     .required('Required')
@@ -70,19 +70,12 @@ const RegistrationForm = ({ onClose }) => {
           toggle: false,
         }}
         validationSchema={validationSchema}
-
         onSubmit={(values) => {
-          const {
-            timeOpen,
-            timeClose,
-            confirmPassword,
-            toggle,
-            ...data
-          } = values;
+          const { timeOpen, timeClose, confirmPassword, toggle, ...data } = values;
 
           const body = {
             ...data,
-            workHours: timeOpen+'-'+timeClose,
+            workHours: timeOpen + '-' + timeClose,
             photo: 'withoutPhoto',
             free: true,
             delivery: true,
@@ -106,9 +99,9 @@ const RegistrationForm = ({ onClose }) => {
                 className={classnames(styles.field, {
                   [styles.errorField]: errors.name && touched.name,
                 })}
-                name='name'
-                type='text'
-                placeholder='Enter company name'
+                name="name"
+                type="text"
+                placeholder="Enter company name"
               />
             </div>
             <ErrorField errors={errors.name} touched={touched.name} />
@@ -125,9 +118,9 @@ const RegistrationForm = ({ onClose }) => {
                 className={classnames(styles.field, {
                   [styles.errorField]: errors.email && touched.email,
                 })}
-                name='email'
-                type='email'
-                placeholder='Enter email'
+                name="email"
+                type="email"
+                placeholder="Enter email"
               />
             </div>
             <ErrorField errors={errors.email} touched={touched.email} />
@@ -144,9 +137,9 @@ const RegistrationForm = ({ onClose }) => {
                 className={classnames(styles.field, {
                   [styles.errorField]: errors.phoneNumber && touched.phoneNumber,
                 })}
-                name='phoneNumber'
-                type='text'
-                placeholder='Enter phone'
+                name="phoneNumber"
+                type="text"
+                placeholder="Enter phone"
               />
             </div>
             <ErrorField errors={errors.phoneNumber} touched={touched.phoneNumber} />
@@ -163,9 +156,9 @@ const RegistrationForm = ({ onClose }) => {
                 className={classnames(styles.field, {
                   [styles.errorField]: errors.country && touched.country,
                 })}
-                name='country'
-                type='text'
-                placeholder='Enter country'
+                name="country"
+                type="text"
+                placeholder="Enter country"
               />
             </div>
             <ErrorField errors={errors.country} touched={touched.country} />
@@ -182,9 +175,9 @@ const RegistrationForm = ({ onClose }) => {
                 className={classnames(styles.field, {
                   [styles.errorField]: errors.city && touched.city,
                 })}
-                name='city'
-                type='text'
-                placeholder='Enter city'
+                name="city"
+                type="text"
+                placeholder="Enter city"
               />
             </div>
             <ErrorField errors={errors.city} touched={touched.city} />
@@ -201,13 +194,12 @@ const RegistrationForm = ({ onClose }) => {
                 className={classnames(styles.field, {
                   [styles.errorField]: errors.address && touched.address,
                 })}
-                name='address'
-                type='text'
-                placeholder='Enter street'
+                name="address"
+                type="text"
+                placeholder="Enter street"
               />
             </div>
             <ErrorField errors={errors.address} touched={touched.address} />
-
 
             {/*<div className={styles.timeFieldsContainer}>*/}
             <div className={styles.fieldsContainer}>
@@ -225,8 +217,8 @@ const RegistrationForm = ({ onClose }) => {
                     className={classnames(styles.field, styles.timeField, {
                       [styles.errorField]: errors.timeOpen && touched.timeOpen,
                     })}
-                    name='timeOpen'
-                    type='time'
+                    name="timeOpen"
+                    type="time"
                   />
                 </div>
                 <div className={styles.timeContainer}>
@@ -235,14 +227,16 @@ const RegistrationForm = ({ onClose }) => {
                     className={classnames(styles.field, styles.timeField, {
                       [styles.errorField]: errors.timeClose && touched.timeClose,
                     })}
-                    name='timeClose'
-                    type='time'
+                    name="timeClose"
+                    type="time"
                   />
                 </div>
               </div>
             </div>
-            <ErrorField errors={errors.timeOpen || errors.timeClose}
-                        touched={touched.timeOpen || touched.timeClose} />
+            <ErrorField
+              errors={errors.timeOpen || errors.timeClose}
+              touched={touched.timeOpen || touched.timeClose}
+            />
 
             {/*<div className={styles.fieldsContainer}>
                 <label
@@ -299,9 +293,9 @@ const RegistrationForm = ({ onClose }) => {
                 className={classnames(styles.field, {
                   [styles.errorField]: errors.password && touched.password,
                 })}
-                name='password'
+                name="password"
                 type={values.toggle ? 'text' : 'password'}
-                placeholder='Enter password'
+                placeholder="Enter password"
               />
             </div>
             <ErrorField errors={errors.password} touched={touched.password} />
@@ -318,23 +312,23 @@ const RegistrationForm = ({ onClose }) => {
                 className={classnames(styles.field, {
                   [styles.errorField]: errors.confirmPassword && touched.confirmPassword,
                 })}
-                name='confirmPassword'
+                name="confirmPassword"
                 type={values.toggle ? 'text' : 'password'}
-                placeholder='Enter password'
+                placeholder="Enter password"
               />
             </div>
             <ErrorField errors={errors.confirmPassword} touched={touched.confirmPassword} />
 
             <div className={styles.toolsContainer}>
               <label>
-                <Field type='checkbox' name='toggle' />
+                <Field type="checkbox" name="toggle" />
                 Show password
               </label>
             </div>
 
             <div className={styles.groupButtons}>
-              <button type='submit'>Submit</button>
-              <button type='button' onClick={onClose}>
+              <button type="submit">Submit</button>
+              <button type="button" onClick={onClose}>
                 Close
               </button>
             </div>
