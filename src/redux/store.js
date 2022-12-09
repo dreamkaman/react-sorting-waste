@@ -10,8 +10,8 @@ export const store = configureStore({
     logginedService: loginServiceReducer,
     allServices: servicesReducer,
     wastePoints: wastPointsReducer,
-    rating: ratingReducer,
     orders: ordersReducer,
+    rating: ratingReducer,
   },
   devTools: process.env.NODE_ENV === 'development',
 });

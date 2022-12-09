@@ -44,6 +44,11 @@
 
 .contextMenuItem:hover {
   background-color: var(--font-third-color);
+  transition: var(--transition-for-all);
+}
+
+.contextMenuItemLink {
+  display: block;
 }
 
 @media screen and (min-width: 320px) {

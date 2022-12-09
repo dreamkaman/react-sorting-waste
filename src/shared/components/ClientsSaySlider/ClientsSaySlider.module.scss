@@ -102,10 +102,12 @@
 
 .btn:hover .arrow {
   fill: var(--font-third-color);
+  transition: var(--transition-for-all);
 }
 
 .btn:hover {
   border: 2px solid var(--font-third-color);
+  transition: var(--transition-for-all);
 }
 
 @media screen and (min-width: 320px) {

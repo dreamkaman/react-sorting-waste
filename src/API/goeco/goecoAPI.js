@@ -155,6 +155,15 @@ export const postOrder = (order) => {
   });
 };
 
+export const getOrders = () => {
+  return axios.get(paths.ordersURL, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+    },
+  });
+};
+
 export const patchOrder = (orderId, newStatus) => {
   const path = paths.ordersURL + `/${orderId}/${newStatus}`;
   return axios.patch(path, {
