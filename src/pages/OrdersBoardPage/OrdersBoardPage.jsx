@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getOrdersByEcoserviceIdOperation } from 'redux/orders/orderOperations';
+import {
+  getOrdersByEcoserviceIdOperation,
+  patchOrderOperation,
+} from 'redux/orders/orderOperations';
 import { isLoggined } from 'redux/auth/authSelectors';
 import { ordersArray } from 'redux/orders/orderSelectors';
 
@@ -16,6 +19,10 @@ const OrdersBoardPage = () => {
     dispatch(getOrdersByEcoserviceIdOperation(ecoserviceId));
   }, [dispatch, ecoserviceId]);
 
+  const handleChange = (event) => {
+    dispatch(patchOrderOperation({ orderId: event.target.id, newStatus: event.target.value }));
+  };
+
   const tableBody = allOrders.map((order) => {
     return (
       <tr key={order.orderId}>
@@ -26,13 +33,12 @@ const OrdersBoardPage = () => {
         <td className={s.tableCeil}>{order.customerEmail}</td>
         <td className={s.tableCeil}>{order.description}</td>
         <td className={s.tableCeil}>
-          <select name="cars" id="cars" value={order.status}>
-            <option value="OPEN">OPEN</option>
+          <select name="status" id={order.orderId} value={order.status} onChange={handleChange}>
             <option value="OPEN">OPEN</option>
             <option value="REVIEW">REVIEW</option>
             <option value="APPROVED">APPROVED</option>
             <option value="REJECTED">REJECTED</option>
-            <option value="FULFILLED ">FULFILLED </option>
+            <option value="FULFILLED">FULFILLED </option>
           </select>
         </td>
       </tr>
