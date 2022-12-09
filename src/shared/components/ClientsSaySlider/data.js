@@ -10,28 +10,26 @@ export const slides = [
     id: uuidv4(),
     imageURL: img1,
     quote:
-      'We really appreciated agency`s hands-on approach as well as their ability to contribute not just with design but with the overall idea of the project',
-    clientName: 'Michael Johnson1',
+      'A quick and easy service that ensures my soft plastics are put to good use and do not find their way to landfill.',
+    clientName: 'Tom Johnson',
   },
   {
     id: uuidv4(),
     imageURL: img2,
-    quote:
-      'We really appreciated agency`s hands-on approach as well as their ability to contribute not just with design but with the overall idea of the project',
-    clientName: 'Michael Johnson2',
+    quote: 'Extremely punctual. Pick up went without a hitch. Felt good to be green',
+    clientName: 'Gabriel Krupp',
   },
   {
     id: uuidv4(),
     imageURL: img3,
-    quote:
-      'We really appreciated agency`s hands-on approach as well as their ability to contribute not just with design but with the overall idea of the project',
-    clientName: 'Michael Johnson3',
+    quote: 'What a great system! Thanks for making recycling even easier!',
+    clientName: 'Kate Romano',
   },
   {
     id: uuidv4(),
     imageURL: img4,
     quote:
-      'We really appreciated agency`s hands-on approach as well as their ability to contribute not just with design but with the overall idea of the project',
-    clientName: 'Michael Johnson4',
+      "I'm a new customer of this service. And it is amazing! We had so much soft plastic waste from our business and it was such a hassle to previously recycle. This service is the best thing I've done in 2022. Absolutely effortless to use and such lovely people.",
+    clientName: 'John Lea',
   },
 ];
