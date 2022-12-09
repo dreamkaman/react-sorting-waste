@@ -44,6 +44,7 @@
 
 .contextMenuItem:hover {
   background-color: var(--font-third-color);
+  transition: var(--transition-for-all);
 }
 
 .contextMenuItemLink {

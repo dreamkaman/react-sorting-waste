@@ -40,7 +40,6 @@ const LoginForm = ({ onClose }) => {
         // TODO submit button ====================
         onSubmit={(values) => {
           const { email, password } = values;
-          console.log(email);
           dispatch(loginServiceOperation({ email, password }));
           onClose();
         }}
