@@ -30,9 +30,9 @@ const MyRoutes = () => {
         <Route
           path="/waste"
           element={
-            // <PrivateRoutes>
-            <RegisterWastePage />
-            // </PrivateRoutes>
+            <PrivateRoutes>
+              <RegisterWastePage />
+            </PrivateRoutes>
           }
         />
         <Route path="*" element={<NotFoundPage />} />

@@ -26,6 +26,9 @@ const Avatar = ({ userName = 'anonymous' }) => {
         <Link to="/profile">Edit profile</Link>
       </li>
       <li className={s.contextMenuItem}>
+        <Link to="/waste">Register Wastepoint</Link>
+      </li>
+      <li className={s.contextMenuItem}>
         <p onClick={() => onLogOut()}>Logout</p>
       </li>
     </ul>

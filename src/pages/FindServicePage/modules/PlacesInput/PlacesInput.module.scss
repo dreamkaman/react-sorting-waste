@@ -9,6 +9,7 @@
     height: auto;
     box-sizing: border-box;
     border-radius: 8px;
+    max-height: 52px;
 
     padding: 15px;
 
@@ -25,6 +26,7 @@
 
     .iconSearch {
         color: rgb(122, 122, 122);
+        padding-right: 15px;
         &:hover {
             cursor: pointer;
             color: rgb(90, 90, 90);
