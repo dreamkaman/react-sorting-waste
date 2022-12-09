@@ -106,9 +106,11 @@
 
         font-weight: 700;
 
+        height: 52px;
+
         background-color: var(--font-third-color);
 
-        background-color: rgba(214, 214, 214, 0.8);
+        background-color: rgba(214, 214, 214, 0.85);
         color: var(--font-first-color);
         &:hover {
             background-color: var(--font-third-color);
