@@ -183,17 +183,10 @@ footer {
 
     border-top: 1px solid #505050;
 
-        .icon{
-            font-size: 16px;
-            color: var(--font-error-color);
-        }
-
-        a{
-            color: var(--font-third-color);
-            transition-duration: 0.3s;
-            text-decoration: underline;
-            &:hover{
-                color: var(--font-light-color);
+    .icon {
+      font-size: 16px;
+      color: var(--font-error-color);
+    }
 
     a {
       color: var(--font-third-color);
