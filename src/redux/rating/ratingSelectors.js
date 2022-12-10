@@ -1,1 +1,1 @@
-export const ordersArray = (state) => state.orders.entities;
+export const ratingsArray = (state) => state.rating.allRatings;

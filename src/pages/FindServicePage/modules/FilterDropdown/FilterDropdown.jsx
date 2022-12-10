@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getFilteredWastePointsOperation } from 'redux/wastePoints/wastePointsOperations';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSliders } from '@fortawesome/free-solid-svg-icons';
 import styles from './FilterDropdown.module.scss'
@@ -12,13 +15,22 @@ const categories = [
     {_id: 6, value: 'Organic'},
 ]
 
-function FilterDropdown({ servicesList, setServices, selected, map }) {
+function FilterDropdown({ wastepoints, setWastepoints, selected, map }) {
+    const dispatch = useDispatch();
+
     const [ isOpen, setIsOpen ] = useState(false);
     const [ checked, setChecked ] = useState([]);
     const [ radiusValue, setRadiusValue ] = useState(0);
     const [ circle, setCircle ] = useState();
+    const [ defaultWastepoints, setDefaultWastepoints ] = useState([]);
+
+    const fetchApi = async () => {
+        const requestWastepoints = await dispatch(getFilteredWastePointsOperation());
+        setDefaultWastepoints(requestWastepoints.payload.successObject);
+    }
 
     useEffect(() => {
+        fetchApi();
         // eslint-disable-next-line no-undef
         setCircle(new google.maps.Circle());
     }, [])
@@ -40,8 +52,14 @@ function FilterDropdown({ servicesList, setServices, selected, map }) {
     }
 
     const handleApply = async () => {
+
+        if (!checked.length && parseInt(radiusValue) == 0) {
+            setWastepoints(defaultWastepoints);
+            return;
+        }
+
         setIsOpen(false);
-        let filteredServices = [];
+        let filteredWastepoints = [];
         // eslint-disable-next-line no-undef
         if (selected && parseInt(radiusValue) > 0) {
             circle.setMap(null);
@@ -57,20 +75,21 @@ function FilterDropdown({ servicesList, setServices, selected, map }) {
                 center: new google.maps.LatLng(selected?.lat, selected?.lng),
                 radius: parseInt(radiusValue) * 1000,
             }));
-            for (const service of servicesList) {
+            for (const wastepoint of wastepoints) {
                 await directionsService?.route(
                     {
                         // eslint-disable-next-line no-undef
                         origin: new google.maps.LatLng(selected.lat, selected.lng),
                         // eslint-disable-next-line no-undef
-                        destination: new google.maps.LatLng(service.position.lat, service.position.lng),
+                        destination: new google.maps.LatLng(wastepoint.latitude, wastepoint.longitude),
                         // eslint-disable-next-line no-undef
                         travelMode: google.maps.TravelMode.DRIVING,
                     },
                     (result, status) => {
                         if (status === "OK" && result) {
                             if (result.routes[0].legs[0].distance.value < parseInt(radiusValue) * 1000) {
-                                filteredServices.push(service);
+                                console.log(filteredWastepoints);
+                                filteredWastepoints.push(wastepoint);
                             } 
                         }
                     }
@@ -78,37 +97,37 @@ function FilterDropdown({ servicesList, setServices, selected, map }) {
             }
         };  
 
-        setServices(filteredServices);
+        setWastepoints(filteredWastepoints);
 
-        if (!checked.length) return;
+        if(!checked.length) return;
 
-        if (filteredServices.length > 0) {
+        if (filteredWastepoints.length > 0) {
             let newList = [];
             checked.forEach(el => {
-                filteredServices.filter(ele => {
-                    if (ele.type.includes(el)) {
+                filteredWastepoints.filter(ele => {
+                    if (ele.types.includes(el)) {
                         if (!newList.includes(ele)) newList.push(ele)
                     }    
                 })
             })
-            filteredServices = newList;
+            filteredWastepoints = newList;
         } else {
             let newList = [];
             checked.forEach(el => {
-                servicesList.filter(ele => {
-                    if (ele.type.includes(el)) {
+                wastepoints.filter(ele => {
+                    if (ele.types.includes(el)) {
                         if (!newList.includes(ele)) newList.push(ele)
                     }    
                 })
             })
-            filteredServices = newList;
+            filteredWastepoints = newList;
         }
-        setServices(filteredServices);
 
+        setWastepoints(filteredWastepoints);
     }
 
     const handleReset = () => {
-        setServices(servicesList);
+        setWastepoints(defaultWastepoints);
         setRadiusValue(0);
         setChecked([]);
         circle.setMap(null);
@@ -141,7 +160,7 @@ function FilterDropdown({ servicesList, setServices, selected, map }) {
                     <p>Radius (in km): {radiusValue}</p>
                     <input
                         type="range"
-                        min="5"
+                        min="0"
                         max="200"
                         step="5"
                         className={styles.distance} 

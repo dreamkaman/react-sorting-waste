@@ -1,14 +1,14 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import styles from './MapsRegisterWaste.module.scss';
 import PlacesInput from "pages/FindServicePage/modules/PlacesInput";
 import GetLocationButton from "pages/FindServicePage/modules/GetLocationButton";
 
 const mapOptions = {
-  zoom: 8,
+  zoom: 6,
   center: {
-    lat: 43.69,
-    lng: -79.43,
+    lat: 49.378472,
+    lng: 17.970598,
   },
   scrollwheel: false,
   keyboardShortcuts: false,
@@ -16,20 +16,22 @@ const mapOptions = {
   fullscreenControl: false,
 };
 
-const MapsRegisterWaste = ({setLongitude, setLatitude}) => {
-
+const MapsRegisterWaste = ({setLongitude, setLatitude, country}) => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyB_tBgq4Xx9rd2MIyiYTsq4oFMy9aSM3GI",
     libraries: ["places"],
   });
   if (!isLoaded) return <div>Loading maps...</div>;
-  return <Map setLongitude={ setLongitude } setLatitude={ setLatitude }/>;
+  return <Map setLongitude={ setLongitude } setLatitude={ setLatitude } country={ country }/>;
 };
 
-function Map({setLongitude, setLatitude}) {
+function Map({setLongitude, setLatitude, country}) {
 
   const [selected, setSelected] = useState(null);
   const [map, setMap] = useState(/** @type google.maps.Map */ (null));
+
+  // eslint-disable-next-line no-undef
+  const geocoder = new google.maps.Geocoder();
 
    /** @type React.MutableRefObject<HTMLInputElement> */
    const originRef = useRef();
@@ -43,6 +45,16 @@ function Map({setLongitude, setLatitude}) {
     setLongitude(lng);
     setLatitude(lat);
   };
+
+  useEffect(() => {
+    geocoder.geocode( {'address': country}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+      } else {
+        return;
+      }
+    })
+  }, [])
 
   return (
     <>

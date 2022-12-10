@@ -1,21 +1,25 @@
 import MapsRegisterWaste from 'modules/MapsRegisterWaste';
+
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+
+import { postWastePointOperation } from 'redux/wastePoints/wastePointsOperations';
+
 import styles from './RegisterWasteForm.module.scss';
 import { Field, Form, Formik } from 'formik';
 import classnames from 'classnames';
 import * as Yup from 'yup';
 
+import { v4 as randomId } from 'uuid';
+
 const validationSchema = Yup.object({
-  // description: Yup.string().required('Required'),
-  // ecoServiceId: Yup.number().required('Required'),
-  // country: Yup.string().required('Required'),
-  // city: Yup.string().required('Required'),
-  // street: Yup.string().required('Required'),
+  description: Yup.string().required('Required'),
+  country: Yup.string().required('Required'),
+  city: Yup.string().required('Required'),
+  street: Yup.string().required('Required'),
 });
 
 const typesOfWaste = ['Glass', 'Paper', 'Electronic', 'Metal', 'Plastic']
-
-//change due to service types
 
 const ErrorField = (props) => {
   return (
@@ -31,9 +35,13 @@ const ErrorField = (props) => {
 
 function RegisterWasteForm() {
 
+  const service = useSelector((state) => state.logginedService.serviceInfo);
+  const country = useSelector((state) => state.logginedService.serviceInfo.country);
+
+  const dispatch = useDispatch();
+
   const [ longitude, setLongitude ] = useState(null);
   const [ latitude, setLatitude ] = useState(null);
-
   const [ checked, setChecked ] = useState([]);
 
   const handleToggle = (value) => {
@@ -45,24 +53,28 @@ function RegisterWasteForm() {
         newChecked.splice(currentIndex, 1)
     }
     setChecked(newChecked);
-}
+  }
+
 
   const handleSubmit = (values) => {
     const requestObject = {
-      "id": 0,
+      "id": 5,
       "types": [
-        checked
+      ...checked
       ],
       "description": values.description,
       "longitude": longitude,
       "latitude": latitude,
-      "ecoServiceId": 0,
+      "ecoServiceId": service.id,
       "wasteAddress": {
         "country": values.country,
         "city": values.city,
         "street": values.street
       }
     }
+
+    dispatch(postWastePointOperation(requestObject));
+
     console.log(requestObject);
   }
 
@@ -201,10 +213,10 @@ function RegisterWasteForm() {
 
               <div className={styles.titleMap}><p className={styles.title}>Choose your location</p></div>
                   
-              <MapsRegisterWaste setLongitude={ setLongitude } setLatitude={ setLatitude }/>
+              <MapsRegisterWaste setLongitude={ setLongitude } setLatitude={ setLatitude } country={ country }/>
 
               <div className={styles.buttons}>
-                <button type='submit'>Finish</button>
+                <button type='submit'>Add Wastepoint</button>
               </div>
             </div>
           </Form>
@@ -215,5 +227,3 @@ function RegisterWasteForm() {
 }
 
 export default RegisterWasteForm;
-
-//ecoServiceId take from REDUX ------

@@ -146,6 +146,16 @@ export const getWastePointRating = (wasteId) => {
   });
 };
 
+export const getAllWastePointRatings = () => {
+  const path = paths.ratingsURL + '/waste';
+  return axios.get(path, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+    },
+  });
+};
+
 export const postOrder = (order) => {
   return axios.post(paths.ordersURL, order, {
     headers: {
@@ -164,8 +174,10 @@ export const getOrders = () => {
   });
 };
 
-export const patchOrder = (orderId, newStatus) => {
+export const patchOrder = ({ orderId, newStatus }) => {
+  console.log(newStatus);
   const path = paths.ordersURL + `/${orderId}/${newStatus}`;
+  console.log(path);
   return axios.patch(path, {
     headers: {
       'Access-Control-Allow-Origin': '*',

@@ -4,25 +4,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getServicesOperation } from 'redux/services/servicesOperations';
 import { getOrdersOperation } from 'redux/orders/orderOperations';
 import { getFilteredWastePointsOperation } from 'redux/wastePoints/wastePointsOperations';
+import { getAllWastePointRatingsOperation } from 'redux/rating/ratingOperations';
 
 import { ordersArray } from 'redux/orders/orderSelectors';
 import { ecoServicesArray } from 'redux/services/servicesSelectors';
 import { wastePointsArray } from 'redux/wastePoints/wastePointsSelectors';
+import { ratingsArray } from 'redux/rating/ratingSelectors';
 
 import styles from './WebsiteUsersInfo.module.scss';
 
 const WebsiteUsersInfo = () => {
   const dispatch = useDispatch();
 
+  const statCustomers = useSelector(ordersArray)?.length;
+  const statEcoServices = useSelector(ecoServicesArray)?.length;
+  const statWastPoints = useSelector(wastePointsArray)?.length;
+  const statHappyUsers = useSelector(ratingsArray).filter((item) => item?.rating === 5).length;
+
   useEffect(() => {
     dispatch(getServicesOperation());
     dispatch(getOrdersOperation());
     dispatch(getFilteredWastePointsOperation());
+    dispatch(getAllWastePointRatingsOperation());
   }, [dispatch]);
-
-  const statCustomers = useSelector(ordersArray)?.length;
-  const statEcoServices = useSelector(ecoServicesArray)?.length;
-  const statWastPoints = useSelector(wastePointsArray)?.length;
 
   return (
     <section className={styles.wrap}>
@@ -52,7 +56,7 @@ const WebsiteUsersInfo = () => {
             </p>
           </div>
           <div className={styles.statisticItem}>
-            <p className={styles.numbers}>68k</p>
+            <p className={styles.numbers}>{statHappyUsers}</p>
             <p className={styles.category}>Happy Customers</p>
             <p className={styles.description}>
               Lorem ipsum is simply dummy, adipisicing elit. Delectus modi quibusdam
