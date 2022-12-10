@@ -182,11 +182,9 @@ footer {
 
         border-top: 1px solid #505050;
 
-        img{
-            display: inline-block;
-            width: 16px;
-            height: auto;
-            object-fit: cover;
+        .icon{
+            font-size: 16px;
+            color: var(--font-error-color);
         }
 
         a{
