@@ -5,8 +5,9 @@ import logoFooter from '../../images/png/logoFooter.png';
 import tel from '../../images/png/tel.png';
 import mail from '../../images/png/mail.png';
 import location from '../../images/png/location.png';
-import heart from '../../images/png/heart.png';
-import img from '../../images/png/logo.png';
+
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Footer = () => {
   return (
@@ -137,10 +138,8 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <p className={styles.copyright}>
-        © 2022 | All Rights Reserved | Developed with <img src={heart} alt="heart" /> by{' the '}
-        <HashLink to="/team#title">DreamTeam.</HashLink>
-      </p>
+      <p className={styles.copyright}>© 2022 | All Rights Reserved | Developed with <FontAwesomeIcon className={styles.icon} icon={faHeart} /> by 
+      <HashLink to="/team#title">DreamTeam.</HashLink></p>
     </footer>
   );
 };
