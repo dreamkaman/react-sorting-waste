@@ -35,32 +35,20 @@ const WebsiteUsersInfo = () => {
           <div className={styles.statisticItem}>
             <p className={styles.numbers}>{statCustomers}</p>
             <p className={styles.category}>Customers left orders</p>
-            <p className={styles.description}>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus modi quibusdam
-            </p>
           </div>
           <div className={styles.statisticItem}>
             <p className={styles.numbers}>{statEcoServices}</p>
             <p className={styles.category}>Eco services registered</p>
-            <p className={styles.description}>
-              Lorem ipsum is simply dummy, adipisicing elit. Delectus modi quibusdam
-            </p>
           </div>
         </div>
         <div className={styles.statisticList2}>
           <div className={styles.statisticItem}>
             <p className={styles.numbers}>{statWastPoints}</p>
             <p className={styles.category}>Waste collection points</p>
-            <p className={styles.description}>
-              Lorem ipsum is simply dummy, adipisicing elit. Delectus modi quibusdam
-            </p>
           </div>
           <div className={styles.statisticItem}>
             <p className={styles.numbers}>{statHappyUsers}</p>
             <p className={styles.category}>Happy Customers</p>
-            <p className={styles.description}>
-              Lorem ipsum is simply dummy, adipisicing elit. Delectus modi quibusdam
-            </p>
           </div>
         </div>
       </div>
