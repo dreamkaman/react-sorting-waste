@@ -138,8 +138,8 @@ const Footer = () => {
         </div>
       </div>
       <p className={styles.copyright}>
-        © 2022 | All Rights Reserved | Developed with <img src={heart} alt="heart" /> by{' '}
-        <HashLink to="/team#title">Epam Students.</HashLink>
+        © 2022 | All Rights Reserved | Developed with <img src={heart} alt="heart" /> by{' the '}
+        <HashLink to="/team#title">DreamTeam.</HashLink>
       </p>
     </footer>
   );

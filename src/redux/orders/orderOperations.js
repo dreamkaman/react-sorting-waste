@@ -14,7 +14,6 @@ export const postOrderOperation = createAsyncThunk('order/post', async (order) =
 export const patchOrderOperation = createAsyncThunk(
   'order/patch',
   async ({ orderId, newStatus }) => {
-    console.log(newStatus);
     const response = await goecoAPI.patchOrder({ orderId, newStatus });
     return response.data;
   },

@@ -16,3 +16,11 @@ export const getWastePointRatingOperation = createAsyncThunk(
     return response.data;
   },
 );
+
+export const getAllWastePointRatingsOperation = createAsyncThunk(
+  'allWastePointRatings/get',
+  async () => {
+    const response = await serviceAPI.getAllWastePointRatings();
+    return response.data;
+  },
+);

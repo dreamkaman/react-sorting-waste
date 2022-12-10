@@ -146,6 +146,16 @@ export const getWastePointRating = (wasteId) => {
   });
 };
 
+export const getAllWastePointRatings = () => {
+  const path = paths.ratingsURL + '/waste';
+  return axios.get(path, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+    },
+  });
+};
+
 export const postOrder = (order) => {
   return axios.post(paths.ordersURL, order, {
     headers: {
