@@ -1,6 +1,7 @@
-.headerUnderline{
+.headerUnderline {
   /*border-bottom: 1px solid var(--font-header-line-color);*/
-  box-shadow: 0px 2px 15px 0px rgba(24,64,39,0.2);
+  box-shadow: 0px 2px 15px 0px rgba(24, 64, 39, 0.2);
+}
 
 .contacts {
   padding: 10px 10px;
@@ -102,9 +103,6 @@
 
 .authList {
   display: none;
-
-  .authListItem {
-  }
 }
 
 .authButtonsWrapper {
