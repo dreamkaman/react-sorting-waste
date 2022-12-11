@@ -6,10 +6,6 @@ import GetLocationButton from "pages/FindServicePage/modules/GetLocationButton";
 
 const mapOptions = {
   zoom: 6,
-  center: {
-    lat: 49.378472,
-    lng: 17.970598,
-  },
   scrollwheel: false,
   keyboardShortcuts: false,
   mapTypeControl: false,
@@ -46,16 +42,6 @@ function Map({setLongitude, setLatitude, country}) {
     setLatitude(lat);
   };
 
-  useEffect(() => {
-    geocoder.geocode( {'address': country}, function(results, status) {
-      if (status == 'OK') {
-        map.setCenter(results[0].geometry.location);
-      } else {
-        return;
-      }
-    })
-  }, [])
-
   return (
     <>
       <GoogleMap
@@ -63,6 +49,14 @@ function Map({setLongitude, setLatitude, country}) {
         mapContainerClassName={styles.map}
         onClick={handleOnMapClick}
         onLoad={(map) => {
+          geocoder.geocode( {'address': country}, function(results, status) {
+            if (status == 'OK') {
+              map.setCenter(results[0].geometry.location);
+            } else {
+              alert('Geocode was not successful for the following reason: ' + status);
+              return;
+            }
+          })
             setMap(map);
         }}
         className={styles.map}

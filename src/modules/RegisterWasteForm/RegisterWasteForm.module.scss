@@ -137,6 +137,11 @@
 
   margin-bottom: 20px;
   padding-top: 20px;
+  input {
+    &:checked {
+      accent-color: var(--font-main-color);
+  }
+  }
 }
 
 .titleMap {

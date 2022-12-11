@@ -1,17 +1,19 @@
 import styles from './InfoCard.module.scss';
 import { useEffect, useState } from 'react'
 import { getServiceByIdOperation } from 'redux/services/servicesOperations';
+import { getWastePointRatingOperation } from 'redux/rating/ratingOperations';
 
 import { useDispatch } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStarHalfStroke, faPlus, faComments, faStar, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faStarHalfStroke, faPlus, faComments, faStar, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpenQuestion, setIsOpenFeedback, calculateRoute}) => {
 
   const dispatch = useDispatch();
 
   const [service, setService] = useState();
+  const [serviceRating, setServiceRating] = useState();
 
   const handleRouteClick = () => {
     calculateRoute(wastepoint.latitude, wastepoint.longitude);
@@ -20,11 +22,16 @@ const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpen
   const fetchApi = async () => {
     const requestService = await dispatch(getServiceByIdOperation(serviceId));
     setService(requestService.payload.successObject);
+
+    const requestServiceRating = await dispatch(getWastePointRatingOperation(serviceId));
+    setServiceRating(requestServiceRating.payload.successObject);
   }
 
   useEffect(() => {
     fetchApi();
   }, [])
+
+  console.log(serviceRating)
   
   return (
     <div className={styles.infoCard}>
@@ -33,8 +40,12 @@ const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpen
           <p className={styles.name}>{service?.name}</p>
           <div className={styles.rating}>
               <FontAwesomeIcon icon={faStar} className={styles.star}/>
-              <p className={styles.infoWindow_title}>5</p>
+              <p className={styles.infoWindow_title}>{Number((serviceRating?.average)?.toFixed(1))}</p>
           </div>
+        </div>
+        <div className={styles.phoneWrap}>
+          <FontAwesomeIcon icon={faPhone} className={styles.phoneLogo}/>
+          <a className={styles.phoneNumber} href={'tel:' + service?.phoneNumber}>{service?.phoneNumber}</a>
         </div>
         <p className={styles.description}>Delivery option: {service?.delivery ? 'available' : 'none'}</p>
         <div className={styles.description}>Type(-s) of waste:

@@ -13,11 +13,13 @@ const HelpPlanet = () => {
     <section>
       <div className={styles.wrap}>
         <div className={styles.form}>
-          <div>
-            <p className={styles.slogan}>Help our planet</p>
-            <h3 className={styles.formTitle}>Find or register</h3>
-            <h3 className={styles.formTitle}>Quality Waste</h3>
-            <h3 className={styles.formTitle}>Service</h3>
+          <div className={styles.text}>
+            <p className={styles.description}>Looking to recycle your unwanted items? Make your recycling needs as easy as possible, use our GoEco to find a location near you!</p>
+            <div className={styles.sloganList}>
+              <p className={styles.sloganSearch}>Search.</p>
+              <p className={styles.sloganFind}>Find.</p>
+              <p className={styles.sloganRecycle}>Recycle.</p>
+            </div>
           </div>
           <ul className={styles.buttonList}>
             <li className={styles.buttonListItem}>

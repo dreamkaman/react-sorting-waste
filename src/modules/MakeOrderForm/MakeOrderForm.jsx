@@ -82,16 +82,17 @@ const MakeOrderForm = ({setIsOpenOrder, wastepoint}) => {
       return;
     }
     setSelectType(false);
+
     const requestObject = {
-      "orderId": 1,
-      "ecoServiceId": wastepoint.ecoServiceId,
       "wasteId": wastepoint.id,
       "customerName": values.name,
       "customerEmail": values.email,
+      "customerPhone": values.phone,
       "description": values.description,
-      "status": "OPEN"
+      "status": "OPEN",
+      "orderTime": new Date().toJSON().toString(),
     }
-
+    
     dispatch(postOrderOperation(requestObject));
   }
 

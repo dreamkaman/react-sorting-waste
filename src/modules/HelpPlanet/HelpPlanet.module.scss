@@ -8,15 +8,43 @@
         background: #006940;
         display: flex;
         flex-direction: row;
-        .slogan {
-            font-style: normal;
-            font-weight: 400;
-            color: #FDC400;
-            margin-bottom: 20px;
-        }
-        .formTitle {
-            font-weight: 600;
-            color: #FFFFFF;
+
+        .text {
+            height: 0;
+            .description {
+                font-weight: 700;
+                font-size: 25px;
+                line-height: 35px;
+                color: var(--font-third-color);
+            }
+            
+            .sloganList {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 15px;
+    
+                height: 100%;
+                padding-top: 40px;
+                .sloganSearch{
+                    color: var(--font-light-color);
+                    font-size: 40px;
+                    display: flex;
+                    justify-content: flex-start;
+                }
+                .sloganFind{
+                    color: var(--font-light-color);
+                    font-size: 40px;
+                    display: flex;
+                    justify-content: center;
+                }
+                .sloganRecycle{
+                    color: var(--font-light-color);
+                    font-size: 40px;
+                    display: flex;
+                    justify-content: flex-end;
+                }
+            }
         }
 
         .buttonList {
@@ -24,7 +52,7 @@
             list-style: none;
             padding: 0;
             .buttonListItem {
-                max-width: 233px;
+                // max-width: 233px;
                 background: #FDC400;
                 display: flex;
                 align-items: center;
@@ -39,6 +67,7 @@
                     background: transparent;
                     border: 1px solid #FDC400;
                     color: #FDC400;
+                    cursor: pointer;
                 }
                 &:hover .link{
                     color: #FDC400;
@@ -77,12 +106,13 @@
             flex-direction: column;
             justify-content: space-between;
             gap: 5vw;
-            padding: 10vw 5vw;
+            padding: 30px 20px;
             width: 100%;
+            height: 560px;
             .formTitle {
                 font-weight: 600;
                 color: #FFFFFF;
-                font-size: 6vw;
+                font-size: 20px;
             }
             .buttonList {
                 flex-direction: row;
@@ -120,8 +150,10 @@
             max-width: 593px;
             max-height: 553px;
             gap: 5vw;
-            padding: 7vw 5vw;
+            padding: 50px 35px;
             width: 100%;
+            height: 593px;
+
             .formTitle {
                 font-weight: 600;
                 color: #FFFFFF;
@@ -172,7 +204,7 @@
             max-width: 593px;
             max-height: 553px;
             gap: 5vw;
-            padding: 80px 5vw;
+            padding: 50px 2vw;
             width: 100%;
             .formTitle {
                 font-weight: 600;

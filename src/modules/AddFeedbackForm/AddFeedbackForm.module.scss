@@ -47,8 +47,28 @@
         margin: 30px 0;
         padding: 0 40px;
 
+        #one {
+            color: red;
+        }
+    
+        #two {
+            color: orange;
+        }
+    
+        #three {
+            color: rgb(231, 231, 5);
+        }
+    
+        #four {
+            color: greenyellow;
+        }
+    
+        #five {
+            color: green;
+        }
+
         .label {
-            font-size: 15px;
+            font-size: 12px;
             color: var(--font-grey-color);
             line-height: 1.2;
             margin-right: 20px;
@@ -63,27 +83,15 @@
                 transform: scale(1.1);
             }
         }
-
-        #one {
-            color: red;
-        }
-
-        #two {
-            color: orange;
-        }
-
-        #three {
-            color: rgb(231, 231, 5);
-        }
-
-        #four {
-            color: greenyellow;
-        }
-
-        #five {
-            color: green;
-        }
     }
+
+    .typesError {
+        text-align: center;
+        padding: 0 0 10px;
+        color: var(--font-error-color);
+        font-size: 12px;
+    }
+
     .formGroup {
         display: flex;
         gap: 20px;
@@ -108,6 +116,23 @@
         }
     }
 
+    .errorFeedbackField {
+        color: var(--font-error-color);
+        border: 1px solid var(--font-error-color);
+    }
+
+    .errorMessage {
+        padding-top: 5px;
+        height: 25px;
+        font-size: 12px;
+        opacity: 0;
+        text-align: center;
+      }
+  
+    .errorMessageActive {
+        color: var(--font-error-color);
+        opacity: 1;
+    }
 
     .buttons {
         display: flex;
@@ -143,74 +168,6 @@
         }
     }
 }
-    // .inputs {
-    //     display: flex;
-    //     flex-direction: column;
-    //     gap: 20px;
-    //     padding: 20px 40px;
-    //     .inputContainer {
-    //         width: 100%;
-    //         display: flex;
-    //         align-items: center;
-    //         .error {
-    //             font-size: 11px;
-    //             color: rgb(122, 23, 23);
-    //             padding-top: 5px;
-    //         }
-    //         .label {
-    //             font-size: 15px;
-    //             color: var(--font-grey-color);
-    //             line-height: 1.2;
-    //             text-align: right;
-    //             padding-right: 20px;
-    //             width: 80px;
-    //           }
-        
-    //         .errorLabel {
-    //             color: var(--font-error-color);
-    //         }
-
-    //         .inputWrap {
-    //             display: flex;
-    //             flex-direction: column;
-    //         }
-
-        //     .field {
-        //         font-size: 13px;
-        //         color: #555555;
-        //         line-height: 1.2;
-        //         display: block;
-        //         background: transparent;
-        //         padding: 0 5px;
-        //         height: 45px;
-        //         border: none;
-        //         border-bottom: 1px solid #b2b2b2;
-        //         outline: none;
-        //         width: 250px;
-        //         &:focus {
-        //           border-bottom: 1px solid var(--font-secondary-color);
-        //         }
-        //       }
-        
-        
-        //     .errorField {
-        //         color: var(--font-error-color);
-        //         border-bottom: 1px solid var(--font-error-color);
-        //     }
-
-        //     .errorMessage {
-        //         padding-top: 5px;
-        //         height: 25px;
-        //         font-size: 12px;
-        //         opacity: 0;
-        //     }
-          
-        //     .errorMessageActive {
-        //     color: var(--font-error-color);
-        //     opacity: 1;
-        //     }
-        // }
-    
 
 .overlay {
     position: fixed;
