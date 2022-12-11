@@ -1,0 +1,11 @@
+.selected {
+    background-color: rgba(217, 217, 217, 0.33);
+    border: none;
+    border-left: 2px solid var(--font-secondary-color);
+}
+
+.notSelected {
+    background-color: white;
+    border: none;
+    border-left: 2px solid white;
+}
