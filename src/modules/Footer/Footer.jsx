@@ -21,8 +21,8 @@ const Footer = () => {
             </p>
           </div>
           <p className={styles.description}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit.
+            Looking to recycle your unwanted items? 
+            Make your recycling needs as easy as possible, use our GoEco to find a location near you!
           </p>
           <div className={styles.socialMediaLinks}>
             <a href="#" className={styles.socialMediaLink}>

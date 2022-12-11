@@ -1,16 +1,11 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { changeServiceInfoOperation } from 'redux/services/servicesOperations';
-import { isLoggined } from 'redux/auth/authSelectors';
-
-import { useState, useEffect } from 'react';
-import AboutService from 'modules/AboutService';
+import { useState } from 'react';
 
 import styles from './ProfileServicePage.module.scss'
 import './ProfileServicePage.css'
 import EditService from 'modules/EditService';
+import AboutService from 'modules/AboutService';
 
 const ProfileServicePage = () => {
-  const dispatch = useDispatch();
 
   const [selected, setSelected] = useState("btn1");
   const [isOpenAbout, setIsOpenAbout] = useState(true);
