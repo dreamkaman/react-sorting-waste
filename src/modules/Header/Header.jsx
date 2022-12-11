@@ -107,6 +107,12 @@ const Header = () => {
               onClose={() => {
                 setOpenBurger(false);
               }}
+              openLogin={() => {
+                setOpenLogin(true);
+              }}
+              openSignUp={() => {
+                setOpenSignUp(true);
+              }}
             />
           </Modal>
 
