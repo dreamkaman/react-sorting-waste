@@ -13,7 +13,7 @@ import FilterDropdown from "pages/FindServicePage/modules/FilterDropdown";
 import GetLocationButton from "pages/FindServicePage/modules/GetLocationButton";
 import InfoCard from "pages/FindServicePage/modules/InfoCard";
 import MakeOrderForm from "modules/MakeOrderForm";
-import LeaveFeedbackForm from "modules/LeaveFeedbackForm";
+import AddFeedbackForm from "modules/AddFeedbackForm";
 import AskQuestionForm from "modules/AskQuestionForm";
 
 import { getFilteredWastePointsOperation } from 'redux/wastePoints/wastePointsOperations';
@@ -183,7 +183,7 @@ function Map() {
                 <GetLocationButton map={map} setSelected={setSelected}/>
             </GoogleMap>
             {isOpenOrder && <MakeOrderForm setIsOpenOrder={setIsOpenOrder} wastepoint={ currentWastepoint }/>}
-            {isOpenFeedback && <LeaveFeedbackForm setIsOpenFeedback={setIsOpenFeedback} wastepoint={ currentWastepoint }/>}
+            {isOpenFeedback && <AddFeedbackForm setIsOpenFeedback={setIsOpenFeedback} wastepoint={ currentWastepoint }/>}
         </section>
     );
 }

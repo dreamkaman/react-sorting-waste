@@ -43,6 +43,8 @@ function RegisterWasteForm() {
   const [ longitude, setLongitude ] = useState(null);
   const [ latitude, setLatitude ] = useState(null);
   const [ checked, setChecked ] = useState([]);
+  const [ delivery, setDelivery ] = useState(false);
+  const [ free, setFree ] = useState(false);
 
   const handleToggle = (value) => {
     const currentIndex = checked.indexOf(value);
@@ -58,9 +60,8 @@ function RegisterWasteForm() {
 
   const handleSubmit = (values) => {
     const requestObject = {
-      "id": 5,
       "types": [
-      ...checked
+        ...checked
       ],
       "description": values.description,
       "longitude": longitude,
@@ -70,7 +71,9 @@ function RegisterWasteForm() {
         "country": values.country,
         "city": values.city,
         "street": values.street
-      }
+      },
+      "free": free,
+      "delivery": delivery
     }
 
     dispatch(postWastePointOperation(requestObject));
@@ -197,14 +200,33 @@ function RegisterWasteForm() {
                 <div className={styles.checkboxes}>
                   {typesOfWaste.map((item, index)=> {
                       return(
-                      <label className={styles.checkbox} key={index}>
+                      <div className={styles.checkbox} key={index}>
                           <input type="checkbox"  
                               onChange={() => handleToggle(item)}
                               checked={checked.indexOf(item) === -1 ? false : true}/>
                           {item}
-                      </label>)}
+                      </div>)}
                       )
                     }    
+                </div>
+
+                <label
+                    className={styles.checkboxTitle}
+                  >
+                    Options
+                </label>
+
+                <div className={styles.checkboxes}>
+                  <div className={styles.checkbox}>
+                      <input type="checkbox"  
+                          onChange={() => setDelivery(!delivery)} />
+                          Delivery
+                  </div>
+                  <div className={styles.checkbox}>
+                      <input type="checkbox"  
+                          onChange={() => setFree(!free)}/>
+                          Free
+                  </div>
                 </div>
 
               </div>
