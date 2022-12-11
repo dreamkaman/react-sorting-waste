@@ -9,8 +9,6 @@ export const initialServiceState = {
   workHours: null,
   city: null,
   country: null,
-  free: null,
-  delivery: null,
 };
 
 const serviceInfo = createReducer(initialServiceState, {
