@@ -19,27 +19,36 @@ export const data = [
     image: Plastic,
     title: 'Plastic',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ',
+      'Right now, 85% of soft plastics used in Australia end up in landfill. We drop these off at collection points so they may be ',
+    /*'Right now, 85% of soft plastics used in Australia end up in landfill. We drop these off at collection points so they may be ' +
+      'recycled into fitness trails, outdoor furniture, drinking fountains, bike stands, bollard fences, picket fences, road and ' +
+      'speed humps, rumble bars and more!',*/
   },
   {
     id: randomId(),
     image: Glass,
-    title: 'Glass',
+    title: 'E-waste',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ',
+      'Globally up to 80% of e-waste is illegally dumped. This is a huge problem as it often leaks large quantities of heavy metals ',
+    /*'Globally up to 80% of e-waste is illegally dumped. This is a huge problem as it often leaks large quantities of heavy metals' +
+      ' into our oceans and waterways. We take it recycling centers where it is then collected to then be processed into new products,' +
+      ' such as asphalt, concrete building products, lead, new steel and batteries.'*/
   },
   {
     id: randomId(),
     image: Metal,
-    title: 'Metal',
+    title: 'Clothes',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ',
+      'Your clothes will live on as clothes, just in someone else’s wardrobe! We donate wearable clothes and work with partners ',
+    /*'Your clothes will live on as clothes, just in someone else’s wardrobe! We donate wearable clothes and work with partners to recycle non-wearable clothes.'*/
   },
   {
     id: randomId(),
     image: Electric,
-    title: 'Electric Supply elements',
+    title: 'Batteries',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ',
+      '95% of battery components can be reused and turned into new batteries. We drop them off at a recycling centre, where they get ',
+    /*'95% of battery components can be reused and turned into new batteries. We drop them off at a recycling centre, where they get' +
+      ' picked apart, ready to become new pieces of tech.'*/
   },
 ];

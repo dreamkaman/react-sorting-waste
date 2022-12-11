@@ -104,6 +104,7 @@ const Header = () => {
             }}
           >
             <BurgerMenu
+              isLogginedUser={isLogginedUser}
               onClose={() => {
                 setOpenBurger(false);
               }}

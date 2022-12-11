@@ -22,7 +22,7 @@ const HeroSlider = () => {
           <div key={slide.id}>
             <img className={styles.image} src={slide.image} alt={'slider-' + slide.id} />
             <div className={styles.slideInfo}>
-              <p>{slide.description}</p>
+              {/*<p>{slide.description}</p>*/}
               <h2>
                 {slide.titles.map((title, index) =>
                   <span className={styles.titles} key={index + title}>{title} </span>
