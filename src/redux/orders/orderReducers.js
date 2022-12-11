@@ -14,7 +14,7 @@ const entities = createReducer([], {
   'order/patch/fulfilled': (state, { payload }) => {
     const patchedOrder = payload.successObject;
     const newState = state.map((item) =>
-      item.orderId === patchedOrder.orderId ? { ...item, status: patchedOrder.status } : item,
+      item.id === patchedOrder.id ? { ...item, status: patchedOrder.status } : item,
     );
     return newState;
   },

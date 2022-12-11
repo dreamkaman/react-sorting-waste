@@ -73,15 +73,15 @@ const OrdersBoardPage = () => {
 
   const tableBody = selectedOrders.map((order) => {
     return (
-      <tr key={order.Id}>
-        <td className={s.tableCeil}>{order.Id}</td>
+      <tr key={order.id}>
+        <td className={s.tableCeil}>{order.id}</td>
         <td className={s.tableCeil}>{formatDate(order.orderTime)}</td>
         <td className={s.tableCeil}>{order.customerName}</td>
         <td className={s.tableCeil}>{order.customerPhone}</td>
         <td className={s.tableCeil}>{order.customerEmail}</td>
         <td className={s.tableCeil}>{order.description}</td>
         <td className={s.tableCeil}>
-          <select name="status" id={order.Id} value={order.status} onChange={handleStatusChange}>
+          <select name="status" id={order.id} value={order.status} onChange={handleStatusChange}>
             <option value="OPEN">OPEN</option>
             <option value="REVIEW">REVIEW</option>
             <option value="APPROVED">APPROVED</option>
