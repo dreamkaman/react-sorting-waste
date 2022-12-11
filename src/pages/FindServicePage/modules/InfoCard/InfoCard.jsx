@@ -30,8 +30,6 @@ const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpen
   useEffect(() => {
     fetchApi();
   }, [])
-
-  console.log(serviceRating)
   
   return (
     <div className={styles.infoCard}>
