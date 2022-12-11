@@ -3,6 +3,7 @@
     max-width: 1560px;
     position: relative;
     top: 150px;
+
     .form {
         background: #006940;
         display: flex;
@@ -57,9 +58,15 @@
                 align-items: center;
                 justify-content: center;
                 transition: .2s;
+
+                /*TODO*/
+                border: none;
+                color: #006940;
+
                 &:hover {
                     background: transparent;
                     border: 1px solid #FDC400;
+                    color: #FDC400;
                     cursor: pointer;
                 }
                 &:hover .link{
@@ -118,6 +125,7 @@
                     width: 100%;
                     height: 58px;
                     background: #FDC400;
+                    font-size: 15px;
                     .link {
                         font-size: 15px;
                     }
@@ -161,6 +169,7 @@
                     width: 100%;
                     height: 58px;
                     background: #FDC400;
+                    font-size: 15px;
                     .link {
                         font-size: 15px;
                     }
@@ -212,6 +221,7 @@
                     width: 100%;
                     height: 58px;
                     background: #FDC400;
+                    font-size: 15px;
                     .link {
                         font-size: 15px;
                     }

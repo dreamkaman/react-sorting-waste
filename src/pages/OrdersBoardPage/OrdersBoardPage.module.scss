@@ -6,6 +6,44 @@
   text-align: center;
 }
 
+.findForm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.filter {
+  position: relative;
+  width: 250px;
+  font-size: 1em;
+}
+
+.filterBtn {
+  font-size: 1em;
+  padding: 0.1em 1em;
+  margin-left: 1em;
+
+  border-radius: 0.2em;
+  color: var(--font-main-color);
+  border: 2px solid var(--font-main-color);
+  background-color: transparent;
+  transition: var(--transition-for-all);
+}
+
+.filterBtn:hover {
+  border: 2px solid var(--font-main-color);
+  background-color: var(--font-third-color);
+}
+
+.filter::after {
+  content: 'Find orders by id, customer name';
+  position: absolute;
+  // display: block;
+  bottom: -100%;
+}
+
 table {
   margin-left: auto;
   margin-right: auto;
