@@ -18,6 +18,7 @@
   position: relative;
   width: 250px;
   font-size: 1em;
+  display: inline;
 }
 
 .filterBtn {
@@ -35,13 +36,7 @@
 .filterBtn:hover {
   border: 2px solid var(--font-main-color);
   background-color: var(--font-third-color);
-}
-
-.filter::after {
-  content: 'Find orders by id, customer name';
-  position: absolute;
-  // display: block;
-  bottom: -100%;
+  border-color: transparent;
 }
 
 table {
