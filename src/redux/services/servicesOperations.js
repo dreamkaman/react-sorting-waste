@@ -17,7 +17,7 @@ export const signupServiceOperation = createAsyncThunk(
 export const changeServiceInfoOperation = createAsyncThunk(
   'service/changeInfo',
   async (ecoServiceObject) => {
-    const response = await serviceAPI.signupService(ecoServiceObject);
+    const response = await serviceAPI.changeServiceInfo(ecoServiceObject);
     return response.data;
   },
 );

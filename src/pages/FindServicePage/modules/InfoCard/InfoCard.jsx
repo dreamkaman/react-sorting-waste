@@ -6,7 +6,7 @@ import { getWastePointRatingOperation } from 'redux/rating/ratingOperations';
 import { useDispatch } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faStarHalfStroke, faPlus, faComments, faStar, faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faStarHalfStroke, faPlus, faComments, faStar, faMapLocationDot, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpenQuestion, setIsOpenFeedback, calculateRoute}) => {
 
@@ -46,6 +46,10 @@ const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpen
         <div className={styles.phoneWrap}>
           <FontAwesomeIcon icon={faPhone} className={styles.phoneLogo}/>
           <a className={styles.phoneNumber} href={'tel:' + service?.phoneNumber}>{service?.phoneNumber}</a>
+        </div>
+        <div className={styles.phoneWrap}>
+          <FontAwesomeIcon icon={faEnvelope} className={styles.phoneLogo}/>
+          <a className={styles.phoneNumber} href={'tel:' + service?.phoneNumber}>{service?.email}</a>
         </div>
         <p className={styles.description}>Delivery option: {service?.delivery ? 'available' : 'none'}</p>
         <div className={styles.description}>Type(-s) of waste:
