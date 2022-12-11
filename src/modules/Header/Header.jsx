@@ -12,6 +12,7 @@ import { useState } from 'react';
 import Modal from '../Modal';
 import LoginForm from '../LoginFrom';
 import RegistrationForm from '../RegistrationForm';
+import BurgerMenu from '../../shared/components/Menu/BurgerMenu';
 
 const Header = () => {
   const isLogginedUser = useSelector(isLoggined); //should be red from Redux
@@ -19,6 +20,7 @@ const Header = () => {
 
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
+  const [openBurger, setOpenBurger] = useState(false);
 
   const authButtons = (
     <ul className={s.authList}>
@@ -93,7 +95,21 @@ const Header = () => {
             </p>
           </Link>
 
-          <Burger />
+          <Burger open={()=>setOpenBurger(true)} />
+
+          <Modal
+            open={openBurger}
+            onClose={() => {
+              setOpenBurger(false);
+            }}
+          >
+            <BurgerMenu
+              onClose={() => {
+                setOpenBurger(false);
+              }}
+            />
+          </Modal>
+
 
           <ul className={s.menu}>
             <li className={s.menuItem}>
