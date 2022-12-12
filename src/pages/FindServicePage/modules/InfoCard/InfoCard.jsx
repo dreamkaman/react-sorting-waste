@@ -52,7 +52,7 @@ const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpen
         <p className={styles.description}>Delivery option: {service?.delivery ? 'available' : 'none'}</p>
         <div className={styles.description}>Type(-s) of waste:
           <div className={styles.types}>
-            {wastepoint?.types.map(type => <span className={styles.type} key={service?.type + service?.id}>{type}</span>)}
+            {wastepoint?.types.map(type => <span className={styles.type} key={type} >{type}</span>)}
           </div>
         </div>
         <div className={styles.block2}>
@@ -66,10 +66,10 @@ const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpen
             <div className={styles.tooltipFeedback}>
               Leave feedback
             </div> 
-            <FontAwesomeIcon icon={faComments} className={styles.ask} onClick={() => setIsOpenQuestion(true)}/>
+            {/* <FontAwesomeIcon icon={faComments} className={styles.ask} onClick={() => setIsOpenQuestion(true)}/>
             <div className={styles.tooltipAsk}>
               Ask A Question
-            </div> 
+            </div>  */}
             <FontAwesomeIcon icon={faPlus} className={styles.order} onClick={() => setIsOpenOrder(true)}/>
             <div className={styles.tooltipOrder}>
               Make An Order
