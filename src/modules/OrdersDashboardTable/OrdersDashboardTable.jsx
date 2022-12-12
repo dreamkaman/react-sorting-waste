@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 
 import { patchOrderOperation } from 'redux/orders/orderOperations';
 
-import s from './OrdersTable.module.scss';
+import s from './OrdersDashboardTable.module.scss';
 
 const OrdersTable = ({ ordersArray }) => {
   const dispatch = useDispatch();
@@ -37,7 +37,13 @@ const OrdersTable = ({ ordersArray }) => {
         <td className={s.tableCeil}>{order.customerEmail}</td>
         <td className={s.tableCeil}>{order.description}</td>
         <td className={s.tableCeil}>
-          <select name="status" id={order.id} value={order.status} onChange={handleStatusChange}>
+          <select
+            className={s.orderStatus}
+            name="status"
+            id={order.id}
+            value={order.status}
+            onChange={handleStatusChange}
+          >
             <option value="OPEN">OPEN</option>
             <option value="REVIEW">REVIEW</option>
             <option value="APPROVED">APPROVED</option>
@@ -50,7 +56,7 @@ const OrdersTable = ({ ordersArray }) => {
   });
 
   return (
-    <table>
+    <table className={s.ordersTable}>
       <thead>
         <tr>
           <th className={s.tableHeader}>Order id</th>
