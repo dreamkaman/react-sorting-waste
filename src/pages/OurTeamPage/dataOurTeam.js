@@ -1,14 +1,21 @@
-import AshkhenGevorgyan from './../../images/our-team/AshkhenGevorgyan.jpg';
-import BabkenSargsyan from './../../images/our-team/BabkenSargsyan.jpg';
-import AnnaSargsyan from './../../images/our-team/AnnaSargsyan.jpg';
-import VolodymyrRiabushko from './../../images/our-team/VolodymyrRiabushko.jpg';
-import TejaswiniYellayyagari from './../../images/our-team/TejaswiniYellayyagari.jpg';
-import AndriiTretiak from './../../images/our-team/AndriiTretiak.jpg';
-import IhorOnishchenko from './../../images/our-team/IhorOnishchenko.jpg';
+import AshkhenGevorgyan from 'images/our-team/AshkhenGevorgyan.jpg';
+import BabkenSargsyan from 'images/our-team/BabkenSargsyan.jpg';
+import AnnaSargsyan from 'images/our-team/AnnaSargsyan.jpg';
+import VolodymyrRiabushko from 'images/our-team/VolodymyrRiabushko.jpg';
+import TejaswiniYellayyagari from 'images/our-team/TejaswiniYellayyagari.jpg';
+import AndriiTretiak from 'images/our-team/AndriiTretiak.jpg';
+import IhorOnishchenko from 'images/our-team/IhorOnishchenko.jpg';
+import TetianaBorys from 'images/our-team/TetianaBorys.jpg';
 
 import { v4 as randomId } from 'uuid';
 
 export const dataPeople = [
+  {
+    id: randomId(),
+    name: 'Tetiana Borys',
+    image: TetianaBorys,
+    role: 'Product owner',
+  },
   {
     id: randomId(),
     name: 'Anna Sargsyan',
