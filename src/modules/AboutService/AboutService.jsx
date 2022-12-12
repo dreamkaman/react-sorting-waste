@@ -12,11 +12,17 @@ const AboutService = () => {
   const [wastepoints, setWastepoints] = useState([]);
 
   const service = useSelector((state) => state.logginedService.serviceInfo);
-  const wastepointsList = useSelector((state) => state.wastePoints.entities);
+
+  const fetchApi = async () => {
+    const requestObject = await dispatch(getWastePointsByEcoServiceIdOperation(service.id));
+
+    setWastepoints(requestObject.payload.successObject);
+
+  }
   
 
   useEffect(() => {
-    setWastepoints(wastepointsList.filter(item => item?.ecoServiceId == service.id))
+    fetchApi();
   }, [])
 
   return (
@@ -44,12 +50,14 @@ const AboutService = () => {
           <p className={styles.detailText}>{service.email}</p>
         </div>
         <div className={styles.detail}>
-          {/* <label className={styles.label}>Waste points addresses</label>
-          {wastepoints?.map(wastepoint => {
-            return (
-              <p className={styles.detailText}>{wastepoint?.country}, {wastepoint?.city}, {wastepoint?.street}</p>
-            )
-          })} */}
+          <label className={styles.label}>Waste points addresses</label>
+            <ul className={styles.wastepointsList}>
+              {wastepoints.map(wastepoint => {
+                return (
+                    <li className={styles.detailTextWastepoint} key={wastepoint.id}>{wastepoint?.wasteAddress.country}, {wastepoint?.wasteAddress.city}, {wastepoint?.wasteAddress.street}</li>
+                )
+          })}
+            </ul>
         </div>
       </div>
     </section>
