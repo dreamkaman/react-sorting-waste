@@ -9,7 +9,6 @@
         padding-bottom: 20px;
 
         display: flex;
-        // flex-direction: column;
         gap: 10px;
 
         button {
@@ -52,7 +51,7 @@
     }
 }
 
-  @media screen and (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
     .container {
         flex-direction: row;
         .buttonList {
