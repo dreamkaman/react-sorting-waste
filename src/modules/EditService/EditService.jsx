@@ -8,7 +8,7 @@ import { changeServiceInfoOperation } from 'redux/services/servicesOperations';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 
-const AboutService = () => {
+const EditService = () => {
 
   const dispatch = useDispatch();
 
@@ -26,9 +26,7 @@ const AboutService = () => {
       "country": values.country
     };
 
-    console.log(requestObject)
-
-    // dispatch(changeServiceInfoOperation(requestObject));
+    dispatch(changeServiceInfoOperation(requestObject));
   }
 
   return (
@@ -114,4 +112,4 @@ const AboutService = () => {
   );
 };
 
-export default AboutService;
+export default EditService;

@@ -30,8 +30,6 @@ const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpen
   useEffect(() => {
     fetchApi();
   }, [])
-
-  console.log(serviceRating)
   
   return (
     <div className={styles.infoCard}>
@@ -54,7 +52,7 @@ const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpen
         <p className={styles.description}>Delivery option: {service?.delivery ? 'available' : 'none'}</p>
         <div className={styles.description}>Type(-s) of waste:
           <div className={styles.types}>
-            {wastepoint?.types.map(type => <span className={styles.type} key={service?.ecoServiceId}>{type}</span>)}
+            {wastepoint?.types.map(type => <span className={styles.type} key={service?.type + service?.id}>{type}</span>)}
           </div>
         </div>
         <div className={styles.block2}>
