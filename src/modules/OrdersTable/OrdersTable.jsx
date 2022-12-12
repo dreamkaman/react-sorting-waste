@@ -24,7 +24,7 @@ const OrdersTable = ({ ordersArray }) => {
     hours = hours > 9 ? hours : `0${hours}`;
     minutes = minutes > 9 ? minutes : `0${minutes}`;
 
-    return `${day}/${month > 9}/${year} ${hours}:${minutes}`;
+    return `${day}/${month}/${year} ${hours}:${minutes}`;
   };
 
   const tableBody = ordersArray.map((order) => {
