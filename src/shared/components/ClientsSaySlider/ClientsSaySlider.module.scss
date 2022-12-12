@@ -1,0 +1,312 @@
+.slider {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 350px;
+  overflow: hidden;
+}
+
+.sliderBtnWrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide {
+  position: absolute;
+  right: -300%;
+  width: 100%;
+  padding: 10px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activeSlide {
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 100%;
+  padding: 10px 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: right cubic-bezier(0.075, 0.82, 0.165, 1) 1500ms;
+}
+
+.clientPhotoWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.clientPhoto {
+  width: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.iconQuote {
+  position: absolute;
+  top: 10px;
+  right: 0;
+
+  width: 20px;
+  height: 20px;
+}
+
+.clientQuoteWithName {
+  padding: 10px;
+  background-color: var(--font-light-color);
+}
+
+.clientQuote {
+  margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.clientName {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid transparent;
+  background-color: var(--font-light-color);
+}
+.arrow {
+  width: 20px;
+  height: 20px;
+  fill: var(--font-dark-color);
+}
+
+.btn + .btn {
+  margin-left: 10px;
+}
+
+.btn:hover .arrow {
+  fill: var(--font-third-color);
+  transition: var(--transition-for-all);
+}
+
+.btn:hover {
+  border: 2px solid var(--font-third-color);
+  transition: var(--transition-for-all);
+}
+
+@media screen and (min-width: 320px) {
+  // .slider {
+  //   min-height: 300px;
+  // }
+}
+
+@media screen and (min-width: 768px) {
+  .slider {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+    max-width: 1050;
+    min-height: 250px;
+    overflow: hidden;
+  }
+
+  .sliderBtnWrapper {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide {
+  }
+
+  .activeSlide {
+    padding: 10px 0;
+
+    flex-direction: row;
+  }
+
+  .clientPhotoWrapper {
+    width: 195px;
+    margin-right: 20px;
+  }
+
+  .clientPhoto {
+    width: 130px;
+  }
+
+  .iconQuote {
+    position: absolute;
+    top: 15px;
+    right: 5px;
+
+    width: 25px;
+    height: 25px;
+  }
+
+  .clientQuoteWithName {
+    // padding: 10px;
+    // background-color: var(--font-light-color);
+  }
+
+  .clientQuote {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+
+  .clientName {
+    font-size: 20px;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid transparent;
+    background-color: var(--font-light-color);
+  }
+  .arrow {
+    width: 20px;
+    height: 20px;
+    fill: var(--font-dark-color);
+  }
+
+  .btn + .btn {
+    margin-left: 10px;
+  }
+
+  .btn:hover .arrow {
+    fill: var(--font-third-color);
+  }
+
+  .btn:hover {
+    border: 2px solid var(--font-third-color);
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .slider {
+    padding: 20px;
+    max-width: 1050px;
+    min-height: 260px;
+  }
+
+  .sliderBtnWrapper {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    right: -300%;
+    max-width: 1050px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .activeSlide {
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-width: 1050px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: right cubic-bezier(0.075, 0.82, 0.165, 1) 1500ms;
+  }
+
+  .clientPhotoWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 70px;
+    border-radius: 50%;
+  }
+
+  .iconQuote {
+    position: absolute;
+    top: 25px;
+    right: -5px;
+
+    width: 40px;
+    height: 40px;
+  }
+
+  .clientQuoteWithName {
+    padding: 10px;
+    background-color: var(--font-light-color);
+  }
+
+  .clientPhoto {
+    width: 195px;
+    height: 195px;
+  }
+
+  .clientQuote {
+    margin-bottom: 25px;
+    font-size: 22px;
+    line-height: 1.5;
+  }
+
+  .clientName {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid transparent;
+    background-color: var(--font-light-color);
+  }
+  .arrow {
+    width: 20px;
+    height: 20px;
+    fill: var(--font-dark-color);
+  }
+
+  .btn + .btn {
+    margin-left: 10px;
+  }
+
+  .btn:hover .arrow {
+    fill: var(--font-third-color);
+  }
+
+  .btn:hover {
+    border: 2px solid var(--font-third-color);
+  }
+}

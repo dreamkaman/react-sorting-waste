@@ -1,0 +1,195 @@
+.wrap {
+    width: 100%;
+    background-image: linear-gradient(rgba(30, 50, 38, 0.9), rgba(30, 50, 38, 0.9)), url('../../images/BucketsOfBottles.png');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    .statisticList {
+        max-width: 1560px;
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 220px;
+        padding-bottom: 4%;
+        margin: 0 auto;
+        gap: 40px;
+        .numbers {
+            font-style: normal;
+            font-weight: 700;
+            /* font-size: 70px; */
+            line-height: 85px;
+            margin: 0 0 5px 0;
+            color: #FFFFFF;
+        }
+
+        .category {
+            font-style: normal;
+            font-weight: 700;
+            /* font-size: 24px; */
+            color: #FDC400;
+            margin: 0 0 38px 0;
+            padding-right: 10px;
+        }
+
+        .description {
+          line-height: 40px;
+          color: #A9A9A9;
+        }
+        .statisticList1 {
+            display: flex;
+            gap: 40px;
+            width: 50%;
+            .statisticItem {
+                max-width: 345px;
+                width: 100%;
+            }
+        }
+        .statisticList2 {
+            display: flex;
+            gap: 40px;
+            width: 50%;
+            .statisticItem {
+                max-width: 345px;
+                width: 100%;
+                &:last-of-type {
+                    border-right: none;
+                }
+            }
+        }
+    }
+}
+
+/* ================================ Media =========================================*/
+@media screen and (min-width: 320px) {
+    .statisticList {
+      flex-direction: column;
+      align-items: center;
+      padding-left: 20px;
+    }
+    .numbers {
+      font-size: 12vw;
+      margin-bottom: 1.5vh;
+    }
+
+    .category {
+      font-size: 20px;
+    }
+
+    .description {
+      font-size: 16px;
+    }
+    .statisticList1 {
+        display: flex;
+        gap: 40px;
+        flex-direction: column;
+        .statisticItem {
+            max-width: 345px;
+            border-bottom: 1px solid #A9A9A9;
+            width: 100%;
+            padding-bottom: 30px;
+            padding-left: 5%;
+        }
+    }
+    .statisticList2 {
+        display: flex;
+        gap: 40px;
+        flex-direction: column;
+        .statisticItem {
+          max-width: 345px;
+          border-bottom: 1px solid #A9A9A9;
+          width: 100%;
+          padding-bottom: 30px;
+          padding-left: 5%;
+            &:last-of-type {
+                border: none;
+            }
+        }
+      }
+  }
+  
+@media screen and (min-width: 768px) {
+  .statisticList {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 20px;
+  }
+  .numbers {
+    font-size: 70px;
+    margin-bottom: 1.5vh;
+  }
+
+  .category {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 20px;
+  }
+  .statisticList1 {
+      display: flex;
+      gap: 40px;
+      flex-direction: row;
+      .statisticItem {
+          max-width: 345px;
+          border-right: 1px solid #A9A9A9;
+          border-bottom: none;
+          width: 100%;
+          padding-bottom: 30px;
+          padding-left: 0%;
+          &:last-of-type {
+            border-right: none;
+          }
+      }
+  }
+  .statisticList2 {
+      display: flex;
+      gap: 40px;
+      flex-direction: row;
+      .statisticItem {
+        max-width: 345px;
+        border-right: 1px solid #A9A9A9;
+        border-bottom: none;
+        width: 100%;
+        padding-bottom: 30px;
+        padding-left: 0%;
+        &:last-of-type {
+          border-right: none;
+        }
+    }
+  }
+}
+
+  
+@media screen and (min-width: 1280px) {
+  .statisticList {
+    flex-direction: row;
+    .statisticList1 {
+      display: flex;
+      gap: 40px;
+      flex-direction: row;
+      .statisticItem {
+          max-width: 345px;
+          border-right: 1px solid #A9A9A9;
+          border-bottom: none;
+          width: 100%;
+          padding-bottom: 30px;
+          padding-left: 5%;
+      }
+    }
+    .statisticList2 {
+      display: flex;
+      gap: 40px;
+      flex-direction: row;
+      .statisticItem {
+        max-width: 345px;
+        border-right: 1px solid #A9A9A9;
+        border-bottom: none;
+        width: 100%;
+        padding-bottom: 30px;
+        padding-left: 5%;
+        &:last-of-type {
+          border-right: none;
+        }
+      }
+    }
+  }
+}

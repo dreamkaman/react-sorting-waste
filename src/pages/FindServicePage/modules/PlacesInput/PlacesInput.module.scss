@@ -1,0 +1,67 @@
+.inputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 1px solid rgb(218,220,224);
+    background-color: #ffffff;
+    box-shadow:  0 0 2px rgb(0 0 0 / 20%), 0 -1px 0 rgb(0 0 0 / 2%);
+    height: auto;
+    box-sizing: border-box;
+    border-radius: 8px;
+    max-height: 52px;
+
+    padding: 15px;
+
+    .input {
+        color: white;
+        color: rgb(32,33,36);
+        font-size: 15px;
+        border: none;
+        background-color: transparent;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .iconSearch {
+        color: rgb(122, 122, 122);
+        padding-right: 15px;
+        &:hover {
+            cursor: pointer;
+            color: rgb(90, 90, 90);
+        }
+    }
+
+    .iconClose {
+        color: rgb(122, 122, 122);
+        &:hover {
+            cursor: pointer;
+            color: rgb(90, 90, 90);
+        }
+    }
+
+    .listContainer {
+        background-color: red;
+    }
+}
+
+@media screen and (min-width: 320px) {
+    .inputContainer { 
+        width: 260px;
+    }
+
+    .input {
+        min-width: auto;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .inputContainer { 
+        width: 310px;
+    }
+
+    .input {
+        min-width: 200px;
+    }
+}

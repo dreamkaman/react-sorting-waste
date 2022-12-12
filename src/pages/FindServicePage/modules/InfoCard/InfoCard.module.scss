@@ -1,0 +1,194 @@
+.infoCard {
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);
+    width: 300px;
+    height: 370px;
+    float: right;
+    position: absolute;
+    right: 8vw;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 15px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .image {
+        display: flex;
+        padding: 10px;
+        padding-top: 50%;
+        margin: 0;
+        background-image: url('https://funart.pro/uploads/posts/2021-04/1618699089_35-funart_pro-p-gorod-toronto-krasivie-mesta-foto-39.jpg');
+        background-size: cover;
+        border-radius: 15px;
+    }
+
+    .block1 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 15px;
+        .name {
+            font-size: 18px;
+        }
+        .rating {
+            color: black;
+            display: flex;
+            gap: 5px;
+            .star {
+                color: var(--font-third-color);
+            }
+        }
+    }
+
+    .phoneWrap {
+        padding: 0 15px;
+        margin-bottom: 5px;
+        .phoneLogo{
+            font-size: 12px;
+            color: var(--font-grey-color);
+            margin-right: 7px;
+        }
+        .phoneNumber {
+            font-size: 13px;
+            color: var(--font-grey-color);
+        }
+    }
+
+    .infoCard_type {
+        font-size: 15px;
+        padding: 0 15px;
+    }
+
+    .description {
+        font-size: 15px;
+        padding: 0 15px;
+        margin: 0;
+        .types {
+
+            .type{
+                padding-right: 10px;
+                font-size: 13px;
+                color: var(--font-secondary-color);
+            }
+        }
+    }
+
+    .block2 {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 15px 15px 15px;
+        align-items: center;
+
+        p {
+            margin: 0;
+            color: gray;
+        }
+
+        .ImageGroup {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 20px;
+            color: black;
+
+            .feedback {
+                width: 25px;
+                &:hover + .tooltipFeedback{
+                    display: block;
+                }
+            }
+
+            .tooltipRoute {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 15%;
+                background-color: var(--font-header-line-color);
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 15px;
+            }
+
+            .route {
+                width: 25px;
+                &:hover + .tooltipRoute{
+                    display: block;
+                }
+            }
+
+            .tooltipFeedback {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 20%;
+                background-color: var(--font-header-line-color);
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 15px;
+            }
+
+            .ask {
+                width: 25px;
+                &:hover + .tooltipAsk{
+                    display: block;
+                }
+            }
+
+            .tooltipAsk {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 35%;
+                background-color: var(--font-header-line-color);
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 15px;
+            }
+
+            .order {
+                width: 25px;
+                &:hover + .tooltipOrder{
+                    display: block;
+                }
+            }
+
+            .tooltipOrder {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                background-color: var(--font-header-line-color);
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 15px;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    .infoCardCancel {
+        width: 25px;
+        height: 25px;
+        margin: 10px;
+        background-color: rgba(149, 149, 149, 0.6941176471);
+        border: none;
+        color: white;
+        position: absolute;
+        top: 0;
+        border-radius: 100%;
+        right: 0;
+
+        &:hover {
+            background-color: rgba(117, 117, 117, 0.694);
+            cursor: pointer;
+        }
+    }
+}

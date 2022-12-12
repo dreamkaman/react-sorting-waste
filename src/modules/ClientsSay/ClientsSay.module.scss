@@ -1,0 +1,49 @@
+.wrapper {
+  padding: 10px 0;
+  color: var(--font-dark-color);
+}
+
+.title {
+}
+
+.spanTitle {
+  display: block;
+  font-weight: 600;
+}
+
+.iconWrapper {
+  background-color: black;
+  width: 10px;
+  height: 10px;
+}
+.truckIcon {
+  width: 8px;
+  height: 8px;
+}
+
+@media screen and (min-width: 320px) {
+  .wrapper {
+    padding: 20px 10px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding: 50px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .wrapper {
+    padding: 100px 50px;
+  }
+
+  .title {
+    font-size: 24;
+    font-weight: 400;
+  }
+
+  .spanTitle {
+    font-size: 48px;
+  }
+}

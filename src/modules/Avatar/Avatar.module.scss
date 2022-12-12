@@ -1,0 +1,67 @@
+.avatarWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.helloTxt {
+  padding: 10px 20px;
+  min-width: max-content;
+  color: var(--font-third-color);
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  border: 2px solid var(--font-third-color);
+  border-radius: 50%;
+  overflow: hidden;
+
+  cursor: pointer;
+}
+
+.contextMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+
+  border: 1px solid var(--font-main-color);
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+
+  color: var(--font-main-color);
+  background-color: var(--font-light-color);
+  cursor: pointer;
+}
+
+.contextMenuItem {
+  padding: 3px;
+}
+
+.contextMenuItem:hover {
+  background-color: var(--font-third-color);
+  transition: var(--transition-for-all);
+}
+
+.contextMenuItemLink {
+  display: block;
+}
+
+@media screen and (min-width: 320px) {
+}
+
+@media screen and (min-width: 768px) {
+  .avatar {
+    width: 35px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .avatar {
+    width: 40px;
+  }
+}

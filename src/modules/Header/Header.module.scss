@@ -1,0 +1,339 @@
+.headerUnderline {
+  /*border-bottom: 1px solid var(--font-header-line-color);*/
+  box-shadow: 0px 2px 15px 0px rgba(24, 64, 39, 0.2);
+  .contacts {
+    padding: 10px 10px;
+    font-size: 14px;
+    background-color: var(--font-header-line-color);
+  }
+
+  .contactLinks {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .logoLink {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .text {
+    display: inline-block;
+    padding: 5px 0;
+    min-width: max-content;
+
+    color: var(--font-light-color);
+  }
+
+  .tel,
+  .mail {
+    display: inline-block;
+    padding: 5px 0;
+    min-width: max-content;
+    color: var(--font-light-color);
+    transition: var(--transition-for-all);
+  }
+
+  .tel::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    padding: 0 15px;
+
+    background-image: url('../../images/png/tel.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .mail::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    padding: 0 10px;
+
+    background-image: url('../../images/png/mail.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .avatarWrapper {
+    display: block;
+    min-height: 40px;
+    width: 100%;
+  }
+
+  //==================================Navigation menu==============================================
+  .navigation {
+    display: flex;
+    min-height: 60px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .authButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--font-secondary-color);
+    background-color: transparent;
+  }
+
+  .logo {
+    width: 40px;
+  }
+
+  .txtGo {
+    color: var(--font-secondary-color);
+    margin-left: 5px;
+  }
+
+  .txtEco {
+    font-size: 30px;
+    font-weight: 900;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .authList {
+    display: none;
+
+    .authListItem {
+    }
+  }
+
+  .authButtonsWrapper {
+    display: none;
+  }
+
+  @media screen and (min-width: 320px) {
+    .contacts {
+      font-size: 16px;
+    }
+
+    .tel,
+    .mail {
+      padding-left: 20px;
+    }
+
+    .tel::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      padding: 0 15px;
+
+      background-image: url('../../images/png/tel.png');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .mail::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      padding: 0 15px;
+
+      background-image: url('../../images/png/mail.png');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .contacts {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px 50px;
+    }
+
+    .contactLinks {
+      flex-wrap: nowrap;
+    }
+
+    .tel:hover,
+    .mail:hover {
+      color: var(--font-third-color);
+    }
+
+    .tel::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      padding: 0 15px;
+
+      background-image: url('../../images/png/tel.png');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .mail::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      padding: 0 15px;
+
+      background-image: url('../../images/png/mail.png');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    //==========================Navigation menu==========================
+    .navigation {
+      min-height: 80px;
+      justify-content: space-around;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      min-width: 50%;
+    }
+
+    .menuItem a {
+      display: inline-block;
+      min-width: max-content;
+      padding: 8px 15px;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .menuItem a:hover {
+      color: var(--font-light-color);
+      background-color: var(--font-main-color);
+      transition: var(--transition-for-all);
+    }
+
+    .authButtonsWrapper {
+      display: block;
+      width: 170px;
+    }
+
+    .authList {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .authListItem:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    .authButton {
+      display: inline-block;
+
+      padding: 6px 15px;
+      border-radius: 3px;
+      min-width: max-content;
+
+      border: 2px solid var(--font-secondary-color);
+
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .authButton:hover {
+      background-color: var(--font-third-color);
+      border-color: transparent;
+      transition: var(--transition-for-all);
+    }
+
+    .isActive {
+      border-bottom: 2px solid var(--font-main-color);
+    }
+
+    .navLink {
+      border-bottom: 2px solid transparent;
+    }
+  }
+
+  @media screen and (min-width: 1025px) {
+    .contacts {
+      font-size: 18px;
+      padding: 20px 150px;
+      flex-wrap: nowrap;
+      justify-content: center;
+    }
+
+    .text {
+      margin-right: 20px;
+
+      color: var(--font-light-color);
+    }
+
+    .tel,
+    .mail {
+      color: var(--font-light-color);
+    }
+
+    .tel:hover,
+    .mail:hover {
+      color: var(--font-third-color);
+    }
+
+    .tel {
+      margin-right: 20px;
+    }
+
+    .tel::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      padding: 0 15px;
+
+      background-image: url('../../images/png/tel.png');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .mail::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      padding: 0 15px;
+
+      background-image: url('../../images/png/mail.png');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    //=================================Navigation menu=============================
+    .navigation {
+      min-height: 100px;
+    }
+
+    .logo {
+      width: 50px;
+    }
+
+    .txtEco {
+      font-size: 40px;
+    }
+
+    .menuItem:not(:last-child) {
+      margin-right: 60px;
+    }
+
+    .menuItem a {
+      font-size: 18px;
+    }
+
+    .authButtonsWrapper {
+      width: 200px;
+    }
+
+    .authList,
+    .authButton {
+      font-size: 18px;
+    }
+  }
+}
