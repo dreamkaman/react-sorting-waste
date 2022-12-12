@@ -21,7 +21,7 @@ const BurgerMenu = (props) => {
 
   /*const showSidebar = () => setSidebar(!sidebar);*/
 
-  const { onClose, openLogin, openSignUp } = props;
+  const { onClose, openLogin, openSignUp, isLogginedUser } = props;
 
   const setActive = ({ isActive }) =>
     classnames(isActive && styles.navLinkActive, styles.navLink);
@@ -31,20 +31,21 @@ const BurgerMenu = (props) => {
     function handleResize() {
       setWidth(window.innerWidth);
     }
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [width]);
 
   useEffect(() => {
     width > 768 && onClose();
-  },[width]);
+  }, [width]);
 
   return (
     <div className={styles.burgerMenu}>
 
       <div className={styles.navbar} style={{ backgroundImage: `url(${image})` }}>
         <FontAwesomeIcon onClick={onClose} className={styles.closeIcon} icon={faXmark} />
-        <div className={styles.logoContainer} >
+        <div className={styles.logoContainer}>
           <img src={logoFooter} alt='logo' />
           <p>
             <span>Go</span>ECO
@@ -77,28 +78,33 @@ const BurgerMenu = (props) => {
             </NavLink>
           </li>
 
-          <li className={styles.menuItem}>
-            <button
-              onClick={() => {
-                onClose();
-                openLogin();
-              }}
-              className={styles.navLink}
-            >
-              <FontAwesomeIcon icon={faRightToBracket} className={styles.icon} /> Login
-            </button>
-          </li>
-          <li className={styles.menuItem}>
-            <button
-              onClick={() => {
-                onClose();
-                openSignUp();
-              }}
-              className={styles.navLink}
-            >
-              <FontAwesomeIcon icon={faUserPlus} className={styles.icon} /> Sign up
-            </button>
-          </li>
+          {!isLogginedUser &&
+            <>
+              <li className={styles.menuItem}>
+                <button
+                  onClick={() => {
+                    onClose();
+                    openLogin();
+                  }}
+                  className={styles.navLink}
+                >
+                  <FontAwesomeIcon icon={faRightToBracket} className={styles.icon} /> Login
+                </button>
+              </li>
+              <li className={styles.menuItem}>
+                <button
+                  onClick={() => {
+                    onClose();
+                    openSignUp();
+                  }}
+                  className={styles.navLink}
+                >
+                  <FontAwesomeIcon icon={faUserPlus} className={styles.icon} /> Sign up
+                </button>
+              </li>
+            </>
+          }
+
         </ul>
       </nav>
     </div>
