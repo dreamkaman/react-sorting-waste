@@ -1,238 +1,237 @@
 .wrap {
+  display: flex;
+  max-width: 1560px;
+  position: relative;
+  top: 150px;
+
+  .form {
+    background: #006940;
     display: flex;
-    max-width: 1560px;
-    position: relative;
-    top: 150px;
+    flex-direction: row;
 
-    .form {
-        background: #006940;
+    .text {
+      height: 0;
+      .description {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 35px;
+        color: var(--font-third-color);
+      }
+
+      .sloganList {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 15px;
 
-        .text {
-            height: 0;
-            .description {
-                font-weight: 700;
-                font-size: 25px;
-                line-height: 35px;
-                color: var(--font-third-color);
-            }
-            
-            .sloganList {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                gap: 15px;
-    
-                height: 100%;
-                padding-top: 40px;
-                .sloganSearch{
-                    color: var(--font-light-color);
-                    font-size: 40px;
-                    display: flex;
-                    justify-content: flex-start;
-                }
-                .sloganFind{
-                    color: var(--font-light-color);
-                    font-size: 40px;
-                    display: flex;
-                    justify-content: center;
-                }
-                .sloganRecycle{
-                    color: var(--font-light-color);
-                    font-size: 40px;
-                    display: flex;
-                    justify-content: flex-end;
-                }
-            }
+        height: 100%;
+        padding-top: 40px;
+        .sloganSearch {
+          color: var(--font-light-color);
+          font-size: 40px;
+          display: flex;
+          justify-content: flex-start;
         }
-
-        .buttonList {
-            display: flex;
-            list-style: none;
-            padding: 0;
-            .buttonListItem {
-                // max-width: 233px;
-                background: #FDC400;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: .2s;
-
-                /*TODO*/
-                border: none;
-                color: #006940;
-
-                &:hover {
-                    background: transparent;
-                    border: 1px solid #FDC400;
-                    color: #FDC400;
-                    cursor: pointer;
-                }
-                &:hover .link{
-                    color: #FDC400;
-                }
-                .findLink {
-                    display: flex;
-                    height: 100%;
-                    font-weight: 400;
-                    color: #006940;
-                    text-decoration: none;
-                }
-                .link {
-                    display: flex;
-                    align-items: center;
-                    height: 100%;
-                    font-weight: 400;
-                    color: #006940;
-                    text-decoration: none;
-                }
-            }
+        .sloganFind {
+          color: var(--font-light-color);
+          font-size: 40px;
+          display: flex;
+          justify-content: center;
         }
+        .sloganRecycle {
+          color: var(--font-light-color);
+          font-size: 40px;
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
     }
-    .image {
-        width: 100%;
-        height: auto;
-        max-height: 553px;
+
+    .buttonList {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      .buttonListItem {
+        // max-width: 233px;
+        background: #fdc400;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s;
+
+        /*TODO*/
+        border: none;
+        color: #006940;
+
+        &:hover {
+          background: transparent;
+          border: 1px solid #fdc400;
+          color: #fdc400;
+          cursor: pointer;
+        }
+        &:hover .link {
+          color: #fdc400;
+        }
+        .findLink {
+          display: flex;
+          height: 100%;
+          font-weight: 400;
+          color: #006940;
+          text-decoration: none;
+        }
+        .link {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          font-weight: 400;
+          color: #006940;
+          text-decoration: none;
+        }
+      }
     }
+  }
+  .image {
+    width: 100%;
+    height: auto;
+    max-height: 553px;
+  }
 }
 
 /* ================================ Media =========================================*/
 @media screen and (min-width: 320px) {
-    .wrap {
-        display: flex;
-        flex-direction: column-reverse;
-        .form {
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 5vw;
-            padding: 30px 20px;
-            width: 100%;
-            height: 560px;
-            .formTitle {
-                font-weight: 600;
-                color: #FFFFFF;
-                font-size: 20px;
-            }
-            .buttonList {
-                flex-direction: row;
-                padding: 0;
-                align-items: center;
-                justify-content: center;
-                gap: 20px;
-                .buttonListItem {
-                    min-width: 150px;
-                    width: 100%;
-                    height: 58px;
-                    background: #FDC400;
-                    font-size: 15px;
-                    .link {
-                        font-size: 15px;
-                    }
-                }
-            }
+  .wrap {
+    display: flex;
+    flex-direction: column-reverse;
+    .form {
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 5vw;
+      padding: 30px 20px;
+      width: 100%;
+      height: 560px;
+      .formTitle {
+        font-weight: 600;
+        color: #ffffff;
+        font-size: 20px;
+      }
+      .buttonList {
+        flex-direction: row;
+        padding: 0;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        .buttonListItem {
+          min-width: 120px;
+          width: 100%;
+          height: 58px;
+          background: #fdc400;
+          font-size: 12px;
+          .link {
+            font-size: 12px;
+          }
         }
-        .image {
-            width: 100%;
-            height: 100%;
-        }
+      }
+    }
+    .image {
+      width: 100%;
+      height: 100%;
     }
   }
-  
-@media screen and (min-width: 768px) {
-     .wrap {
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: center;
-        .form {
-            flex-direction: column;
-            justify-content: space-between;
-            max-width: 593px;
-            max-height: 553px;
-            gap: 5vw;
-            padding: 50px 35px;
-            width: 100%;
-            height: 593px;
-
-            .formTitle {
-                font-weight: 600;
-                color: #FFFFFF;
-                font-size: 46px;
-            }
-            .buttonList {
-                padding: 0;
-                align-items: center;
-                justify-content: space-between;
-                gap: 20px;
-                .buttonListItem {
-                    min-width: 150px;
-                    width: 100%;
-                    height: 58px;
-                    background: #FDC400;
-                    font-size: 15px;
-                    .link {
-                        font-size: 15px;
-                    }
-                }
-            }
-        }
-        .image {
-            width: 100%;
-            object-fit: cover;
-            height: 100%;
-            position: absolute;
-            z-index: -1;
-            bottom: 100px;
-        }
-    }
 }
 
-  
-@media screen and (min-width: 1280px) {
-    .wrap {
-        display: flex;
-        flex-direction: row;
+@media screen and (min-width: 768px) {
+  .wrap {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    .form {
+      flex-direction: column;
+      justify-content: space-between;
+      max-width: 593px;
+      max-height: 553px;
+      gap: 5vw;
+      padding: 50px 35px;
+      width: 100%;
+      height: 593px;
+
+      .formTitle {
+        font-weight: 600;
+        color: #ffffff;
+        font-size: 46px;
+      }
+      .buttonList {
+        padding: 0;
         align-items: center;
-        margin: auto;
-        gap: 2vw;
-        overflow:hidden;
-        .form {
-            flex-direction: column;
-            justify-content: space-between;
-            min-width: 500px;
-            min-height: 552px;
-            max-width: 593px;
-            max-height: 553px;
-            gap: 5vw;
-            padding: 50px 2vw;
-            width: 100%;
-            .formTitle {
-                font-weight: 600;
-                color: #FFFFFF;
-                font-size: 46px;
-            }
-            .buttonList {
-                padding: 0;
-                align-items: center;
-                justify-content: space-between;
-                gap: 20px;
-                .buttonListItem {
-                    min-width: 150px;
-                    width: 100%;
-                    height: 58px;
-                    background: #FDC400;
-                    font-size: 15px;
-                    .link {
-                        font-size: 15px;
-                    }
-                }
-            }
+        justify-content: space-between;
+        gap: 20px;
+        .buttonListItem {
+          min-width: 150px;
+          width: 100%;
+          height: 58px;
+          background: #fdc400;
+          font-size: 15px;
+          .link {
+            font-size: 15px;
+          }
         }
-        .image {
-            width: 100%;
-            height: 100%;
-            position: static;
-            z-index: 1;
-        }
+      }
     }
+    .image {
+      width: 100%;
+      object-fit: cover;
+      height: 100%;
+      position: absolute;
+      z-index: -1;
+      bottom: 100px;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+    gap: 2vw;
+    overflow: hidden;
+    .form {
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 500px;
+      min-height: 552px;
+      max-width: 593px;
+      max-height: 553px;
+      gap: 5vw;
+      padding: 50px 2vw;
+      width: 100%;
+      .formTitle {
+        font-weight: 600;
+        color: #ffffff;
+        font-size: 46px;
+      }
+      .buttonList {
+        padding: 0;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        .buttonListItem {
+          min-width: 150px;
+          width: 100%;
+          height: 58px;
+          background: #fdc400;
+          font-size: 15px;
+          .link {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+    .image {
+      width: 100%;
+      height: 100%;
+      position: static;
+      z-index: 1;
+    }
+  }
 }
