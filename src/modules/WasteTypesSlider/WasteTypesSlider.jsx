@@ -92,6 +92,7 @@ const WasteTypesSlider = () => {
                 >...read more
                 </Link>
               </p>
+              {/*<span>{slide.fullDescription}</span>*/}
 
             </div>
           </div>,
