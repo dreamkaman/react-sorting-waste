@@ -6,7 +6,7 @@ import styles from './LoginForm.module.scss';
 
 import classnames from 'classnames';
 
-import image from '../../images/backgroundForm.png';
+import image from 'images/backgroundForm.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import * as Yup from 'yup';

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import OrdersTable from 'modules/OrdersTable';
@@ -13,7 +13,8 @@ import { wastePointsArray } from 'redux/wastePoints/wastePointsSelectors';
 
 const OrdersBoardPage = () => {
   const [filter, setFilter] = useState('');
-  const [currentOrders, setCurrentOrders] = useState([]);
+
+  // const [currentOrders, setCurrentOrders] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -26,8 +27,8 @@ const OrdersBoardPage = () => {
     dispatch(getFilteredWastePointsOperation());
   }, [dispatch, ecoserviceId]);
 
-  function filteredOrders() {
-    return allOrders.filter((order) => {
+  function getEcoserviceOrders() {
+    const ecoServiceOrders = allOrders.filter((order) => {
       let isIncludes = false;
       for (let i = 0; i < selectedWastePoints.length; i += 1) {
         if (selectedWastePoints[i].id === order.wasteId) {
@@ -37,11 +38,13 @@ const OrdersBoardPage = () => {
       }
       return isIncludes;
     });
+
+    return ecoServiceOrders;
   }
 
   const selectedWastePoints = allWastePoints.filter((item) => item.ecoServiceId === ecoserviceId);
 
-  const selectedOrders = filteredOrders();
+  let currentOrders = getEcoserviceOrders();
 
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
@@ -49,14 +52,18 @@ const OrdersBoardPage = () => {
 
   function filterSubmit(event) {
     event.preventDefault();
-    if (!event.target.value) {
-      return filteredOrders();
-    }
 
-    return selectedOrders.filter(
-      (order) =>
-        order.id === event.target.value || order.customerName.isIncludes(event.target.value),
-    );
+    dispatch(getOrdersOperation());
+    dispatch(getFilteredWastePointsOperation());
+
+    if (event.target.value) {
+      const filteredArray = currentOrders.filter(
+        (order) =>
+          order.id === event.target.value || order.customerName.isIncludes(event.target.value),
+      );
+
+      currentOrders = [...filteredArray];
+    }
   }
 
   return (
@@ -73,7 +80,7 @@ const OrdersBoardPage = () => {
           />
           <button className={s.filterBtn}>Find order</button>
         </form>
-        <OrdersTable ordersArray={selectedOrders} />
+        <OrdersTable ordersArray={currentOrders} />
       </section>
     </main>
   );
