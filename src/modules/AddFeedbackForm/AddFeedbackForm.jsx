@@ -8,7 +8,14 @@ import { postWastePointRatingOperation } from 'redux/rating/ratingOperations';
 import styles from './AddFeedbackForm.module.scss';
 import { Field, Form, Formik } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFaceLaugh, faFaceSmile, faFaceMeh, faFaceFrown, faFaceAngry, faFaceDizzy } from '@fortawesome/free-regular-svg-icons';
+import {
+  faFaceLaugh,
+  faFaceSmile,
+  faFaceMeh,
+  faFaceFrown,
+  faFaceAngry,
+  faFaceDizzy,
+} from '@fortawesome/free-regular-svg-icons';
 import classnames from 'classnames';
 import * as Yup from 'yup';
 
@@ -26,47 +33,45 @@ const ErrorField = (props) => {
       {props?.errors}
     </div>
   );
-}
+};
 
-const AddFeedbackForm = ({setIsOpenFeedback, wastepoint}) => {
-  
+const AddFeedbackForm = ({ setIsOpenFeedback, wastepoint }) => {
   const dispatch = useDispatch();
 
-  const [ service, setService] = useState();
-  const [ selectRate, setSelectRate] = useState(false);
-  const [ rate, setRate] = useState();
+  const [service, setService] = useState();
+  const [selectRate, setSelectRate] = useState(false);
+  const [rate, setRate] = useState();
 
-  const fetchApi = async () => {
-    const requestService = await dispatch(getServiceByIdOperation(wastepoint.ecoServiceId));
+  const fetchApi = () => {
+    const requestService = dispatch(getServiceByIdOperation(wastepoint.ecoServiceId));
     setService(requestService.payload.successObject);
-  }
+  };
 
   const handleSubmit = (values) => {
     setRate(parseInt(values.rating));
-    if(!values.rating || parseInt(values.rating) == 0) {
+    if (!values.rating || parseInt(values.rating) === 0) {
       setSelectRate(true);
-      return
+      return;
     }
 
-    const requestObject = 
-    {
-      "rating": parseInt(values.rating),
-      "comment": values.feedback,
-      "ecoServiceId": service.id,
-      "wasteId": wastepoint.id,
-    }
+    const requestObject = {
+      rating: parseInt(values.rating),
+      comment: values.feedback,
+      ecoServiceId: service.id,
+      wasteId: wastepoint.id,
+    };
 
-    dispatch(postWastePointRatingOperation(requestObject))
-  }
+    dispatch(postWastePointRatingOperation(requestObject));
+  };
 
   useEffect(() => {
     fetchApi();
     document.body.style.overflow = 'hidden';
-    return ()=> document.body.style.overflow = 'unset';
+    return () => (document.body.style.overflow = 'unset');
   }, []);
 
   useEffect(() => {
-    if(rate) {
+    if (rate) {
       setSelectRate(true);
     }
   }, [setSelectRate]);
@@ -81,105 +86,112 @@ const AddFeedbackForm = ({setIsOpenFeedback, wastepoint}) => {
           }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
-           handleSubmit(values);
+            handleSubmit(values);
           }}
         >
           {({ values, errors, touched, setFieldValue }) => (
-          <Form className={styles.wrap}>
+            <Form className={styles.wrap}>
               <div className={styles.text}>
                 <h2>{service?.name}</h2>
                 <p>Leave feedback</p>
               </div>
               <div className={styles.ratingList}>
                 <p className={styles.label}>Rate service:</p>
-                <div 
+                <div
                   onClick={(e) => {
-                      setFieldValue('rating', e.target.dataset.value);
-                      setSelectRate(false);
-                    }}>
-                  <FontAwesomeIcon 
-                    className={styles.rating} 
-                    id={styles.one} 
+                    setFieldValue('rating', e.target.dataset.value);
+                    setSelectRate(false);
+                  }}
+                >
+                  <FontAwesomeIcon
+                    className={styles.rating}
+                    id={styles.one}
                     icon={faFaceAngry}
-                    data-value='1' />
+                    data-value="1"
+                  />
                 </div>
-                <div 
+                <div
                   onClick={(e) => {
-                      setFieldValue('rating', e.target.dataset.value);
-                      setSelectRate(false);
-                    }}>
-                  <FontAwesomeIcon 
-                    className={styles.rating} 
-                    id={styles.two} 
+                    setFieldValue('rating', e.target.dataset.value);
+                    setSelectRate(false);
+                  }}
+                >
+                  <FontAwesomeIcon
+                    className={styles.rating}
+                    id={styles.two}
                     icon={faFaceFrown}
-                    data-value='2' />
+                    data-value="2"
+                  />
                 </div>
-                <div 
+                <div
                   onClick={(e) => {
-                      setFieldValue('rating', e.target.dataset.value);
-                      setSelectRate(false);
-                    }}>
-                  <FontAwesomeIcon 
-                    className={styles.rating} 
-                    id={styles.three} 
+                    setFieldValue('rating', e.target.dataset.value);
+                    setSelectRate(false);
+                  }}
+                >
+                  <FontAwesomeIcon
+                    className={styles.rating}
+                    id={styles.three}
                     icon={faFaceMeh}
-                    data-value='3' />
+                    data-value="3"
+                  />
                 </div>
-                <div 
+                <div
                   onClick={(e) => {
-                      setFieldValue('rating', e.target.dataset.value);
-                      setSelectRate(false);
-                    }}>
-                  <FontAwesomeIcon 
-                    className={styles.rating} 
-                    id={styles.four} 
+                    setFieldValue('rating', e.target.dataset.value);
+                    setSelectRate(false);
+                  }}
+                >
+                  <FontAwesomeIcon
+                    className={styles.rating}
+                    id={styles.four}
                     icon={faFaceSmile}
-                    data-value='4' />
+                    data-value="4"
+                  />
                 </div>
-                <div 
+                <div
                   onClick={(e) => {
-                      setFieldValue('rating', e.target.dataset.value);
-                      setSelectRate(false);
-                    }}>
-                  <FontAwesomeIcon 
-                    className={styles.rating} 
-                    id={styles.five} 
+                    setFieldValue('rating', e.target.dataset.value);
+                    setSelectRate(false);
+                  }}
+                >
+                  <FontAwesomeIcon
+                    className={styles.rating}
+                    id={styles.five}
                     icon={faFaceLaugh}
-                    data-value='5' />
+                    data-value="5"
+                  />
                 </div>
-                
               </div>
               {selectRate && <p className={styles.typesError}>Rating required</p>}
-              <Field 
-                name="feedback" 
-                component="textarea" 
+              <Field
+                name="feedback"
+                component="textarea"
                 className={classnames(styles.feedbackField, {
-                        [styles.errorFeedbackField]: errors.name && touched.name,
-                    })}/>
-              <ErrorField errors={errors.feedback} touched={touched.feedback}/>
+                  [styles.errorFeedbackField]: errors.name && touched.name,
+                })}
+              />
+              <ErrorField errors={errors.feedback} touched={touched.feedback} />
               <div className={styles.buttons}>
-
-                <button 
-                    type="submit" 
-                    className={styles.submit}>
-                    Submit
+                <button type="submit" className={styles.submit}>
+                  Submit
                 </button>
 
-                <button 
+                <button
                   type="delete"
-                  onClick={() => setIsOpenFeedback(false)} 
-                  className={styles.cancel}> 
-                  Cancel 
+                  onClick={() => setIsOpenFeedback(false)}
+                  className={styles.cancel}
+                >
+                  Cancel
                 </button>
-
               </div>
             </Form>
           )}
-      </Formik>
+        </Formik>
       </div>
     </>,
-    document.getElementById('portal')
-  )
+    document.getElementById('portal'),
+  );
 };
 
 export default AddFeedbackForm;

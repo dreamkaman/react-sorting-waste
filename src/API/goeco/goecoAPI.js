@@ -127,7 +127,7 @@ export const getWastPointsByEcoServiceId = (ecoServiceId) => {
 };
 
 export const postWastePointRating = (feedback) => {
-  //feedback is object { rating, comment, wasteId }
+  //feedback is object { rating, comment, wasteId, ecoServiceId }
   return axios.post(paths.ratingsURL, feedback, {
     headers: {
       'Access-Control-Allow-Origin': '*',

@@ -1,7 +1,7 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import OrdersTable from 'modules/OrdersTable';
+import OrdersTable from 'modules/OrdersDashboardTable';
 
 import { getOrdersOperation } from 'redux/orders/orderOperations';
 import { getFilteredWastePointsOperation } from 'redux/wastePoints/wastePointsOperations';
@@ -80,7 +80,9 @@ const OrdersBoardPage = () => {
           />
           <button className={s.filterBtn}>Find order</button>
         </form>
-        <OrdersTable ordersArray={currentOrders} />
+        <div className={s.wrapper}>
+          <OrdersTable ordersArray={currentOrders} />
+        </div>
       </section>
     </main>
   );
