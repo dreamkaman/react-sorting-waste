@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { signupServiceOperation } from 'redux/services/servicesOperations';
 import styles from './RegistrationForm.module.scss';
-import image from '../../images/backgroundForm.png';
+import image from 'images/backgroundForm.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Field, Form, Formik } from 'formik';
