@@ -55,6 +55,35 @@
 
                 padding: 1px 2px;
             }
+
+            .wastepointsList {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 3;
+                gap: 40px;
+
+                border: none;
+                letter-spacing: 1px;
+
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 30px;
+
+                padding: 1px 2px;
+                .detailTextWastepoint {
+                    border: none;
+                    border-bottom: 1px solid #505050;
+                    display: flex;
+                    flex-grow: 3;
+                    letter-spacing: 1px;
+    
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 30px;
+    
+                    padding: 1px 2px;
+                }
+            }
         }
     }
 }
