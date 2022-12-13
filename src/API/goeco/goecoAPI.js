@@ -26,11 +26,11 @@ export const changeServiceInfo = (newEcoServiceObject) => {
   return axios.put(path, newEcoServiceObject, { headers });
 };
 
-export const getServices = () => axios.get(paths.ecoServiceURL);
+export const getServices = () => axios.get(paths.ecoServiceURL, { headers });
 
 export const getServiceById = (id) => {
   const path = paths.ecoServiceURL + `/${id}`;
-  return axios.get(path);
+  return axios.get(path, { headers });
 };
 
 export const deleteService = (ecoServiceId) => {
@@ -55,7 +55,7 @@ export const getFilteredWastePoints = (filter) => {
 
   const path = query ? paths.wastePointsURL + `?${query}` : paths.wastePointsURL;
 
-  return axios.get(path);
+  return axios.get(path, { headers });
 };
 
 export const postWastePoint = (wastePointObject) =>
@@ -63,12 +63,12 @@ export const postWastePoint = (wastePointObject) =>
 
 export const getWastePointById = (wastePointId) => {
   const path = paths.wastePointsURL + '/' + wastePointId;
-  return axios.get(path);
+  return axios.get(path, { headers });
 };
 
 export const getWastPointsByEcoServiceId = (ecoServiceId) => {
   const path = paths.wastePointsURL + '/ecoServiceId/' + ecoServiceId;
-  return axios.get(path);
+  return axios.get(path, { headers });
 };
 
 export const postWastePointRating = (feedback) => {
@@ -78,12 +78,12 @@ export const postWastePointRating = (feedback) => {
 
 export const getWastePointRating = (wasteId) => {
   const path = paths.ratingsURL + `/waste/${wasteId}`;
-  return axios.get(path);
+  return axios.get(path, { headers });
 };
 
 export const getAllWastePointRatings = () => {
   const path = paths.ratingsURL + '/waste';
-  return axios.get(path);
+  return axios.get(path, { headers });
 };
 
 export const postOrder = (order) => {
@@ -91,7 +91,7 @@ export const postOrder = (order) => {
 };
 
 export const getOrders = () => {
-  return axios.get(paths.ordersURL);
+  return axios.get(paths.ordersURL, { headers });
 };
 
 export const patchOrder = ({ orderId, newStatus }) => {
@@ -102,5 +102,5 @@ export const patchOrder = ({ orderId, newStatus }) => {
 
 export const getOrdersByEcoserviceId = (ecoserviceId) => {
   const path = paths.ordersURL + `/${ecoserviceId}`;
-  return axios.get(path);
+  return axios.get(path, { headers });
 };
