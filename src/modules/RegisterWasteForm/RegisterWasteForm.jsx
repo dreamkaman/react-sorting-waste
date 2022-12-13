@@ -72,13 +72,12 @@ function RegisterWasteForm() {
         "city": values.city,
         "street": values.street
       },
-      "free": free,
-      "delivery": delivery
+      "isFree": free,
+      "isDelivery": delivery
     }
 
     dispatch(postWastePointOperation(requestObject));
 
-    console.log(requestObject);
   }
 
   return (

@@ -23,14 +23,16 @@ const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpen
     const requestService = await dispatch(getServiceByIdOperation(serviceId));
     setService(requestService.payload.successObject);
 
-    const requestServiceRating = await dispatch(getWastePointRatingOperation(serviceId));
-    setServiceRating(requestServiceRating.payload.successObject);
+    const requestServiceRating = await dispatch(getWastePointRatingOperation(wastepoint.id));
+    let rating = parseInt(requestServiceRating.payload.successObject.average);
+
+    setServiceRating(rating);
   }
 
   useEffect(() => {
     fetchApi();
-  }, [])
-  
+  }, [serviceId])
+
   return (
     <div className={styles.infoCard}>
         <h2 className={styles.image}></h2>
@@ -38,7 +40,7 @@ const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpen
           <p className={styles.name}>{service?.name}</p>
           <div className={styles.rating}>
               <FontAwesomeIcon icon={faStar} className={styles.star}/>
-              <p className={styles.infoWindow_title}>{Number((serviceRating?.average)?.toFixed(1))}</p>
+              <p className={styles.infoWindow_title}>{serviceRating}</p>
           </div>
         </div>
         <div className={styles.phoneWrap}>
@@ -49,14 +51,14 @@ const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpen
           <FontAwesomeIcon icon={faEnvelope} className={styles.phoneLogo}/>
           <a className={styles.phoneNumber} href={'tel:' + service?.phoneNumber}>{service?.email}</a>
         </div>
-        <p className={styles.description}>Delivery option: {service?.delivery ? 'available' : 'none'}</p>
+        <p className={styles.description}>Delivery option: {wastepoint?.isDelivery ? 'available' : 'none'}</p>
         <div className={styles.description}>Type(-s) of waste:
           <div className={styles.types}>
             {wastepoint?.types.map(type => <span className={styles.type} key={type} >{type}</span>)}
           </div>
         </div>
         <div className={styles.block2}>
-          <p className={styles.charge}>{service?.free ? 'Free' : 'Paid'}</p>
+          <p className={styles.charge}>{wastepoint?.isFree ? 'Free' : 'Paid'}</p>
           <div className={styles.ImageGroup}>
             <FontAwesomeIcon icon={faMapLocationDot} className={styles.route} onClick={handleRouteClick}/>
             <div className={styles.tooltipRoute}>
@@ -66,10 +68,10 @@ const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpen
             <div className={styles.tooltipFeedback}>
               Leave feedback
             </div> 
-            {/* <FontAwesomeIcon icon={faComments} className={styles.ask} onClick={() => setIsOpenQuestion(true)}/>
+            <FontAwesomeIcon icon={faComments} className={styles.ask} onClick={() => setIsOpenQuestion(true)}/>
             <div className={styles.tooltipAsk}>
               Ask A Question
-            </div>  */}
+            </div> 
             <FontAwesomeIcon icon={faPlus} className={styles.order} onClick={() => setIsOpenOrder(true)}/>
             <div className={styles.tooltipOrder}>
               Make An Order
