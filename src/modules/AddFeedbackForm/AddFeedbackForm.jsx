@@ -42,8 +42,8 @@ const AddFeedbackForm = ({ setIsOpenFeedback, wastepoint }) => {
   const [selectRate, setSelectRate] = useState(false);
   const [rate, setRate] = useState();
 
-  const fetchApi = () => {
-    const requestService = dispatch(getServiceByIdOperation(wastepoint.ecoServiceId));
+  const fetchApi = async () => {
+    const requestService = await dispatch(getServiceByIdOperation(wastepoint.ecoServiceId));
     setService(requestService.payload.successObject);
   };
 

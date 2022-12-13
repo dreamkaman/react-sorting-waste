@@ -57,9 +57,9 @@ const AboutService = () => {
             <ul className={styles.wastepointsList}>
               {wastepoints.map(wastepoint => {
                 return (
-                  <div className={styles.wastepoint}>
+                  <div className={styles.wastepoint} key={wastepoint.id}>
                     <FontAwesomeIcon icon={faLocationDot} className={styles.icon}/>
-                    <li className={styles.detailTextWastepoint} key={wastepoint.id}>{wastepoint?.wasteAddress.country}, {wastepoint?.wasteAddress.city}, {wastepoint?.wasteAddress.street}</li>
+                    <li className={styles.detailTextWastepoint}>{wastepoint?.wasteAddress.country}, {wastepoint?.wasteAddress.city}, {wastepoint?.wasteAddress.street}</li>
                   </div>
                 )
           })}
