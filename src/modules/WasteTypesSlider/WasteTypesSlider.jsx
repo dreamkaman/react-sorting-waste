@@ -8,22 +8,18 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-
 import arrowRight from '../../images/waste-slider/arrows/right.svg';
 import arrowLeft from '../../images/waste-slider/arrows/left.svg';
 
 import { data } from './dataWasteSlide';
 import { Link } from 'react-router-dom';
-
+import { HashLink } from 'react-router-hash-link';
 
 const NextArrow = (props) => {
   const { className, onClick } = props;
   return (
-    <div
-      className={className}
-      onClick={onClick}
-    >
-      <img className={styles.arrows} src={arrowRight} alt='arrowRight' />
+    <div className={className} onClick={onClick}>
+      <img className={styles.arrows} src={arrowRight} alt="arrowRight" />
     </div>
   );
 };
@@ -31,17 +27,13 @@ const NextArrow = (props) => {
 const PrevArrow = (props) => {
   const { className, onClick } = props;
   return (
-    <div
-      className={className}
-      onClick={onClick}
-    >
-      <img className={styles.arrows} src={arrowLeft} alt='arrowLeft' />
+    <div className={className} onClick={onClick}>
+      <img className={styles.arrows} src={arrowLeft} alt="arrowLeft" />
     </div>
   );
 };
 
 const WasteTypesSlider = () => {
-
   const settings = {
     dots: false,
     autoplay: true,
@@ -57,7 +49,6 @@ const WasteTypesSlider = () => {
         breakpoint: 1280,
         settings: {
           slidesToShow: 3,
-
         },
       },
       {
@@ -78,25 +69,22 @@ const WasteTypesSlider = () => {
   return (
     <div className={styles.wasteSlider}>
       <Slider {...settings}>
-        {data.map((slide, index) =>
+        {data.map((slide, index) => (
           <div className={styles.slide} key={slide.id}>
             <div className={styles.slideImage}>
               <img src={slide.image} alt={slide.title} />
             </div>
             <div className={styles.slideContent}>
               <h6>{slide.title}</h6>
-              <p>{slide.description}
-                <Link
-                  to="/about"
-                  className={styles.readMore}
-                >...read more
-                </Link>
+              <p>
+                {slide.description}
+                <HashLink to={`/wasteTypes#${slide.id}`} className={styles.readMore}>
+                  ...read more
+                </HashLink>
               </p>
-              {/*<span>{slide.fullDescription}</span>*/}
-
             </div>
-          </div>,
-        )}
+          </div>
+        ))}
       </Slider>
     </div>
   );
