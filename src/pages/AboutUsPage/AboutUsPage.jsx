@@ -18,7 +18,7 @@ const AboutUsPage = () => {
           <div className={styles.textBlock}>
             <h3>About Us</h3>
             <p>
-              Go Eco has founded in 2022, it is the technology tool in the world to improve environmental sustainability
+              Go Eco was founded in 2022, it is the technology tool in the world to improve environmental sustainability
               and help customers find locations to recycle various types of items, helping make the planet a greener,
               more sustainable place.
             </p>
