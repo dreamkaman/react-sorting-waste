@@ -4,7 +4,7 @@ import styles from './ProfileServicePage.module.scss';
 import './ProfileServicePage.css';
 import EditService from 'modules/EditService';
 import AboutService from 'modules/AboutService';
-import ChangePasswordForm from 'modules/ChangePasswordForm/EditService/ChangePasswordForm';
+import ChangePasswordForm from 'modules/ChangePasswordForm/ChangePasswordForm';
 
 const ProfileServicePage = () => {
   const [selected, setSelected] = useState('btn1');
