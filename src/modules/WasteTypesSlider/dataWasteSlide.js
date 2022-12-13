@@ -14,7 +14,7 @@ export const data = [
     image: Paper,
     title: 'Paper',
     description:
-      'The recycling of paper is the process by which waste paper is turned into new paper products.It has a number of ',
+      'The recycling of paper is the process by which waste paper is turned into new paper products.It has a number of important ',
     fullDescription: 'The recycling of paper is the process by which waste paper is turned into new ' +
       'paper products. It has a number of important benefits: It saves waste paper from occupying ' +
       'homes of people and producing methane as it breaks down.',

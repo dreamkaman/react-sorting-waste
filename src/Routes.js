@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { PrivateRoutes } from 'shared/hoc/PrivateRoutes';
+import WasteTypes from './pages/WasteTypes';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const FindServicePage = lazy(() => import('pages/FindServicePage'));
@@ -20,6 +21,8 @@ const MyRoutes = () => {
         <Route path="/services" element={<FindServicePage />} />
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/team" element={<OurTeamPage />} />
+        <Route path="/wasteTypes" element={<WasteTypes />} />
+
         <Route
           path="/profile"
           element={
@@ -44,6 +47,7 @@ const MyRoutes = () => {
             </PrivateRoutes>
           }
         />
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
