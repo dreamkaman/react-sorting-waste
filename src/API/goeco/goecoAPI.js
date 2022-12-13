@@ -3,12 +3,10 @@ import * as paths from './paths';
 
 axios.defaults.baseURL = 'https://go-eco.herokuapp.com/';
 
-axios.defaults.headers = {
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'application/json',
-  },
-};
+axios.defaults.headers['Access-Control-Allow-Origin'] =
+  'https://dremkaman-waste-sorting.netlify.app/';
+axios.defaults.headers['Access-Control-Allow-Methods'] = '*';
+axios.defaults.headers['Content-Type'] = 'application/json';
 
 export const loginService = (email, password) => axios.post(paths.authURL, { email, password });
 
