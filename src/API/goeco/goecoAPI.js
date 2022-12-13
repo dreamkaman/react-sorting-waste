@@ -1,12 +1,9 @@
 import axios from 'axios';
 import * as paths from './paths';
 
-axios.defaults.baseURL = 'https://go-eco.herokuapp.com';
-// axios.defaults.baseURL = '/';
+axios.defaults.baseURL = 'https://go-eco.herokuapp.com'; //for production
 
-// axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
-// axios.defaults.headers['Access-Control-Allow-Methods'] = '*';
-// axios.defaults.headers['Content-Type'] = 'application/json';
+// axios.defaults.baseURL = '/';//for development
 
 export const loginService = (email, password) =>
   axios.post(
