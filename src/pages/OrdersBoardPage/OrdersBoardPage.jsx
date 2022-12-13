@@ -3,18 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import OrdersTable from 'modules/OrdersDashboardTable';
 
-import { getOrdersOperation } from 'redux/orders/orderOperations';
-import { getFilteredWastePointsOperation } from 'redux/wastePoints/wastePointsOperations';
+import { getOrdersOperation, getFilteredOrdersOperation } from 'redux/orders/orderOperations';
+import { getWastePointsByEcoServiceIdOperation } from 'redux/wastePoints/wastePointsOperations';
 import { isLoggined } from 'redux/auth/authSelectors';
 import { ordersArray } from 'redux/orders/orderSelectors';
+import { wastePointsArray } from 'redux/wastePoints/wastePointsSelectors';
 
 import s from './OrdersBoardPage.module.scss';
-import { wastePointsArray } from 'redux/wastePoints/wastePointsSelectors';
 
 const OrdersBoardPage = () => {
   const [filter, setFilter] = useState('');
-
-  // const [currentOrders, setCurrentOrders] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -24,14 +22,14 @@ const OrdersBoardPage = () => {
 
   useEffect(() => {
     dispatch(getOrdersOperation());
-    dispatch(getFilteredWastePointsOperation());
+    dispatch(getWastePointsByEcoServiceIdOperation(ecoserviceId));
   }, [dispatch, ecoserviceId]);
 
   function getEcoserviceOrders() {
-    const ecoServiceOrders = allOrders.filter((order) => {
+    const filteredEcoServiceOrders = allOrders.filter((order) => {
       let isIncludes = false;
-      for (let i = 0; i < selectedWastePoints.length; i += 1) {
-        if (selectedWastePoints[i].id === order.wasteId) {
+      for (let i = 0; i < allWastePoints.length; i += 1) {
+        if (allWastePoints[i].id === order.wasteId) {
           isIncludes = true;
           break;
         }
@@ -39,12 +37,10 @@ const OrdersBoardPage = () => {
       return isIncludes;
     });
 
-    return ecoServiceOrders;
+    return filteredEcoServiceOrders;
   }
 
-  const selectedWastePoints = allWastePoints.filter((item) => item.ecoServiceId === ecoserviceId);
-
-  let currentOrders = getEcoserviceOrders();
+  const currentOrders = getEcoserviceOrders();
 
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
@@ -53,17 +49,19 @@ const OrdersBoardPage = () => {
   function filterSubmit(event) {
     event.preventDefault();
 
-    dispatch(getOrdersOperation());
-    dispatch(getFilteredWastePointsOperation());
-
-    if (event.target.value) {
-      const filteredArray = currentOrders.filter(
-        (order) =>
-          order.id === event.target.value || order.customerName.isIncludes(event.target.value),
-      );
-
-      currentOrders = [...filteredArray];
+    const filter = event.target[0].value;
+    if (filter) {
+      dispatch(getFilteredOrdersOperation(filter));
+    } else {
+      dispatch(getOrdersOperation());
+      dispatch(getWastePointsByEcoServiceIdOperation(ecoserviceId));
     }
+  }
+
+  function onResetFilter() {
+    setFilter('');
+    dispatch(getOrdersOperation());
+    dispatch(getWastePointsByEcoServiceIdOperation(ecoserviceId));
   }
 
   return (
@@ -78,7 +76,12 @@ const OrdersBoardPage = () => {
             value={filter}
             onChange={handleFilterChange}
           />
-          <button className={s.filterBtn}>Find order</button>
+          <div className={s.filterBtnWrapper}>
+            <button className={s.filterBtn}>Find order</button>
+            <button className={s.filterBtn} type="button" onClick={onResetFilter}>
+              Reset filter
+            </button>
+          </div>
         </form>
         <div className={s.wrapper}>
           <OrdersTable ordersArray={currentOrders} />
