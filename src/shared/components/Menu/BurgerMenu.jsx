@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import styles from './BurgerMenu.module.scss';
 import classnames from 'classnames';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import {
   faXmark,
   faHouse,
@@ -12,19 +12,16 @@ import {
   faUserPlus,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import img from '../../../images/png/logo.png';
+// import img from '../../../images/png/logo.png';
 import logoFooter from '../../../images/png/logoFooter.png';
 import image from '../../../images/backgroundForm.png';
 
-
 const BurgerMenu = (props) => {
-
   /*const showSidebar = () => setSidebar(!sidebar);*/
 
   const { onClose, openLogin, openSignUp, isLogginedUser } = props;
 
-  const setActive = ({ isActive }) =>
-    classnames(isActive && styles.navLinkActive, styles.navLink);
+  const setActive = ({ isActive }) => classnames(isActive && styles.navLinkActive, styles.navLink);
 
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -42,11 +39,10 @@ const BurgerMenu = (props) => {
 
   return (
     <div className={styles.burgerMenu}>
-
       <div className={styles.navbar} style={{ backgroundImage: `url(${image})` }}>
         <FontAwesomeIcon onClick={onClose} className={styles.closeIcon} icon={faXmark} />
         <div className={styles.logoContainer}>
-          <img src={logoFooter} alt='logo' />
+          <img src={logoFooter} alt="logo" />
           <p>
             <span>Go</span>ECO
           </p>
@@ -56,29 +52,22 @@ const BurgerMenu = (props) => {
       <nav className={styles.navMenu}>
         <ul className={styles.menu}>
           <li className={styles.menuItem}>
-            <NavLink to='/'
-                     className={setActive} onClick={onClose}>
+            <NavLink to="/" className={setActive} onClick={onClose}>
               <FontAwesomeIcon icon={faHouse} className={styles.icon} /> Home
             </NavLink>
           </li>
           <li className={styles.menuItem}>
-            <NavLink
-              to='/services'
-              className={setActive} onClick={onClose}
-            >
+            <NavLink to="/services" className={setActive} onClick={onClose}>
               <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.icon} /> Find service
             </NavLink>
           </li>
           <li className={styles.menuItem}>
-            <NavLink
-              to='/about'
-              className={setActive} onClick={onClose}
-            >
+            <NavLink to="/about" className={setActive} onClick={onClose}>
               <FontAwesomeIcon icon={faCircleInfo} className={styles.icon} /> About us
             </NavLink>
           </li>
 
-          {!isLogginedUser &&
+          {!isLogginedUser && (
             <>
               <li className={styles.menuItem}>
                 <button
@@ -103,8 +92,7 @@ const BurgerMenu = (props) => {
                 </button>
               </li>
             </>
-          }
-
+          )}
         </ul>
       </nav>
     </div>

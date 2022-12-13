@@ -85,12 +85,12 @@ const WasteTypesSlider = () => {
             </div>
             <div className={styles.slideContent}>
               <h6>{slide.title}</h6>
-              <p>{slide.description}
-                <Link
+              <p>{slide.fullDescription}
+                {/*<Link
                   to="/about"
                   className={styles.readMore}
                 >...read more
-                </Link>
+                </Link>*/}
               </p>
               {/*<span>{slide.fullDescription}</span>*/}
 

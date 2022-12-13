@@ -3,14 +3,14 @@ import { createReducer, combineReducers } from '@reduxjs/toolkit';
 const entities = createReducer([], {
   'orders/get/pending': () => [],
   'orders/get/fulfilled': (_state, { payload }) => [...payload?.successObject],
-  'orders/get/rejected': (state, _) => state,
+  'orders/get/rejected': (state) => state,
   'ordersByEcoServiceId/get/pending': () => [],
   'ordersByEcoServiceId/get/fulfilled': (_state, { payload }) => [...payload?.successObject],
-  'ordersByEcoServiceId/get/rejected': (state, _) => state,
-  'order/post/pending': (state, _action) => state,
+  'ordersByEcoServiceId/get/rejected': (state) => state,
+  'order/post/pending': (state) => state,
   'order/post/fulfilled': (state, { payload }) => [...state, payload?.successObject],
-  'order/post/rejected': (state, _action) => state,
-  'order/patch/pending': (state, _action) => state,
+  'order/post/rejected': (state) => state,
+  'order/patch/pending': (state) => state,
   'order/patch/fulfilled': (state, { payload }) => {
     const patchedOrder = payload.successObject;
     const newState = state.map((item) =>
@@ -18,7 +18,12 @@ const entities = createReducer([], {
     );
     return newState;
   },
-  'order/patch/rejected': (state, _action) => state,
+  'order/patch/rejected': (state) => state,
+
+  'filteredOrders/get/pending': (state) => state,
+  'filteredOrders/get/fulfilled': (state, { payload }) =>
+    state.filter((order) => order.id === Number(payload) || order.customerName.includes(payload)),
+  'filteredOrders/get/rejected': (state) => state,
 });
 
 const isLoading = createReducer(false, {

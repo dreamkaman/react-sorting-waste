@@ -26,3 +26,8 @@ export const getOrdersByEcoserviceIdOperation = createAsyncThunk(
     return response.data;
   },
 );
+
+export const getFilteredOrdersOperation = createAsyncThunk(
+  'filteredOrders/get',
+  (filter) => filter,
+);

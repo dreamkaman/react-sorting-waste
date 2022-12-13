@@ -23,6 +23,7 @@ export const signupService = (ecoServiceObject) =>
 
 export const changePasswordService = (id, { oldPassword, newPassword, confirmPassword }) => {
   const path = paths.ecoServiceURL + `/${id}`;
+  console.log({ oldPassword, newPassword, confirmPassword });
   return axios.patch(
     path,
     { oldPassword, newPassword, confirmPassword },
@@ -117,7 +118,7 @@ export const getWastePointById = (wastePointId) => {
 };
 
 export const getWastPointsByEcoServiceId = (ecoServiceId) => {
-  const path = paths.wastePointsURL + '/ecoserviceId/' + ecoServiceId;
+  const path = paths.wastePointsURL + '/ecoServiceId/' + ecoServiceId;
   return axios.get(path, {
     headers: {
       'Access-Control-Allow-Origin': '*',

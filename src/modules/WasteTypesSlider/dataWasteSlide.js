@@ -14,8 +14,10 @@ export const data = [
     image: Paper,
     title: 'Paper',
     description:
-      'The recycling of paper is the process by which waste paper is turned into new paper products. It has a number of important benefits: It saves waste paper from occupying homes of people and producing methane as it breaks down.',
-    fullDescription: '',
+      'The recycling of paper is the process by which waste paper is turned into new paper products.It has a number of ',
+    fullDescription: 'The recycling of paper is the process by which waste paper is turned into new ' +
+      'paper products. It has a number of important benefits: It saves waste paper from occupying ' +
+      'homes of people and producing methane as it breaks down.',
   },
   {
     id: randomId(),
@@ -34,10 +36,10 @@ export const data = [
     title: 'E-waste',
     description:
       'Globally up to 80% of e-waste is illegally dumped. This is a huge problem as it often leaks large quantities of heavy metals ',
-    fullDescription: '',
-    /*'Globally up to 80% of e-waste is illegally dumped. This is a huge problem as it often leaks large quantities of heavy metals' +
+    fullDescription: 'Globally up to 80% of e-waste is illegally dumped. This is a huge problem as it often leaks large quantities of heavy metals' +
       ' into our oceans and waterways. We take it recycling centers where it is then collected to then be processed into new products,' +
-      ' such as asphalt, concrete building products, lead, new steel and batteries.'*/
+      ' such as asphalt, concrete building products, lead, new steel and batteries.',
+
   },
   {
     id: randomId(),
@@ -45,8 +47,7 @@ export const data = [
     title: 'Clothes',
     description:
       'Your clothes will live on as clothes, just in someone else’s wardrobe! We donate wearable clothes and work with partners ',
-    fullDescription: '',
-    /*'Your clothes will live on as clothes, just in someone else’s wardrobe! We donate wearable clothes and work with partners to recycle non-wearable clothes.'*/
+    fullDescription: 'Your clothes will live on as clothes, just in someone else’s wardrobe! We donate wearable clothes and work with partners to recycle non-wearable clothes.',
   },
   {
     id: randomId(),
@@ -54,8 +55,7 @@ export const data = [
     title: 'Batteries',
     description:
       '95% of battery components can be reused and turned into new batteries. We drop them off at a recycling centre, where they get ',
-    fullDescription: '',
-    /*'95% of battery components can be reused and turned into new batteries. We drop them off at a recycling centre, where they get' +
-      ' picked apart, ready to become new pieces of tech.'*/
+    fullDescription: '95% of battery components can be reused and turned into new batteries. We drop them off at a recycling centre, where they get' +
+      ' picked apart, ready to become new pieces of tech.',
   },
 ];
