@@ -5,6 +5,9 @@ import Avatar from 'modules/Avatar';
 import Burger from 'shared/components/Burger';
 import { isLoggined, serviceName } from 'redux/auth/authSelectors';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import img from '../../images/png/logo.png';
 
 import s from './Header.module.scss';
@@ -39,6 +42,7 @@ const Header = () => {
             onClose={() => {
               setOpenLogin(false);
             }}
+            toast={toast}
           />
         </Modal>
       </li>
@@ -58,6 +62,7 @@ const Header = () => {
             onClose={() => {
               setOpenSignUp(false);
             }}
+            toast={toast}
           />
         </Modal>
       </li>
@@ -144,6 +149,7 @@ const Header = () => {
           <div className={s.authButtonsWrapper}>{isLogginedUser ? null : authButtons}</div>
         </nav>
       </div>
+      <ToastContainer />
     </header>
   );
 };

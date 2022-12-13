@@ -6,6 +6,8 @@ import { getServiceByIdOperation } from 'redux/services/servicesOperations';
 import { postWastePointRatingOperation } from 'redux/rating/ratingOperations';
 
 import styles from './AddFeedbackForm.module.scss';
+import './AddFeedbackForm.css';
+
 import { Field, Form, Formik } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -35,12 +37,13 @@ const ErrorField = (props) => {
   );
 };
 
-const AddFeedbackForm = ({ setIsOpenFeedback, wastepoint }) => {
+const AddFeedbackForm = ({ setIsOpenFeedback, wastepoint, toast }) => {
   const dispatch = useDispatch();
 
   const [service, setService] = useState();
   const [selectRate, setSelectRate] = useState(false);
   const [rate, setRate] = useState();
+  const [selected, setSelected] = useState();
 
   const fetchApi = async () => {
     const requestService = await dispatch(getServiceByIdOperation(wastepoint.ecoServiceId));
@@ -62,6 +65,23 @@ const AddFeedbackForm = ({ setIsOpenFeedback, wastepoint }) => {
     };
 
     dispatch(postWastePointRatingOperation(requestObject));
+
+    toast.success('Thank you for feedback!', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+    setIsOpenFeedback(false);
+  };
+
+  const handleClick = (rate) => {
+    setSelected(rate);
   };
 
   useEffect(() => {
@@ -97,71 +117,61 @@ const AddFeedbackForm = ({ setIsOpenFeedback, wastepoint }) => {
               </div>
               <div className={styles.ratingList}>
                 <p className={styles.label}>Rate service:</p>
-                <div
+                <FontAwesomeIcon
+                  className={selected === 'rate1' ? 'selectedIcon' : 'notSelectedIcon'}
+                  id={styles.one}
+                  icon={faFaceAngry}
+                  data-value="1"
                   onClick={(e) => {
                     setFieldValue('rating', e.target.dataset.value);
                     setSelectRate(false);
+                    handleClick('rate1');
                   }}
-                >
-                  <FontAwesomeIcon
-                    className={styles.rating}
-                    id={styles.one}
-                    icon={faFaceAngry}
-                    data-value="1"
-                  />
-                </div>
-                <div
-                  onClick={(e) => {
-                    setFieldValue('rating', e.target.dataset.value);
-                    setSelectRate(false);
-                  }}
-                >
-                  <FontAwesomeIcon
-                    className={styles.rating}
+                />
+                <FontAwesomeIcon
+                    className={selected === 'rate2' ? 'selectedIcon' : 'notSelectedIcon'}
                     id={styles.two}
                     icon={faFaceFrown}
                     data-value="2"
+                    onClick={(e) => {
+                      setFieldValue('rating', e.target.dataset.value);
+                      setSelectRate(false);
+                      handleClick('rate2');
+                    }}
                   />
-                </div>
-                <div
-                  onClick={(e) => {
-                    setFieldValue('rating', e.target.dataset.value);
-                    setSelectRate(false);
-                  }}
-                >
-                  <FontAwesomeIcon
-                    className={styles.rating}
+                <FontAwesomeIcon
+                    className={selected === 'rate3' ? 'selectedIcon' : 'notSelectedIcon'}
                     id={styles.three}
                     icon={faFaceMeh}
                     data-value="3"
+                    onClick={(e) => {
+                      setFieldValue('rating', e.target.dataset.value);
+                      setSelectRate(false);
+                      handleClick('rate3');
+                    }}
                   />
-                </div>
-                <div
-                  onClick={(e) => {
-                    setFieldValue('rating', e.target.dataset.value);
-                    setSelectRate(false);
-                  }}
-                >
-                  <FontAwesomeIcon
-                    className={styles.rating}
+                <FontAwesomeIcon
+                    className={selected === 'rate4' ? 'selectedIcon' : 'notSelectedIcon'}
                     id={styles.four}
                     icon={faFaceSmile}
                     data-value="4"
+                    onClick={(e) => {
+                      setFieldValue('rating', e.target.dataset.value);
+                      setSelectRate(false);
+                      handleClick('rate4');
+                    }}
                   />
-                </div>
-                <div
-                  onClick={(e) => {
-                    setFieldValue('rating', e.target.dataset.value);
-                    setSelectRate(false);
-                  }}
-                >
-                  <FontAwesomeIcon
-                    className={styles.rating}
+                <FontAwesomeIcon
+                    className={selected === 'rate5' ? 'selectedIcon' : 'notSelectedIcon'}
                     id={styles.five}
                     icon={faFaceLaugh}
                     data-value="5"
+                    onClick={(e) => {
+                      setFieldValue('rating', e.target.dataset.value);
+                      setSelectRate(false);
+                      handleClick('rate5');
+                    }}
                   />
-                </div>
               </div>
               {selectRate && <p className={styles.typesError}>Rating required</p>}
               <Field

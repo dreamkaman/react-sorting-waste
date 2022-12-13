@@ -7,7 +7,7 @@ import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
 import classnames from 'classnames';
 import * as Yup from 'yup';
 
-const AskQuestionForm = ({setIsOpenQuestion, service}) => {
+const AskQuestionForm = ({setIsOpenQuestion, toast}) => {
 
   const validationSchema = Yup.object({
     email: Yup.string().required('Required').email("Invalid email. Example: 'example@mail.com'"),
@@ -26,6 +26,21 @@ const AskQuestionForm = ({setIsOpenQuestion, service}) => {
     );
   }
 
+  const handleSubmit = () => {
+      toast.success('Thank you for question!', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+    setIsOpenQuestion(false);
+  }
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return ()=> document.body.style.overflow = 'unset';
@@ -42,7 +57,7 @@ const AskQuestionForm = ({setIsOpenQuestion, service}) => {
           }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
-            console.log(values);
+            handleSubmit(values);
           }}
         >
           {({ values, errors, touched, setFieldValue }) => (
