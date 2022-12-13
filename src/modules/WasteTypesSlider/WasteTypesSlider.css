@@ -4,4 +4,5 @@
 
 .slick-list {
     margin-left: -10px;
+    /*overflow-y: visible !important;*/
 }
