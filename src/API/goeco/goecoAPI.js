@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as paths from './paths';
 
-axios.defaults.baseURL = 'https://go-eco.herokuapp.com/';
+axios.defaults.baseURL = 'https://go-eco.herokuapp.com';
 // axios.defaults.baseURL = '/';
 
 // axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
