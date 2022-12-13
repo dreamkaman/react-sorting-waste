@@ -23,6 +23,7 @@ export const signupService = (ecoServiceObject) =>
 
 export const changePasswordService = (id, { oldPassword, newPassword, confirmPassword }) => {
   const path = paths.ecoServiceURL + `/${id}`;
+  console.log({ oldPassword, newPassword, confirmPassword });
   return axios.patch(
     path,
     { oldPassword, newPassword, confirmPassword },
