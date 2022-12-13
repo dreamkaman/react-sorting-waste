@@ -38,7 +38,7 @@ import * as Yup from 'yup';
     );
   }
 
-const MakeOrderForm = ({setIsOpenOrder, wastepoint}) => {
+const MakeOrderForm = ({setIsOpenOrder, wastepoint, toast}) => {
 
   const dispatch = useDispatch();
 
@@ -94,6 +94,19 @@ const MakeOrderForm = ({setIsOpenOrder, wastepoint}) => {
     }
     
     dispatch(postOrderOperation(requestObject));
+
+    toast.success('Your order has been created', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+    setIsOpenOrder(false);
   }
 
   return ReactDom.createPortal(

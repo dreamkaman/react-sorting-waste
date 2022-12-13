@@ -21,7 +21,7 @@ const validationSchema = Yup.object({
     ),
 });
 
-const LoginForm = ({ onClose }) => {
+const LoginForm = ({ onClose, toast }) => {
   const dispatch = useDispatch();
   return (
     <div className={styles.formContainer}>
@@ -41,6 +41,18 @@ const LoginForm = ({ onClose }) => {
         onSubmit={(values) => {
           const { email, password } = values;
           dispatch(loginServiceOperation({ email, password }));
+
+          toast.success('Logged in successfully', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+
           onClose();
         }}
       >

@@ -2,11 +2,14 @@ import { useState, useRef, useEffect } from "react";
 
 import { useDispatch } from 'react-redux'
 
-import { GoogleMap, useLoadScript, MarkerF, InfoWindowF } from "@react-google-maps/api";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import "@reach/combobox/styles.css";
 import CustomMarker from "../../images/map/Marker.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import styles from './Maps.module.scss';
 import PlacesInput from "pages/FindServicePage/modules/PlacesInput";
 import FilterDropdown from "pages/FindServicePage/modules/FilterDropdown";
@@ -132,7 +135,6 @@ function Map() {
                 }}
                 className={styles.map}
             >
-                {isOpenQuestion && <AskQuestionForm setIsOpenQuestion={setIsOpenQuestion} service={ currentWastepoint }/>}
                 {infoCard && <InfoCard 
                     serviceId={ currentWastepoint.ecoServiceId } 
                     wastepoint={ currentWastepoint } 
@@ -165,25 +167,16 @@ function Map() {
                                     setCurrentWastepoint(wastepoint);
                                 }}>
                             </MarkerF>
-                            {/* <InfoWindowF
-                                position={{lat: wastepoint.latitude, lng: wastepoint.longitude}}
-                                options={{
-                                    // eslint-disable-next-line no-undef
-                                    pixelOffset: new window.google.maps.Size(0, -40),
-                                }}
-                                >
-                                <div className={styles.infoWindow}>
-                                    <p className={styles.infoWindow_title}>{wastepoint.id}</p>
-                                </div>
-                            </InfoWindowF> */}
                         </div>
                     )
                 })}
                 {selected && <MarkerF position={selected} />}
                 <GetLocationButton map={map} setSelected={setSelected}/>
             </GoogleMap>
-            {isOpenOrder && <MakeOrderForm setIsOpenOrder={setIsOpenOrder} wastepoint={ currentWastepoint }/>}
-            {isOpenFeedback && <AddFeedbackForm setIsOpenFeedback={setIsOpenFeedback} wastepoint={ currentWastepoint }/>}
+            <ToastContainer />
+            {isOpenOrder && <MakeOrderForm setIsOpenOrder={setIsOpenOrder} wastepoint={ currentWastepoint } toast={toast}/>}
+            {isOpenQuestion && <AskQuestionForm setIsOpenQuestion={setIsOpenQuestion} toast={toast} />}
+            {isOpenFeedback && <AddFeedbackForm setIsOpenFeedback={setIsOpenFeedback} wastepoint={ currentWastepoint } toast={toast}/>}
         </section>
     );
 }
