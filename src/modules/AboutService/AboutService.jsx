@@ -1,5 +1,8 @@
 import styles from './AboutService.module.scss';
 import serviceImage from '../../images/serviceImage.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react';
 
@@ -54,7 +57,10 @@ const AboutService = () => {
             <ul className={styles.wastepointsList}>
               {wastepoints.map(wastepoint => {
                 return (
+                  <div className={styles.wastepoint}>
+                    <FontAwesomeIcon icon={faLocationDot} className={styles.icon}/>
                     <li className={styles.detailTextWastepoint} key={wastepoint.id}>{wastepoint?.wasteAddress.country}, {wastepoint?.wasteAddress.city}, {wastepoint?.wasteAddress.street}</li>
+                  </div>
                 )
           })}
             </ul>
