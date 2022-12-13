@@ -45,8 +45,35 @@ const ErrorField = (props) => {
   );
 };
 
-const RegistrationForm = ({ onClose }) => {
+const RegistrationForm = ({ onClose, toast }) => {
   const dispatch = useDispatch();
+
+  const handleSubmit = (values) => {
+    const { timeOpen, timeClose, confirmPassword, toggle, ...data } = values;
+
+    const body = {
+      ...data,
+      workHours: timeOpen + '-' + timeClose,
+      photo: 'withoutPhoto',
+      free: true,
+      delivery: true,
+    };
+
+    dispatch(signupServiceOperation(body));
+
+    toast.success('You have created a new account', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+    onClose();
+  }
 
   return (
     <div className={styles.formContainer}>
@@ -71,18 +98,7 @@ const RegistrationForm = ({ onClose }) => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values) => {
-          const { timeOpen, timeClose, confirmPassword, toggle, ...data } = values;
-
-          const body = {
-            ...data,
-            workHours: timeOpen + '-' + timeClose,
-            photo: 'withoutPhoto',
-            free: true,
-            delivery: true,
-          };
-
-          dispatch(signupServiceOperation(body));
-          onClose();
+          handleSubmit(values);
         }}
       >
         {({ values, errors, touched }) => (

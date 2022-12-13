@@ -37,7 +37,7 @@ const ErrorField = (props) => {
   );
 };
 
-const AddFeedbackForm = ({ setIsOpenFeedback, wastepoint }) => {
+const AddFeedbackForm = ({ setIsOpenFeedback, wastepoint, toast }) => {
   const dispatch = useDispatch();
 
   const [service, setService] = useState();
@@ -65,6 +65,19 @@ const AddFeedbackForm = ({ setIsOpenFeedback, wastepoint }) => {
     };
 
     dispatch(postWastePointRatingOperation(requestObject));
+
+    toast.success('Thank you for feedback!', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+    setIsOpenFeedback(false);
   };
 
   const handleClick = (rate) => {

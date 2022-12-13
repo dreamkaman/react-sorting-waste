@@ -5,12 +5,13 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { postWastePointOperation } from 'redux/wastePoints/wastePointsOperations';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import styles from './RegisterWasteForm.module.scss';
 import { Field, Form, Formik } from 'formik';
 import classnames from 'classnames';
 import * as Yup from 'yup';
-
-import { v4 as randomId } from 'uuid';
 
 const validationSchema = Yup.object({
   description: Yup.string().required('Required'),
@@ -77,6 +78,28 @@ function RegisterWasteForm() {
     }
 
     dispatch(postWastePointOperation(requestObject));
+
+    toast.success('You added new waste point', {
+      position: "top-right",
+      autoClose: 3500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+    toast.success('Check it out at FIND SERVICE', {
+      position: "top-right",
+      autoClose: 3500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
 
   }
 
@@ -243,6 +266,7 @@ function RegisterWasteForm() {
           </Form>
         )}
       </Formik>
+      <ToastContainer />
     </div>
   )
 }
