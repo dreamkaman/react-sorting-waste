@@ -55,6 +55,8 @@ const ChangePasswordForm = () => {
 
     dispatch(changePasswordServiceOperation(service.id, 
       {oldPassword: values.oldPassword, newPassword: values.newPassword, confirmPassword: values.confirmPassword}));
+
+    console.log(requestObject);
   }
 
   return (
@@ -76,6 +78,7 @@ const ChangePasswordForm = () => {
                 <div className={styles.title}>
                   <h1 className={styles.text}>Change password</h1>
                 </div>
+                
                 <div className={styles.detailsList}>
                   <div className={styles.detail}>
                     <label className={styles.label}>Old password</label>

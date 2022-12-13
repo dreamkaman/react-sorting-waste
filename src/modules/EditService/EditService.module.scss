@@ -19,7 +19,8 @@
             line-height: 48px; 
         }
         .photo {
-            width: 380px;
+            max-width: 380px;
+            min-width: 300px;
         }
     }
     
