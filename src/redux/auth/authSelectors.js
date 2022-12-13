@@ -4,3 +4,4 @@ export const serviceName = (state) => {
   const login = email ? email.split('@')[0] : 'anonymous';
   return login;
 };
+export const serviceInfo = (state) => state.logginedService.serviceInfo;

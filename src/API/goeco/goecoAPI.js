@@ -1,46 +1,34 @@
 import axios from 'axios';
 import * as paths from './paths';
 
-export const loginService = (email, password) =>
-  axios.post(
-    paths.authURL,
-    { email, password },
-    {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      },
-    },
-  );
+axios.defaults.baseURL = 'https://go-eco.herokuapp.com/';
+
+export const loginService = (email, password) => axios.post(paths.authURL, { email, password });
 
 export const signupService = (ecoServiceObject) =>
   axios.post(paths.ecoServiceURL, ecoServiceObject, {
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      // 'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
     },
   });
 
 export const changePasswordService = (id, { oldPassword, newPassword, confirmPassword }) => {
   const path = paths.ecoServiceURL + `/${id}`;
-  console.log({ oldPassword, newPassword, confirmPassword });
-  return axios.patch(
-    path,
-    { oldPassword, newPassword, confirmPassword },
-    {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      },
+  const passwords = JSON.stringify({ oldPassword, newPassword, confirmPassword });
+  return axios.patch(path, passwords, {
+    headers: {
+      // 'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
     },
-  );
+  });
 };
 
 export const changeServiceInfo = (newEcoServiceObject) => {
   const path = paths.ecoServiceURL + `/${newEcoServiceObject.id}`;
   return axios.put(path, newEcoServiceObject, {
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      // 'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
     },
   });
@@ -49,7 +37,7 @@ export const changeServiceInfo = (newEcoServiceObject) => {
 export const getServices = () =>
   axios.get(paths.ecoServiceURL, {
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      // 'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
     },
   });
@@ -58,7 +46,7 @@ export const getServiceById = (id) => {
   const path = paths.ecoServiceURL + `/${id}`;
   return axios.get(path, {
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      // 'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
     },
   });
@@ -68,7 +56,7 @@ export const deleteService = (ecoServiceId) => {
   const path = paths.ecoServiceURL + '/' + ecoServiceId;
   return axios.delete(path, {
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      // 'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
     },
   });
@@ -93,7 +81,7 @@ export const getFilteredWastePoints = (filter) => {
 
   return axios.get(path, {
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      // 'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
     },
   });
