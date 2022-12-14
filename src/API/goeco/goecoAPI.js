@@ -10,11 +10,6 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
-const headers = {
-  'Access-Control-Allow-Origin': '*',
-  'Content-Type': 'application/json',
-};
-
 export const loginService = (email, password) =>
   axios.post(paths.authURL, { email, password }, { headers });
 
