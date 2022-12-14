@@ -51,9 +51,10 @@ const ChangePasswordForm = () => {
       confirmPassword: values.confirmPassword,
     };
 
-    dispatch(changePasswordServiceOperation(serviceId, values));
+    dispatch(changePasswordServiceOperation({ id: serviceId, passwords: requestObject }));
 
     console.log(requestObject);
+    console.log(values);
   };
 
   return (
