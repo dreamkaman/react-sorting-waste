@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import OrdersTable from 'modules/OrdersDashboardTable';
 
-import { getOrdersOperation, getFilteredOrdersOperation } from 'redux/orders/orderOperations';
+import { getOrdersOperation } from 'redux/orders/orderOperations';
 import { getWastePointsByEcoServiceIdOperation } from 'redux/wastePoints/wastePointsOperations';
 import { isLoggined } from 'redux/auth/authSelectors';
 import { ordersArray } from 'redux/orders/orderSelectors';
@@ -18,14 +18,24 @@ const OrdersBoardPage = () => {
   const [ordersState, setOrdersState] = useState([]);
 
   const ecoserviceId = useSelector(isLoggined);
+  const allOrders = useSelector(ordersArray);
+  const allWastePoints = useSelector(wastePointsArray);
 
   useEffect(() => {
     dispatch(getOrdersOperation());
     dispatch(getWastePointsByEcoServiceIdOperation(ecoserviceId));
-  }, [dispatch, ecoserviceId]);
 
-  const allOrders = useSelector(ordersArray);
-  const allWastePoints = useSelector(wastePointsArray);
+    //==============================================================
+
+    const ecoServiceOrders = [...getEcoserviceOrders()];
+
+    setOrdersState(ecoServiceOrders);
+
+    console.log(ecoServiceOrders);
+  }, [dispatch]);
+
+  // const allOrders = useSelector(ordersArray);
+  // const allWastePoints = useSelector(wastePointsArray);
 
   function getEcoserviceOrders() {
     const filteredEcoServiceOrders = allOrders.filter((order) => {
@@ -42,7 +52,9 @@ const OrdersBoardPage = () => {
     return filteredEcoServiceOrders;
   }
 
-  const ecoServiceOrders = [...getEcoserviceOrders()];
+  // const ecoServiceOrders = [...getEcoserviceOrders()];
+
+  // console.log(ecoServiceOrders);
 
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
@@ -63,13 +75,12 @@ const OrdersBoardPage = () => {
   function filterSubmit(event) {
     event.preventDefault();
     const filter = event.target[0].value;
-    getFilteredOrders(ecoServiceOrders, filter);
+    getFilteredOrders(ordersState, filter);
   }
 
   function onResetFilter() {
     setFilter('');
-    dispatch(getOrdersOperation());
-    dispatch(getWastePointsByEcoServiceIdOperation(ecoserviceId));
+    setOrdersState();
   }
 
   return (
