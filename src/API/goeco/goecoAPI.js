@@ -1,9 +1,14 @@
 import axios from 'axios';
 import * as paths from './paths';
 
-axios.defaults.baseURL = 'https://go-eco.herokuapp.com'; //for production
+// axios.defaults.baseURL = 'https://go-eco.herokuapp.com'; //for production
 
-// axios.defaults.baseURL = '/';//for development
+axios.defaults.baseURL = '/'; //for development
+
+const headers = {
+  'Access-Control-Allow-Origin': '*',
+  'Content-Type': 'application/json',
+};
 
 const headers = {
   'Access-Control-Allow-Origin': '*',
@@ -16,9 +21,12 @@ export const loginService = (email, password) =>
 export const signupService = (ecoServiceObject) =>
   axios.post(paths.ecoServiceURL, ecoServiceObject, { headers });
 
-export const changePasswordService = (id, { oldPassword, newPassword, confirmPassword }) => {
+export const changePasswordService = (params) => {
+  console.log(params);
+  const { id, passwords } = params;
+
   const path = paths.ecoServiceURL + `/${id}`;
-  return axios.patch(path, { oldPassword, newPassword, confirmPassword }, { headers });
+  return axios.patch(path, passwords, { headers });
 };
 
 export const changeServiceInfo = (newEcoServiceObject) => {
@@ -95,7 +103,6 @@ export const getOrders = () => {
 };
 
 export const patchOrder = ({ orderId, newStatus }) => {
-  console.log(newStatus);
   const path = paths.ordersURL + `/${orderId}/${newStatus}`;
   return axios.patch(path, { headers });
 };
