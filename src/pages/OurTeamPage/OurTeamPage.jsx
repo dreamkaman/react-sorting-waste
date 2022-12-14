@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './OurTeamPage.module.scss';
 
 import { dataPeople } from './dataOurTeam';

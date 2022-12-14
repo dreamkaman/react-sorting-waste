@@ -20,7 +20,7 @@ const validationSchema = Yup.object({
   street: Yup.string().required('Required'),
 });
 
-const typesOfWaste = ['Glass', 'Paper', 'Electronic', 'Metal', 'Plastic']
+const typesOfWaste = ['Glass', 'Paper', 'E-waste', 'Metal', 'Plastic', 'Clothes']
 
 const ErrorField = (props) => {
   return (

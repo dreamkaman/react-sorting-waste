@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './WasteTypesSlider.module.scss';
 import './WasteTypesSlider.css';
 

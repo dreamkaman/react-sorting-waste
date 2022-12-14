@@ -7,6 +7,7 @@ axios.defaults.baseURL = '/'; //for development
 
 const headers = {
   'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': '*',
   'Content-Type': 'application/json',
 };
 
@@ -70,7 +71,7 @@ export const getWastePointById = (wastePointId) => {
 };
 
 export const getWastPointsByEcoServiceId = (ecoServiceId) => {
-  const path = paths.wastePointsURL + '/ecoServiceId/' + ecoServiceId;
+  const path = paths.wastePointsURL + `/ecoServiceId/${ecoServiceId}`;
   return axios.get(path, { headers });
 };
 

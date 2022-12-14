@@ -33,8 +33,8 @@ const ClientsSay = () => {
         </h2>
         <ClientsSaySlider
           activeSlideIndex={indexState}
-          prevSlide={() => onPrevSlideClick()}
-          nextSlide={() => onNextSlideClick()}
+          prevSlide={onPrevSlideClick}
+          nextSlide={onNextSlideClick}
         />
       </div>
     </section>
