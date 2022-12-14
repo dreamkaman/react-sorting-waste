@@ -26,9 +26,7 @@ const EditService = () => {
       "country": values.country
     };
 
-    console.log(requestObject);
-
-    // dispatch(changeServiceInfoOperation(requestObject));
+    dispatch(changeServiceInfoOperation(requestObject));
   }
 
   return (

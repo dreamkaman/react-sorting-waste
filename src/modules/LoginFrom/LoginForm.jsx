@@ -23,6 +23,39 @@ const validationSchema = Yup.object({
 
 const LoginForm = ({ onClose, toast }) => {
   const dispatch = useDispatch();
+
+  const handleSubmit = async (values) => {
+    const { email, password } = values;
+          const request = await dispatch(loginServiceOperation({ email, password }));
+
+          if (request.type === 'service/login/rejected') {
+            toast.error('Wrong email or password!', {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+            return;
+          } else {
+            toast.success('Logged in successfully', {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+
+            onClose();
+        }
+  }
+
   return (
     <div className={styles.formContainer}>
       <div className={styles.headerContainer} style={{ backgroundImage: `url(${image})` }}>
@@ -37,23 +70,8 @@ const LoginForm = ({ onClose, toast }) => {
           toggle: false,
         }}
         validationSchema={validationSchema}
-        // TODO submit button ====================
         onSubmit={(values) => {
-          const { email, password } = values;
-          dispatch(loginServiceOperation({ email, password }));
-
-          toast.success('Logged in successfully', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-
-          onClose();
+          handleSubmit(values);
         }}
       >
         {({ values, errors, touched }) => (
