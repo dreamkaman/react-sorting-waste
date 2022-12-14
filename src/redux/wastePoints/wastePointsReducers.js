@@ -7,6 +7,9 @@ const entities = createReducer([], {
   'wastePoint/post/pending': (state) => state,
   'wastePoint/post/fulfilled': (state, { payload }) => [...state, payload?.successObject],
   'wastePoint/post/rejected': (state) => state,
+  'wastePointsByEcoServiceId/get/pending': () => [],
+  'wastePointsByEcoServiceId/get/fulfilled': (_, { payload }) => [...payload?.successObject],
+  'wastePointsByEcoServiceId/get/rejected': () => [],
 });
 
 const isLoading = createReducer(false, {
@@ -17,6 +20,10 @@ const isLoading = createReducer(false, {
   'wastePoint/post/pending': () => true,
   'wastePoint/post/fulfilled': () => false,
   'wastePoint/post/rejected': () => false,
+
+  'wastePointsByEcoServiceId/get/pending': () => true,
+  'wastePointsByEcoServiceId/get/fulfilled': () => false,
+  'wastePointsByEcoServiceId/get/rejected': () => false,
 });
 
 const error = createReducer(null, {
@@ -26,7 +33,11 @@ const error = createReducer(null, {
 
   'wastePoint/post/pending': () => null,
   'wastePoint/post/fulfilled': () => null,
-  'wastePoint/post/rejected': () => (_, action) => action?.error?.message,
+  'wastePoint/post/rejected': (_, action) => action?.error?.message,
+
+  'wastePointsByEcoServiceId/get/pending': () => null,
+  'wastePointsByEcoServiceId/get/fulfilled': () => null,
+  'wastePointsByEcoServiceId/get/rejected': (_, action) => action?.error?.message,
 });
 
 export const wastPointsReducer = combineReducers({

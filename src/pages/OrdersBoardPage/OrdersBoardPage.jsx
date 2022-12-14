@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import OrdersTable from 'modules/OrdersDashboardTable';
 
-import { getOrdersOperation, getFilteredOrdersOperation } from 'redux/orders/orderOperations';
+import { getOrdersOperation } from 'redux/orders/orderOperations';
 import { getWastePointsByEcoServiceIdOperation } from 'redux/wastePoints/wastePointsOperations';
 import { isLoggined } from 'redux/auth/authSelectors';
 import { ordersArray } from 'redux/orders/orderSelectors';
@@ -12,9 +12,10 @@ import { wastePointsArray } from 'redux/wastePoints/wastePointsSelectors';
 import s from './OrdersBoardPage.module.scss';
 
 const OrdersBoardPage = () => {
-  const [filter, setFilter] = useState('');
-
   const dispatch = useDispatch();
+
+  const [filter, setFilter] = useState('');
+  const [ordersState, setOrdersState] = useState([]);
 
   const ecoserviceId = useSelector(isLoggined);
   const allOrders = useSelector(ordersArray);
@@ -23,6 +24,11 @@ const OrdersBoardPage = () => {
   useEffect(() => {
     dispatch(getOrdersOperation());
     dispatch(getWastePointsByEcoServiceIdOperation(ecoserviceId));
+
+    const ecoServiceOrders = [...getEcoserviceOrders()];
+
+    setOrdersState(ecoServiceOrders);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, ecoserviceId]);
 
   function getEcoserviceOrders() {
@@ -40,28 +46,35 @@ const OrdersBoardPage = () => {
     return filteredEcoServiceOrders;
   }
 
-  const currentOrders = getEcoserviceOrders();
+  const ecoServiceOrders = [...getEcoserviceOrders()];
+
+  // console.log(ecoServiceOrders);
 
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
   };
 
+  function getFilteredOrders(orders, filter = '') {
+    if (filter) {
+      setOrdersState(
+        orders.filter(
+          (order) => order.id === Number(filter) || order.customerName.includes(filter),
+        ),
+      );
+    } else {
+      setOrdersState([...orders]);
+    }
+  }
+
   function filterSubmit(event) {
     event.preventDefault();
-
     const filter = event.target[0].value;
-    if (filter) {
-      dispatch(getFilteredOrdersOperation(filter));
-    } else {
-      dispatch(getOrdersOperation());
-      dispatch(getWastePointsByEcoServiceIdOperation(ecoserviceId));
-    }
+    getFilteredOrders(ecoServiceOrders, filter);
   }
 
   function onResetFilter() {
     setFilter('');
-    dispatch(getOrdersOperation());
-    dispatch(getWastePointsByEcoServiceIdOperation(ecoserviceId));
+    setOrdersState(ecoServiceOrders);
   }
 
   return (
@@ -84,7 +97,7 @@ const OrdersBoardPage = () => {
           </div>
         </form>
         <div className={s.wrapper}>
-          <OrdersTable ordersArray={currentOrders} />
+          <OrdersTable ordersArray={ordersState} />
         </div>
       </section>
     </main>
