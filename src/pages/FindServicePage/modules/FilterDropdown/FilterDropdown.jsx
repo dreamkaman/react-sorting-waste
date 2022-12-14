@@ -11,8 +11,8 @@ const categories = [
     {_id: 2, value: 'Glass'},
     {_id: 3, value: 'Plastic'},
     {_id: 4, value: 'Metal'},
-    {_id: 5, value: 'Electric'},
-    {_id: 6, value: 'Organic'},
+    {_id: 5, value: 'E-waste'},
+    {_id: 6, value: 'Clothes'},
 ]
 
 function FilterDropdown({ wastepoints, setWastepoints, selected, map }) {
@@ -88,7 +88,6 @@ function FilterDropdown({ wastepoints, setWastepoints, selected, map }) {
                     (result, status) => {
                         if (status === "OK" && result) {
                             if (result.routes[0].legs[0].distance.value < parseInt(radiusValue) * 1000) {
-                                console.log(filteredWastepoints);
                                 filteredWastepoints.push(wastepoint);
                             } 
                         }

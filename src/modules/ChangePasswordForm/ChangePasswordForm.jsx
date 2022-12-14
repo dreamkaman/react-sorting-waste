@@ -39,7 +39,6 @@ const validationSchema = Yup.object({
 const ChangePasswordForm = () => {
   const dispatch = useDispatch();
 
-  // const service = useSelector((state) => state.logginedService.serviceInfo);
   const serviceId = useSelector(isLoggined);
 
   const handleSubmit = async (values) => {
@@ -52,9 +51,6 @@ const ChangePasswordForm = () => {
     };
 
     dispatch(changePasswordServiceOperation({ id: serviceId, passwords: requestObject }));
-
-    console.log(requestObject);
-    console.log(values);
   };
 
   return (
