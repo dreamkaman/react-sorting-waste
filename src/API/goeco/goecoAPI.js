@@ -16,9 +16,12 @@ export const loginService = (email, password) =>
 export const signupService = (ecoServiceObject) =>
   axios.post(paths.ecoServiceURL, ecoServiceObject, { headers });
 
-export const changePasswordService = (id, { oldPassword, newPassword, confirmPassword }) => {
+export const changePasswordService = (params) => {
+  console.log(params);
+  const { id, passwords } = params;
+
   const path = paths.ecoServiceURL + `/${id}`;
-  return axios.patch(path, { oldPassword, newPassword, confirmPassword }, { headers });
+  return axios.patch(path, passwords, { headers });
 };
 
 export const changeServiceInfo = (newEcoServiceObject) => {

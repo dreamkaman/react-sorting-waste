@@ -24,12 +24,8 @@ export const changeServiceInfoOperation = createAsyncThunk(
 
 export const changePasswordServiceOperation = createAsyncThunk(
   'service/changePassword',
-  async (id, { oldPassword, newPassword, confirmPassword }) => {
-    const response = await serviceAPI.changePasswordService(id, {
-      oldPassword,
-      newPassword,
-      confirmPassword,
-    });
+  async (params) => {
+    const response = await serviceAPI.changePasswordService(params);
     return response.data;
   },
 );
