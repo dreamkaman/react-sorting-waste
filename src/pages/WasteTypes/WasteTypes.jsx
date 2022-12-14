@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './WasteTypes.module.scss';
 import { data } from '../../modules/WasteTypesSlider/dataWasteSlide';
 

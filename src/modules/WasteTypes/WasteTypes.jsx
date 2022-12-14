@@ -1,6 +1,5 @@
-import React from 'react';
 import WasteTypesSlider from '../WasteTypesSlider';
-import styles from './WasteTypes.module.scss'
+import styles from './WasteTypes.module.scss';
 
 const WasteTypes = () => {
   return (
@@ -9,7 +8,7 @@ const WasteTypes = () => {
         Let’s Sort Out
         {/*<span className={styles.description}>Your Waste Problem</span>*/}
       </h2>
-      <WasteTypesSlider/>
+      <WasteTypesSlider />
     </div>
   );
 };
