@@ -31,7 +31,6 @@ const OrdersBoardPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, ecoserviceId]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   function getEcoserviceOrders() {
     const filteredEcoServiceOrders = allOrders.filter((order) => {
       let isIncludes = false;
@@ -47,7 +46,7 @@ const OrdersBoardPage = () => {
     return filteredEcoServiceOrders;
   }
 
-  // const ecoServiceOrders = [...getEcoserviceOrders()];
+  const ecoServiceOrders = [...getEcoserviceOrders()];
 
   // console.log(ecoServiceOrders);
 
@@ -70,12 +69,12 @@ const OrdersBoardPage = () => {
   function filterSubmit(event) {
     event.preventDefault();
     const filter = event.target[0].value;
-    getFilteredOrders(ordersState, filter);
+    getFilteredOrders(ecoServiceOrders, filter);
   }
 
   function onResetFilter() {
     setFilter('');
-    setOrdersState();
+    setOrdersState(ecoServiceOrders);
   }
 
   return (
