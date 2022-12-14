@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { InfoWindow, Marker } from "@react-google-maps/api";
 import styles from './GetLocationButton.module.scss'
 
 function GetLocationButton({ map, setSelected }) {
