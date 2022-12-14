@@ -8,10 +8,7 @@ const entities = createReducer([], {
   'service/signup/fulfilled': (state, { payload }) => [...state, payload?.successObject],
   'service/signup/rejected': (state) => state,
   'service/delete/pending': (state) => state,
-  'service/delete/fulfilled': (_state, { payload }) => {
-    // const { }
-    console.log(payload);
-  },
+  'service/delete/fulfilled': (state, { payload }) => state.filter((item) => state.id !== payload),
   'service/delete/rejected': (state) => state,
 
   'service/changePassword/pending': (state) => state,
