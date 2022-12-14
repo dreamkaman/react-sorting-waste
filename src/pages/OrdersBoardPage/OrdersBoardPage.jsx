@@ -12,18 +12,20 @@ import { wastePointsArray } from 'redux/wastePoints/wastePointsSelectors';
 import s from './OrdersBoardPage.module.scss';
 
 const OrdersBoardPage = () => {
-  const [filter, setFilter] = useState('');
-
   const dispatch = useDispatch();
 
+  const [filter, setFilter] = useState('');
+  const [ordersState, setOrdersState] = useState([]);
+
   const ecoserviceId = useSelector(isLoggined);
-  const allOrders = useSelector(ordersArray);
-  const allWastePoints = useSelector(wastePointsArray);
 
   useEffect(() => {
     dispatch(getOrdersOperation());
     dispatch(getWastePointsByEcoServiceIdOperation(ecoserviceId));
   }, [dispatch, ecoserviceId]);
+
+  const allOrders = useSelector(ordersArray);
+  const allWastePoints = useSelector(wastePointsArray);
 
   function getEcoserviceOrders() {
     const filteredEcoServiceOrders = allOrders.filter((order) => {
@@ -40,22 +42,28 @@ const OrdersBoardPage = () => {
     return filteredEcoServiceOrders;
   }
 
-  const currentOrders = getEcoserviceOrders();
+  const ecoServiceOrders = [...getEcoserviceOrders()];
 
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
   };
 
+  function getFilteredOrders(orders, filter = '') {
+    if (filter) {
+      setOrdersState(
+        orders.filter(
+          (order) => order.id === Number(filter) || order.customerName.includes(filter),
+        ),
+      );
+    } else {
+      setOrdersState([...orders]);
+    }
+  }
+
   function filterSubmit(event) {
     event.preventDefault();
-
     const filter = event.target[0].value;
-    if (filter) {
-      dispatch(getFilteredOrdersOperation(filter));
-    } else {
-      dispatch(getOrdersOperation());
-      dispatch(getWastePointsByEcoServiceIdOperation(ecoserviceId));
-    }
+    getFilteredOrders(ecoServiceOrders, filter);
   }
 
   function onResetFilter() {
@@ -84,7 +92,7 @@ const OrdersBoardPage = () => {
           </div>
         </form>
         <div className={s.wrapper}>
-          <OrdersTable ordersArray={currentOrders} />
+          <OrdersTable ordersArray={ordersState} />
         </div>
       </section>
     </main>
