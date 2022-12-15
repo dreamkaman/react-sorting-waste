@@ -48,8 +48,6 @@ const OrdersBoardPage = () => {
 
   const ecoServiceOrders = [...getEcoserviceOrders()];
 
-  // console.log(ecoServiceOrders);
-
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
   };
