@@ -4,9 +4,11 @@ const entities = createReducer([], {
   'services/get/pending': () => [],
   'services/get/fulfilled': (_, { payload }) => [...payload?.successObject],
   'services/get/rejected': (state) => state,
+
   'service/signup/pending': (state) => state,
   'service/signup/fulfilled': (state, { payload }) => [...state, payload?.successObject],
   'service/signup/rejected': (state) => state,
+
   'service/delete/pending': (state) => state,
   'service/delete/fulfilled': (state, { payload }) => state.filter((item) => state.id !== payload),
   'service/delete/rejected': (state) => state,
@@ -43,6 +45,7 @@ const error = createReducer(null, {
   'services/get/pending': () => null,
   'services/get/fulfilled': () => null,
   'services/get/rejected': (_, action) => action?.error?.message,
+
   'service/signup/pending': () => null,
   'service/signup/fulfilled': () => null,
   'service/signup/rejected': (_, action) => action?.error?.message,
