@@ -13,6 +13,7 @@ const entities = createReducer([], {
   'order/post/rejected': (state) => state,
   'order/patch/pending': (state) => state,
   'order/patch/fulfilled': (state, { payload }) => {
+    console.log(payload);
     const patchedOrder = payload.successObject;
     const newState = state.map((item) =>
       item.id === patchedOrder.id ? { ...item, status: patchedOrder.status } : item,
