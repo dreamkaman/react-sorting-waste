@@ -1,4 +1,5 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 export const initialServiceState = {
   id: null,
@@ -27,8 +28,18 @@ const isLoading = createReducer(false, {
 
 const error = createReducer(null, {
   'service/login/pending': () => null,
-  'service/login/fulfilled': () => null,
-  'service/login/rejected': (_, action) => action?.error?.message,
+  'service/login/fulfilled': () => {
+    toast.success('Successfully logged in!', {
+      autoClose: 2300,
+    });
+    return null;
+  },
+  'service/login/rejected': (_, action) => {
+    toast.error('Wrong email or password', {
+      autoClose: 2300,
+    });
+    return action?.error?.message;
+  },
 });
 
 export const loginServiceReducer = combineReducers({

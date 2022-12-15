@@ -6,7 +6,15 @@ import { getWastePointRatingOperation } from 'redux/rating/ratingOperations';
 import { useDispatch } from 'react-redux';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faStarHalfStroke, faPlus, faComments, faStar, faMapLocationDot, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, 
+  faStarHalfStroke, 
+  faPlus, 
+  faComments, 
+  faStar, 
+  faMapLocationDot, 
+  faEnvelope, 
+  faClock
+} from '@fortawesome/free-solid-svg-icons';
 
 const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpenQuestion, setIsOpenFeedback, calculateRoute}) => {
 
@@ -31,7 +39,7 @@ const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpen
 
   useEffect(() => {
     fetchApi();
-  }, [serviceId])
+  }, [serviceId, serviceRating, wastepoint])
 
   return (
     <div className={styles.infoCard}>
@@ -43,16 +51,20 @@ const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpen
               <p className={styles.infoWindow_title}>{serviceRating}</p>
           </div>
         </div>
-        <div className={styles.phoneWrap}>
-          <FontAwesomeIcon icon={faPhone} className={styles.phoneLogo}/>
-          <a className={styles.phoneNumber} href={'tel:' + service?.phoneNumber}>{service?.phoneNumber}</a>
+        <div className={styles.contactWrap}>
+          <FontAwesomeIcon icon={faPhone} className={styles.contactLogo}/>
+          <a className={styles.contact} href={'tel:' + service?.phoneNumber}>{service?.phoneNumber}</a>
         </div>
-        <div className={styles.phoneWrap}>
-          <FontAwesomeIcon icon={faEnvelope} className={styles.phoneLogo}/>
-          <a className={styles.phoneNumber} href={'tel:' + service?.phoneNumber}>{service?.email}</a>
+        <div className={styles.contactWrap}>
+          <FontAwesomeIcon icon={faEnvelope} className={styles.contactLogo}/>
+          <a className={styles.contact} href={'mailto:' + service?.email}>{service?.email}</a>
+        </div>
+        <div className={styles.contactWrap}>
+          <FontAwesomeIcon icon={faClock} className={styles.contactLogo}/>
+          <p className={styles.contact}>{service?.workHours}</p>
         </div>
         <p className={styles.description}>Delivery option: {wastepoint?.isDelivery ? 'available' : 'none'}</p>
-        <div className={styles.description}>Type(-s) of waste:
+        <div className={styles.description}>Types of waste:
           <div className={styles.types}>
             {wastepoint?.types.map(type => <span className={styles.type} key={type} >{type}</span>)}
           </div>

@@ -95,17 +95,6 @@ const MakeOrderForm = ({setIsOpenOrder, wastepoint, toast}) => {
     
     dispatch(postOrderOperation(requestObject));
 
-    toast.success('Your order has been created', {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
     setIsOpenOrder(false);
   }
 
