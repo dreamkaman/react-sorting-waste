@@ -48,7 +48,7 @@ const ErrorField = (props) => {
 const RegistrationForm = ({ onClose, toast }) => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     const { timeOpen, timeClose, confirmPassword, toggle, ...data } = values;
 
     const body = {
@@ -59,19 +59,9 @@ const RegistrationForm = ({ onClose, toast }) => {
       delivery: true,
     };
 
-    dispatch(signupServiceOperation(body));
-
-    toast.success('You have created a new account', {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
+    const request = await dispatch(signupServiceOperation(body));
+    if (request.error) return;
+    
     onClose();
   }
 
