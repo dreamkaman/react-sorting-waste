@@ -25,12 +25,18 @@ const OrdersBoardPage = () => {
     dispatch(getOrdersOperation());
     dispatch(getWastePointsByEcoServiceIdOperation(ecoserviceId));
 
-    const ecoServiceOrders = [...getEcoserviceOrders()];
+    // const ecoServiceOrders = [...getEcoserviceOrders()];
 
-    setOrdersState(ecoServiceOrders);
+    // setOrdersState(ecoServiceOrders);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, ecoserviceId]);
 
+  useEffect(() => {
+    setOrdersState([...getEcoserviceOrders()]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [allOrders]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function getEcoserviceOrders() {
     const filteredEcoServiceOrders = allOrders.filter((order) => {
       let isIncludes = false;
@@ -47,8 +53,6 @@ const OrdersBoardPage = () => {
   }
 
   const ecoServiceOrders = [...getEcoserviceOrders()];
-
-  // console.log(ecoServiceOrders);
 
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
