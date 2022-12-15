@@ -52,7 +52,7 @@ const InfoCard = ({serviceId, wastepoint, setInfoCard, setIsOpenOrder, setIsOpen
           <a className={styles.phoneNumber} href={'tel:' + service?.phoneNumber}>{service?.email}</a>
         </div>
         <p className={styles.description}>Delivery option: {wastepoint?.isDelivery ? 'available' : 'none'}</p>
-        <div className={styles.description}>Type(-s) of waste:
+        <div className={styles.description}>Types of waste:
           <div className={styles.types}>
             {wastepoint?.types.map(type => <span className={styles.type} key={type} >{type}</span>)}
           </div>

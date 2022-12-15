@@ -66,17 +66,6 @@ const AddFeedbackForm = ({ setIsOpenFeedback, wastepoint, toast }) => {
 
     dispatch(postWastePointRatingOperation(requestObject));
 
-    toast.success('Thank you for feedback!', {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
     setIsOpenFeedback(false);
   };
 

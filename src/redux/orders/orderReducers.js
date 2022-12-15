@@ -1,4 +1,5 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 const entities = createReducer([], {
   'orders/get/pending': () => [],
@@ -49,7 +50,12 @@ const error = createReducer(null, {
   'ordersByEcoServiceId/get/fulfilled': () => null,
   'ordersByEcoServiceId/get/rejected': (_, action) => action?.error?.message,
   'order/post/pending': () => null,
-  'order/post/fulfilled': () => null,
+  'order/post/fulfilled': () => {
+    toast.success('Your order has been created', {
+      autoClose: 2600,
+    });
+    return null;
+  },
   'order/post/rejected': () => (_, action) => action?.error?.message,
   'order/patch/pending': () => null,
   'order/patch/fulfilled': () => null,

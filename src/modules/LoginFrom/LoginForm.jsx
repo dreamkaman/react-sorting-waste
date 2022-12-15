@@ -26,34 +26,10 @@ const LoginForm = ({ onClose, toast }) => {
 
   const handleSubmit = async (values) => {
     const { email, password } = values;
-          const request = await dispatch(loginServiceOperation({ email, password }));
-
-          if (request.type === 'service/login/rejected') {
-            toast.error('Wrong email or password!', {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: true,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            });
-            return;
-          } else {
-            toast.success('Logged in successfully', {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: true,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            });
-
-            onClose();
-        }
+    const request = await dispatch(loginServiceOperation({ email, password }));
+    if (request.error) return;
+    
+    onClose();
   }
 
   return (

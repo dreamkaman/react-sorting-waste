@@ -27,15 +27,8 @@ const AskQuestionForm = ({setIsOpenQuestion, toast}) => {
   }
 
   const handleSubmit = () => {
-      toast.success('Thank you for question!', {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
+      toast.success('Thank you for a question!', {
+      autoClose: 2600,
     });
 
     setIsOpenQuestion(false);
