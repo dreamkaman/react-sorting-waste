@@ -1,5 +1,7 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signupServiceOperation } from 'redux/services/servicesOperations';
+import { signUpError } from 'redux/services/servicesSelectors';
+
 import styles from './RegistrationForm.module.scss';
 import image from 'images/backgroundForm.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -45,8 +47,9 @@ const ErrorField = (props) => {
   );
 };
 
-const RegistrationForm = ({ onClose, toast }) => {
+const RegistrationForm = ({ onClose }) => {
   const dispatch = useDispatch();
+  const isSignedUp = useSelector(signUpError);
 
   const handleSubmit = (values) => {
     const { timeOpen, timeClose, confirmPassword, toggle, ...data } = values;
@@ -61,18 +64,9 @@ const RegistrationForm = ({ onClose, toast }) => {
 
     dispatch(signupServiceOperation(body));
 
-    toast.success('You have created a new account', {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
-    onClose();
+    // if (!isSignedUp) {
+    //   onClose();
+    // }
   }
 
   return (

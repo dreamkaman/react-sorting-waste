@@ -59,7 +59,7 @@ function RegisterWasteForm() {
   }
 
 
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     const requestObject = {
       "types": [
         ...checked
@@ -78,29 +78,6 @@ function RegisterWasteForm() {
     }
 
     dispatch(postWastePointOperation(requestObject));
-
-    toast.success('You added new waste point', {
-      position: "top-right",
-      autoClose: 3500,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
-    toast.success('Check it out at FIND SERVICE', {
-      position: "top-right",
-      autoClose: 3500,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
   }
 
   return (

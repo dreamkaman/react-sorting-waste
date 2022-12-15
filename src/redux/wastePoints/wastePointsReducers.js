@@ -1,4 +1,5 @@
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 const entities = createReducer([], {
   'wastePoints/getFiltered/pending': () => [],
@@ -32,7 +33,15 @@ const error = createReducer(null, {
   'wastePoints/getFiltered/rejected': (_, action) => action?.error?.message,
 
   'wastePoint/post/pending': () => null,
-  'wastePoint/post/fulfilled': () => null,
+  'wastePoint/post/fulfilled': () => {
+    toast.success('New waste point added', {
+      autoClose: 2300,
+    });
+    toast.success('Check it out in FIND SERVICE', {
+      autoClose: 2300,
+    });
+    return null;
+  },
   'wastePoint/post/rejected': (_, action) => action?.error?.message,
 
   'wastePointsByEcoServiceId/get/pending': () => null,

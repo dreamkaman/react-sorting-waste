@@ -1,4 +1,5 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 const entities = createReducer([], {
   'services/get/pending': () => [],
@@ -47,12 +48,32 @@ const error = createReducer(null, {
   'services/get/rejected': (_, action) => action?.error?.message,
 
   'service/signup/pending': () => null,
-  'service/signup/fulfilled': () => null,
-  'service/signup/rejected': (_, action) => action?.error?.message,
+  'service/signup/fulfilled': () => {
+    toast.success('Account registered', {
+      autoClose: 2300,
+    });
+    return null;
+  },
+  'service/signup/rejected': (_, action) => {
+    toast.error('Email already registered', {
+      autoClose: 2300,
+    });
+    return action?.error?.message;
+  },
 
   'service/changePassword/pending': () => null,
-  'service/changePassword/fulfilled': () => null,
-  'service/changePassword/rejected': (_, action) => action?.error?.message,
+  'service/changePassword/fulfilled': () => {
+    toast.success('You have successfully changed your password', {
+      autoClose: 2300,
+    });
+    return null;
+  },
+  'service/changePassword/rejected': (_, action) => {
+    toast.error('Wrong old password', {
+      autoClose: 2300,
+    });
+    return action?.error?.message;
+  },
 
   'service/changeInfo/pending': () => null,
   'service/changeInfo/fulfilled': () => null,
