@@ -1,15 +1,16 @@
-import { Field, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginServiceOperation } from 'redux/auth/authOperations';
 
-import styles from './LoginForm.module.scss';
-
+import { Field, Form, Formik } from 'formik';
 import classnames from 'classnames';
-
-import image from 'images/backgroundForm.png';
+import * as Yup from 'yup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import * as Yup from 'yup';
+
+import { isLoggined as auth} from 'redux/auth/authSelectors';
+
+import image from 'images/backgroundForm.png';
+import styles from './LoginForm.module.scss';
 
 const validationSchema = Yup.object({
   email: Yup.string().required('Required').email("Invalid email. Example: 'example@mail.com'"),
@@ -21,15 +22,18 @@ const validationSchema = Yup.object({
     ),
 });
 
-const LoginForm = ({ onClose, toast }) => {
+const LoginForm = ({ onClose }) => {
   const dispatch = useDispatch();
+  const isLoggined = useSelector(auth);
 
   const handleSubmit = async (values) => {
     const { email, password } = values;
-    const request = await dispatch(loginServiceOperation({ email, password }));
-    if (request.error) return;
     
-    onClose();
+    dispatch(loginServiceOperation({ email, password }));
+
+    if (isLoggined) {
+      onClose();
+    }
   }
 
   return (
