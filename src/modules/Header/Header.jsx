@@ -27,24 +27,36 @@ const Header = () => {
 
   const authButtons = (
     <ul className={s.authList}>
+      <Modal
+        open={openSignUp}
+        onClose={() => {
+          setOpenSignUp(false);
+        }}
+      >
+        <RegistrationForm
+          onClose={() => {
+            setOpenSignUp(false);
+          }}
+          toast={toast}
+        />
+      </Modal>
+      <Modal
+        open={openLogin}
+        onClose={() => {
+          setOpenLogin(false);
+        }}
+      >
+        <LoginForm
+          onClose={() => {
+            setOpenLogin(false);
+          }}
+          toast={toast}
+        />
+      </Modal>
       <li className={s.authListItem}>
         <button className={s.authButton} onClick={() => setOpenLogin(true)}>
           Login
         </button>
-
-        <Modal
-          open={openLogin}
-          onClose={() => {
-            setOpenLogin(false);
-          }}
-        >
-          <LoginForm
-            onClose={() => {
-              setOpenLogin(false);
-            }}
-            toast={toast}
-          />
-        </Modal>
       </li>
 
       <li className={s.authListItem}>
@@ -52,7 +64,7 @@ const Header = () => {
           Sign up
         </button>
 
-        <Modal
+        {/* <Modal
           open={openSignUp}
           onClose={() => {
             setOpenSignUp(false);
@@ -64,7 +76,7 @@ const Header = () => {
             }}
             toast={toast}
           />
-        </Modal>
+        </Modal> */}
       </li>
     </ul>
   );
@@ -100,7 +112,7 @@ const Header = () => {
             </p>
           </Link>
 
-          <Burger open={()=>setOpenBurger(true)} />
+          <Burger open={() => setOpenBurger(true)} />
 
           <Modal
             open={openBurger}
@@ -121,7 +133,6 @@ const Header = () => {
               }}
             />
           </Modal>
-
 
           <ul className={s.menu}>
             <li className={s.menuItem}>

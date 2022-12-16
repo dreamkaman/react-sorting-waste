@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useRef } from 'react';
 import { loginServiceOperation } from 'redux/auth/authOperations';
 
 import { Field, Form, Formik } from 'formik';
@@ -7,7 +8,7 @@ import * as Yup from 'yup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-import { isLoggined as auth} from 'redux/auth/authSelectors';
+import { isLoggined as auth } from 'redux/auth/authSelectors';
 
 import image from 'images/backgroundForm.png';
 import styles from './LoginForm.module.scss';
@@ -25,16 +26,22 @@ const validationSchema = Yup.object({
 const LoginForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const isLoggined = useSelector(auth);
+  const isButtonPushed = useRef(false);
+
+  useEffect(() => {
+    if (isLoggined && isButtonPushed.current) {
+      onClose();
+      isButtonPushed.current = false;
+    }
+  }, [isLoggined]);
 
   const handleSubmit = async (values) => {
     const { email, password } = values;
-    
+
     dispatch(loginServiceOperation({ email, password }));
 
-    if (isLoggined) {
-      onClose();
-    }
-  }
+    isButtonPushed.current = true;
+  };
 
   return (
     <div className={styles.formContainer}>

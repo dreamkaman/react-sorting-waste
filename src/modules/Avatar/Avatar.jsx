@@ -49,8 +49,8 @@ const Avatar = ({ userName = 'anonymous' }) => {
           Edit profile
         </Link>
       </li>
-      <li className={s.contextMenuItem} onClick={() => onLogOut()}>
-        <Link to="/" className={s.contextMenuItemLink}>
+      <li className={s.contextMenuItem} onClick={onLogOut}>
+        <Link to="/services" className={s.contextMenuItemLink}>
           Logout
         </Link>
       </li>
