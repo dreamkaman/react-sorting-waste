@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signupServiceOperation } from 'redux/services/servicesOperations';
 import { signUpError } from 'redux/services/servicesSelectors';
@@ -50,6 +51,18 @@ const ErrorField = (props) => {
 const RegistrationForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const isSignedUp = useSelector(signUpError);
+  const isButtonPushed = useRef(false);
+
+  useEffect(() => {
+    if (isButtonPushed.current) {
+      console.log(isSignedUp);
+      if (!isSignedUp) {
+        onClose();
+      }
+    }
+    isButtonPushed.current = false;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSignedUp]);
 
   const handleSubmit = (values) => {
     const { timeOpen, timeClose, confirmPassword, toggle, ...data } = values;
@@ -64,10 +77,8 @@ const RegistrationForm = ({ onClose }) => {
 
     dispatch(signupServiceOperation(body));
 
-    // if (!isSignedUp) {
-    //   onClose();
-    // }
-  }
+    isButtonPushed.current = true;
+  };
 
   return (
     <div className={styles.formContainer}>
