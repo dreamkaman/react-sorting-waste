@@ -18,7 +18,7 @@ import RegistrationForm from '../RegistrationForm';
 import BurgerMenu from '../../shared/components/Menu/BurgerMenu';
 
 const Header = () => {
-  const isLogginedUser = useSelector(isLoggined); //should be red from Redux
+  const isLogginedUser = useSelector(isLoggined);
   const serviceNameProp = useSelector(serviceName);
 
   const [openLogin, setOpenLogin] = useState(false);
@@ -44,6 +44,7 @@ const Header = () => {
         open={openLogin}
         onClose={() => {
           setOpenLogin(false);
+          console.log('Works!');
         }}
       >
         <LoginForm
@@ -58,25 +59,10 @@ const Header = () => {
           Login
         </button>
       </li>
-
       <li className={s.authListItem}>
         <button className={s.authButton} onClick={() => setOpenSignUp(true)}>
           Sign up
         </button>
-
-        {/* <Modal
-          open={openSignUp}
-          onClose={() => {
-            setOpenSignUp(false);
-          }}
-        >
-          <RegistrationForm
-            onClose={() => {
-              setOpenSignUp(false);
-            }}
-            toast={toast}
-          />
-        </Modal> */}
       </li>
     </ul>
   );
@@ -99,7 +85,7 @@ const Header = () => {
           </li>
         </ul>
         <div className={s.avatarWrapper}>
-          {isLogginedUser ? <Avatar userName={serviceNameProp} /> : null}
+          {isLogginedUser ? <Avatar userName={serviceNameProp} onClose={() => {}} /> : null}
         </div>
       </div>
 

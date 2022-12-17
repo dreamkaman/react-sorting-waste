@@ -50,7 +50,7 @@ const Avatar = ({ userName = 'anonymous' }) => {
         </Link>
       </li>
       <li className={s.contextMenuItem} onClick={onLogOut}>
-        <Link to="/services" className={s.contextMenuItemLink}>
+        <Link to="/" className={s.contextMenuItemLink}>
           Logout
         </Link>
       </li>
