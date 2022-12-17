@@ -18,7 +18,7 @@ import RegistrationForm from '../RegistrationForm';
 import BurgerMenu from '../../shared/components/Menu/BurgerMenu';
 
 const Header = () => {
-  const isLogginedUser = useSelector(isLoggined); //should be red from Redux
+  const isLogginedUser = useSelector(isLoggined);
   const serviceNameProp = useSelector(serviceName);
 
   const [openLogin, setOpenLogin] = useState(false);
@@ -27,44 +27,42 @@ const Header = () => {
 
   const authButtons = (
     <ul className={s.authList}>
+      <Modal
+        open={openSignUp}
+        onClose={() => {
+          setOpenSignUp(false);
+        }}
+      >
+        <RegistrationForm
+          onClose={() => {
+            setOpenSignUp(false);
+          }}
+          toast={toast}
+        />
+      </Modal>
+      <Modal
+        open={openLogin}
+        onClose={() => {
+          setOpenLogin(false);
+          console.log('Works!');
+        }}
+      >
+        <LoginForm
+          onClose={() => {
+            setOpenLogin(false);
+          }}
+          toast={toast}
+        />
+      </Modal>
       <li className={s.authListItem}>
         <button className={s.authButton} onClick={() => setOpenLogin(true)}>
           Login
         </button>
-
-        <Modal
-          open={openLogin}
-          onClose={() => {
-            setOpenLogin(false);
-          }}
-        >
-          <LoginForm
-            onClose={() => {
-              setOpenLogin(false);
-            }}
-            toast={toast}
-          />
-        </Modal>
       </li>
-
       <li className={s.authListItem}>
         <button className={s.authButton} onClick={() => setOpenSignUp(true)}>
           Sign up
         </button>
-
-        <Modal
-          open={openSignUp}
-          onClose={() => {
-            setOpenSignUp(false);
-          }}
-        >
-          <RegistrationForm
-            onClose={() => {
-              setOpenSignUp(false);
-            }}
-            toast={toast}
-          />
-        </Modal>
       </li>
     </ul>
   );
@@ -87,7 +85,7 @@ const Header = () => {
           </li>
         </ul>
         <div className={s.avatarWrapper}>
-          {isLogginedUser ? <Avatar userName={serviceNameProp} /> : null}
+          {isLogginedUser ? <Avatar userName={serviceNameProp} onClose={() => {}} /> : null}
         </div>
       </div>
 
@@ -100,7 +98,7 @@ const Header = () => {
             </p>
           </Link>
 
-          <Burger open={()=>setOpenBurger(true)} />
+          <Burger open={() => setOpenBurger(true)} />
 
           <Modal
             open={openBurger}
@@ -121,7 +119,6 @@ const Header = () => {
               }}
             />
           </Modal>
-
 
           <ul className={s.menu}>
             <li className={s.menuItem}>

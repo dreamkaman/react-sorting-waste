@@ -1,5 +1,8 @@
-import { useDispatch } from 'react-redux';
+import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { signupServiceOperation } from 'redux/services/servicesOperations';
+import { signUpError } from 'redux/services/servicesSelectors';
+
 import styles from './RegistrationForm.module.scss';
 import image from 'images/backgroundForm.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -45,10 +48,23 @@ const ErrorField = (props) => {
   );
 };
 
-const RegistrationForm = ({ onClose, toast }) => {
+const RegistrationForm = ({ onClose }) => {
   const dispatch = useDispatch();
+  const isSignedUp = useSelector(signUpError);
+  const isButtonPushed = useRef(false);
 
-  const handleSubmit = async (values) => {
+  useEffect(() => {
+    if (isButtonPushed.current) {
+      console.log(isSignedUp);
+      if (!isSignedUp) {
+        onClose();
+      }
+    }
+    isButtonPushed.current = false;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSignedUp]);
+
+  const handleSubmit = (values) => {
     const { timeOpen, timeClose, confirmPassword, toggle, ...data } = values;
 
     const body = {
@@ -59,11 +75,10 @@ const RegistrationForm = ({ onClose, toast }) => {
       delivery: true,
     };
 
-    const request = await dispatch(signupServiceOperation(body));
-    if (request.error) return;
-    
-    onClose();
-  }
+    dispatch(signupServiceOperation(body));
+
+    isButtonPushed.current = true;
+  };
 
   return (
     <div className={styles.formContainer}>
